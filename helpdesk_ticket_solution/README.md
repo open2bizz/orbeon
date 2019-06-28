@@ -1,1 +1,0 @@
-This module adds the possibility to add a solution to your tickets dealt with in Odoo.
