@@ -1,4 +1,24 @@
-import xmlrpclib
+# -*- coding: utf-8 -*-
+##############################################################################
+# Author: Open2Bizz (www.open2bizz.nl)
+# Employee: Dennis Ochse
+# Date: 2019-05-02
+#
+# GNU LESSER GENERAL PUBLIC LICENSE
+# Version 3, 29 June 2007
+#
+# Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+# Everyone is permitted to copy and distribute verbatim copies
+# of this license document, but changing it is not allowed.
+#
+#
+# This version of the GNU Lesser General Public License incorporates
+# the terms and conditions of version 3 of the GNU General Public
+# License, supplemented by the additional permissions listed in the following URL:
+# https://www.gnu.org/licenses/lgpl.txt.
+#
+##############################################################################
+import xmlrpc.client
 
 class XMLRPCService(object):
 
@@ -9,8 +29,8 @@ class XMLRPCService(object):
         self.connect()
         
     def connect(self):
-        self.common = xmlrpclib.ServerProxy("%s/xmlrpc/2/common" % self.url)
-        self.api = xmlrpclib.ServerProxy("%s/xmlrpc/2/object" % self.url)
+        self.common = xmlrpc.client.ServerProxy("%s/xmlrpc/2/common" % self.url)
+        self.api = xmlrpc.client.ServerProxy("%s/xmlrpc/2/object" % self.url)
         self.uid = self.common.authenticate(self.db, self.uid, self.pwd, {})
 
     def search(self, model, domain):

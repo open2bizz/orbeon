@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
+# Author: Open2Bizz (www.open2bizz.nl)
+# Employee: Dennis Ochse
+# Date: 2019-05-02
 #
-#    open2bizz
-#    Copyright (C) 2016 open2bizz (open2bizz.nl).
+# GNU LESSER GENERAL PUBLIC LICENSE
+# Version 3, 29 June 2007
 #
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+# Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+# Everyone is permitted to copy and distribute verbatim copies
+# of this license document, but changing it is not allowed.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# This version of the GNU Lesser General Public License incorporates
+# the terms and conditions of version 3 of the GNU General Public
+# License, supplemented by the additional permissions listed in the following URL:
+# https://www.gnu.org/licenses/lgpl.txt.
 #
 ##############################################################################
 from odoo import models, fields, api
