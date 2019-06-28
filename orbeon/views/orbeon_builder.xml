@@ -80,6 +80,23 @@
             </field>
         </record>
 
+		<record id="orbeon.builder_form_search" model="ir.ui.view">
+            <field name="name">orbeon.builder_form.search</field>
+            <field name="model">orbeon.builder</field>
+            <field name="arch" type="xml">
+				<search string="Builder Forms">
+	                <field name="name" string="Name"/>
+	                <field name="res_model_id" string="Model ID"/>
+	                <field name="description" string="Description"/>
+	                <field name="state" string="State"/>
+                        <group expand="0" string="Group by...">
+	                        <filter string="Model" domain="[]" context="{'group_by' : 'res_model_id'}"/>
+	                        <filter string="State" domain="[]" context="{'group_by' : 'state'}"/>
+	                    </group>
+	            </search>
+            </field>
+        </record>
+        
         <record id="orbeon_builder_form_action" model="ir.actions.act_window">
             <field name="name">Orbeon Builder Forms</field>
             <field name="type">ir.actions.act_window</field>

@@ -121,8 +121,15 @@
             <field name="name">orbeon.runne.search.view</field>
             <field name="model">orbeon.runner</field>
             <field name="arch" type="xml">
-                <search>
-                  <field name="builder_id"/>
+                <search string="Runner Forms">
+			        <field name="builder_id" string="Form name" />
+			        <field name="res_model" string="Model" />
+                    <field name="state" string="State" />
+                        <group expand="0" string="Group by...">
+                            <filter string="Builder Form" domain="[]" context="{'group_by' : 'builder_id'}" />
+                            <filter string="Model" domain="[]" context="{'group_by' : 'res_model'}" />
+                            <filter string="State" domain="[]" context="{'group_by' : 'state'}" />
+                        </group>
                 </search>
             </field>
         </record>
