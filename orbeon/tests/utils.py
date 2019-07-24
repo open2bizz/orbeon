@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import openerp
+import odoo
 
 class TODO_TEST(Exception):
     def __init__(self, msg=''):
@@ -45,11 +45,11 @@ def TODO(func):
         except:
             succeeded = False
 
-        if openerp.tools.config.get('orbeon_tests_todo', False):
+        if odoo.tools.config.get('orbeon_tests_todo', False):
             try:
                 assert succeeded is False, \
                     "%s" % func.__name__
-            except AssertionError, e:
+            except AssertionError as e:
                 raise TODO_TEST(e)
 
     wrapper.__name__ = func.__name__
