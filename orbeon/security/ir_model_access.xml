@@ -77,7 +77,7 @@
         </record>
 
         <record id="access_orbeon_runner_user" model="ir.model.access">
-            <field name="name">orbeon.runenr.orbeon_user</field>
+            <field name="name">orbeon.runner.orbeon_user</field>
             <field name="model_id" ref="orbeon.model_orbeon_runner"/>
             <field name="group_id" ref="orbeon.orbeon_user"/>
             <field name="perm_read" eval="1"/>
