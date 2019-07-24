@@ -44,14 +44,12 @@ class OrbeonBuilderTemplate(models.Model):
     server_id = fields.Many2one(
         "orbeon.server",
         "Server",
-        required=False,
         ondelete='cascade'
     )
 
     module_id = fields.Many2one(
         "ir.module.module",
         "Module",
-        required=False,
         readonly=True,
         ondelete='cascade'
     )
@@ -71,12 +69,15 @@ class OrbeonBuilderTemplate(models.Model):
         help="Template was fetched from Orbeon"
     )
 
+    @api.multi
     @api.depends('server_id', 'module_id', 'form_name')
     def _set_name(self):
-        self.name = "%s (%s)" % (self.form_name, self.module_id.name)
+        for rec in self:
+            rec.name = "%s (%s)" % (rec.form_name, rec.module_id.name)
 
-    @api.one
+    @api.multi
     @api.constrains('form_name')
     def constaint_check_name(self):
-        if re.search(r"[^a-zA-Z0-9_-]", self.form_name) is not None:
-            raise ValidationError('Name is invalid. Use ASCII letters, digits, "-" or "_"')
+        for name in self.mapped('form_name'):
+            if re.search(r"[^a-zA-Z0-9_-]", name) is not None:
+                raise ValidationError('Name is invalid. Use ASCII letters, digits, "-" or "_"')
