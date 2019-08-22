@@ -93,7 +93,7 @@ class XmlParserERPFields(XmlParserBase):
         if not self.has_erp_fields():
             return
 
-        for tagname, erp_field_obj in self.erp_fields.iteritems():
+        for tagname, erp_field_obj in self.erp_fields.items():
             target_object = self.res_object
 
             # copy model_fields because of alternations in the while-loop reducer below.
