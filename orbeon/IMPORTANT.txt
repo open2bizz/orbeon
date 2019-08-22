@@ -1,0 +1,6 @@
+# --- Note by Dennis Ochse (2019-05-01) ---
+Please add the following parameter to your Odoo configuration file:
+
+xmlrpc_port_orbeon = 8069
+
+8069 is the default, you are using a different port for xml_rpc change the port number.

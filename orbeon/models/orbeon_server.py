@@ -1,28 +1,28 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
+# Author: Open2Bizz (www.open2bizz.nl)
+# Employee: Dennis Ochse
+# Date: 2019-05-02
 #
-#    open2bizz
-#    Copyright (C) 2016 open2bizz (open2bizz.nl).
+# GNU LESSER GENERAL PUBLIC LICENSE
+# Version 3, 29 June 2007
 #
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+# Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+# Everyone is permitted to copy and distribute verbatim copies
+# of this license document, but changing it is not allowed.
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
 #
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# This version of the GNU Lesser General Public License incorporates
+# the terms and conditions of version 3 of the GNU General Public
+# License, supplemented by the additional permissions listed in the following URL:
+# https://www.gnu.org/licenses/lgpl.txt.
 #
 ##############################################################################
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 import threading
-import urllib2
+import urllib.request
 import logging
 
 from lxml import etree
@@ -165,7 +165,7 @@ class OrbeonServer(models.Model):
             self.create_orbeon_builder_templates()
 
             return True
-        except Exception, e:
+        except Exception as e:
             _logger.error('Exception: %s' % e)
 
     @api.multi
@@ -241,7 +241,7 @@ class OrbeonServer(models.Model):
                     )
                     cr.execute("UPDATE orbeon_server SET persistence_server_uuid = %s WHERE id = %s", (str(new_uuid), id))
 
-        except Exception, e:
+        except Exception as e:
             _logger.error("Exception: %s" % e)
 
     def _start_persistence_server(self, uuid, port, processtype, configfile_path=None):
@@ -267,7 +267,6 @@ class OrbeonServer(models.Model):
                 thread.stopper.set()
                 _logger.info("Stopping HTTP (werkzeug) %s (thread: %s) on port %s", ORBEON_PERSISTENCE_SERVER_PREFIX, uuid, port)
                 thread.server.server_close()
-                thread.join()
 
     @api.multi
     def create_orbeon_builder_templates(self):
@@ -276,20 +275,20 @@ class OrbeonServer(models.Model):
 
         # XXX Once the listing (HTTP) request doesn't fail (HTTP 500),
         # this can be changed to a loop through all Orbeon example forms.
-        #
+       #
         # Accorrding to https://doc.orbeon.com/form-runner/api/persistence/forms-metadata.html
         # HTTP GET on: /fr/service/persistence/form
         form_names = ['contact', 'controls']
 
         for form_name in form_names:
             try:
-                url = "%s/fr/service/persistence/crud/orbeon/%s/form/form.xhtml" % (self.url, form_name)
-                request = urllib2.Request(url)
-                result = urllib2.urlopen(request)
+                url = "http://%s/fr/service/persistence/crud/orbeon/%s/form/form.xhtml" % (self.url, form_name)
+                request = urllib.request.Request(url)
+                result = urllib.request.urlopen(request)
                 data = result.read()
-
                 parser = etree.XMLParser(recover=True, encoding='utf-8')
                 xml_root = etree.XML(data, parser)
+
 
                 # TODO FIXME: multiple titles nodes (by language)
                 form_name = xml_root.xpath('//metadata/form-name')[0].text
@@ -310,7 +309,7 @@ class OrbeonServer(models.Model):
                 })
 
                 self.builder_templates_created = True
-            except Exception, e:
+            except Exception as e:
                 _logger.error(
                     "%s - Orbeon request: %s" % (e, url)
                 )

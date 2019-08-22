@@ -1,11 +1,37 @@
-import ConfigParser
+# -*- coding: utf-8 -*-
+##############################################################################
+# Author: Open2Bizz (www.open2bizz.nl)
+# Employee: Dennis Ochse
+# Date: 2019-05-02
+#
+# GNU LESSER GENERAL PUBLIC LICENSE
+# Version 3, 29 June 2007
+#
+# Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+# Everyone is permitted to copy and distribute verbatim copies
+# of this license document, but changing it is not allowed.
+#
+#
+# This version of the GNU Lesser General Public License incorporates
+# the terms and conditions of version 3 of the GNU General Public
+# License, supplemented by the additional permissions listed in the following URL:
+# https://www.gnu.org/licenses/lgpl.txt.
+#
+##############################################################################
+import configparser
 import dicttoxml
+import base64
+
 
 from xml.dom.minidom import parseString
 
-from xmlrpc_service import XMLRPCService
-from xmlgen import XmlGenerator
+from .xmlrpc_service import XMLRPCService
+from .xmlgen import XmlGenerator
 from .. import utils
+
+import logging
+_logger = logging.getLogger(__name__)
+
 
 _log = utils._log
 
@@ -26,7 +52,7 @@ class OrbeonHandlerBase(object):
 
     def set_config_by_file_path(self, configfile_path):
         """Set config object by config_filename"""
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(configfile_path)
 
         if len(config.sections()) > 0:
@@ -65,11 +91,10 @@ class OrbeonHandlerBase(object):
         )
 
         if len(res) > 0:
-            return res[0]['datas'].decode('base64')
+            return base64.b64decode(res[0]['datas'])
 
     def handle_binary_data(self):
         """Handle binray data"""
-
         """Currently data is stored in 'ir_attachment' (model)"""
         ira_data = {
             "res_id": self.form_doc_id,
@@ -77,7 +102,7 @@ class OrbeonHandlerBase(object):
             'name': self.form_data_id,
             'store_fname': self.form_data_id,
             'datas_fname': self.form_data_id,
-            "datas": self.data.encode('base64')
+            "datas": base64.b64encode(self.data)
         }
         self.xmlrpc.create(
             'ir.attachment',
@@ -127,7 +152,7 @@ class BuilderHandler(OrbeonHandlerBase):
             return
 
         if self.data_type == 'data' and self.form_data_id == 'data.xml':
-            data = {"xml": str(self.data)}
+            data = {"xml": self.data.decode('utf-8')}
 
             self.xmlrpc.write(
                 "orbeon.builder",
@@ -170,8 +195,8 @@ class BuilderHandler(OrbeonHandlerBase):
             if len(form) > 0:
                 xml = XmlGenerator(form).gen_xml()
                 return xml
-        except Exception, e:
-            print "Exception: %s" % e
+        except Exception as e:
+            print ("Exception: %s" % e)
 
 
 class RunnerHandler(OrbeonHandlerBase):
@@ -217,7 +242,7 @@ class RunnerHandler(OrbeonHandlerBase):
         """Write Orbeon-Runner data by save on edit (i.e. HTTP PUT)"""
 
         if self.data_type == 'data' and self.form_data_id == 'data.xml':
-            data = {"xml": str(self.data)}
+            data = {"xml": self.data.decode('utf-8')}
 
             self.xmlrpc.write(
                 "orbeon.runner",
@@ -292,5 +317,5 @@ class OdooServiceHandler(OrbeonHandlerBase):
             dom = parseString(xml)
             _log('debug', dom.toprettyxml())
             return xml
-        except Exception, e:
+        except Exception as e:
             _log('error', "Exception: %s" % e)

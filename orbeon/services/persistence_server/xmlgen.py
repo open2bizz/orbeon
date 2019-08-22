@@ -1,3 +1,23 @@
+# -*- coding: utf-8 -*-
+##############################################################################
+# Author: Open2Bizz (www.open2bizz.nl)
+# Employee: Dennis Ochse
+# Date: 2019-05-02
+#
+# GNU LESSER GENERAL PUBLIC LICENSE
+# Version 3, 29 June 2007
+#
+# Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+# Everyone is permitted to copy and distribute verbatim copies
+# of this license document, but changing it is not allowed.
+#
+#
+# This version of the GNU Lesser General Public License incorporates
+# the terms and conditions of version 3 of the GNU General Public
+# License, supplemented by the additional permissions listed in the following URL:
+# https://www.gnu.org/licenses/lgpl.txt.
+#
+##############################################################################
 # (document)
 main_template = '<?xml version="1.0" encoding="utf-8"?><documents xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:f="http//www.orbeon.com/function" xmlns:frf="java:org.orbeon.oxf.fr.FormRunner" xmlns:odt="http://orbeon.org/oxf/xml/datatypes" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:saxon="http://saxon.sf.net/" xmlns:sql="http://orbeon.org/oxf/xml/sql" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xpl="java:org.orbeon.oxf.pipeline.api.FunctionLibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" search-total="9" total="9">%s</documents>'
 
