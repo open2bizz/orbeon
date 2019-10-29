@@ -169,7 +169,7 @@ class OrbeonRunner(models.Model):
             body = "Er is een nieuwe versie beschikbaar van dit formulier!\nDe versie van dit formulier is nu geupdate van %s naar %s." % (old_builder_id,new_builder_id)
             rec.message_post(body=body)
 
- hit   @api.multi
+    @api.multi
     def action_open_orbeon_runner(self):
         self.ensure_one()
         for rec in self:
