@@ -247,14 +247,8 @@ class OrbeonBuilder(models.Model):
     @api.multi
     def new_version_builder_form(self):
         res = self.copy_as_new_version()
-
-        form_view = self.env["ir.ui.view"].search(
-            [("name", "=", "orbeon.builder_form.form")]
-        )[0]
-
-        tree_view = self.env["ir.ui.view"].search(
-            [("name", "=", "orbeon.builder_form.tree")]
-        )[0]
+        form_view = self.env.ref('orbean.orbeon_builder_form_form')
+        tree_view = self.env.ref('orbeon.orbeon_builder_form_tree')
 
         return {
             "name": self.name,

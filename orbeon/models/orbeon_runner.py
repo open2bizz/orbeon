@@ -84,7 +84,7 @@ class OrbeonRunner(models.Model):
         string="State",
         default=STATE_NEW)
 
-    """Lets us know if this filed is merged with latest builder fields."""
+    """Lets us know if this field is merged with latest builder fields."""
     is_merged = fields.Boolean(
         'Is Merged',
         default=False)
@@ -116,20 +116,23 @@ class OrbeonRunner(models.Model):
         compute="_any_new_current_builder",
         readonly=True)
 
-    @api.one
-    def _get_builder_name(self, id=None):
-        if self.res_model != False and self.res_id != 0:
-            self.builder_name = "%s v.%s (%s)" % (self.builder_id.name, self.builder_id.version, self.env[self.res_model].browse(self.res_id).display_name)
-        else:
-            self.builder_name = "%s v.%s" % (self.builder_id.name, self.builder_id.version)
+    @api.multi
+    def _get_builder_name(self):
+        for rec in self:
+            if rec.res_model != False and rec.res_id != 0:
+                rec.builder_name = "%s v.%s (%s)" % (rec.builder_id.name, rec.builder_id.version, self.env[rec.res_model].browse(rec.res_id).display_name)
+            else:
+                rec.builder_name = "%s v.%s" % (rec.builder_id.name, rec.builder_id.version)
             
-    @api.one
-    def _get_builder_version(self, id=None):
-        self.builder_version = self.builder_id.version
+    @api.multi
+    def _get_builder_version(self):
+        for rec in self:
+            rec.builder_version = rec.builder_id.version
 
-    @api.one
-    def _get_builder_title(self, id=None):
-        self.builder_title = self.builder_id.title
+    @api.multi
+    def _get_builder_title(self):
+        for rec in self:
+            rec.builder_title = rec.builder_id.title
 
     @api.depends('builder_id')
     def _get_res_model(self):

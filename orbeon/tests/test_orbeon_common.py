@@ -19,7 +19,6 @@
 #
 ##############################################################################
 from odoo.tests.common import TransactionCase
-from odoo import fields, models
 
 import logging
 import os
@@ -29,7 +28,6 @@ from xmlunittest import XmlTestCase
 
 from ..models import orbeon_server
 from ..models import orbeon_builder
-from ..models import orbeon_runner
 
 _logger = logging.getLogger(__name__)
 
