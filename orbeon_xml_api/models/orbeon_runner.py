@@ -114,7 +114,7 @@ class AnyUriControlOdoo(controls.AnyUriControl):
         res = super(AnyUriControlOdoo, self).decode(element)
         uri = res.get('uri', False)
 
-        if not uri or not isinstance(uri, basestring):
+        if not uri or not isinstance(uri, str):
             return res
 
         # Whereby the last path-component shall be the ir.attachment (file)name.
