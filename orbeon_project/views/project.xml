@@ -29,22 +29,18 @@
             <field name="priority" eval="20" />
             <field name="inherit_id" ref="project.view_project_kanban" />
             <field name="arch" type="xml">
-	            <data>
-		            <xpath expr="//templates" position="before">
+			<data>
+		            <field name="rating_status" position="after">
 		                <field name="orbeon_runner_forms_count" />
-		            </xpath>
+		            </field>
 
-		            <xpath expr="//div[contains(@class, 'o_project_kanban_boxes')]"
-			           position="inside">
-		                <a t-if="record.orbeon_runner_forms_count.raw_value" class="o_project_kanban_box"
-		                   name="action_orbeon_runner_forms" type="object">
-		                    <span class="o_value">
-			                <t t-esc="record.orbeon_runner_forms_count.value" />
-		                    </span>
-		                    <span class="o_label">Forms</span>
-		                </a>
-		            </xpath>
-		        </data>
+                	<div class="o_project_kanban_box">
+                  	<a name="action_orbeon_runner_forms" type="object">
+                   	 <span class="o_value"><t t-esc="record.orbeon_runner_forms_count.value"/></span>
+                    	 <span class="o_label">Formulieren</span>
+                  	</a>
+                	</div>
+ 		</data>            
             </field>
         </record>
 
