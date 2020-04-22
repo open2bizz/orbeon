@@ -22,7 +22,7 @@ from odoo import models, fields
 
 
 class IrActionsReportXml(models.Model):
-    _inherit = 'ir.actions.report.xml'
+    _inherit = 'ir.actions.report'
 
     orbeon_builder_ids = fields.One2many(
         'orbeon.builder.report.xml',
