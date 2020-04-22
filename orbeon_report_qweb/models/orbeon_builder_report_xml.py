@@ -39,6 +39,6 @@ class OrbeonBuilderReportXml(models.Model):
         string='Orbeon Builder',
     )
     ir_actions_report_xml_id = fields.Many2one(
-        'ir.actions.report.xml',
+        'ir.actions.report',
         string='Report'
     )

@@ -40,7 +40,7 @@ class OrbeonRunner(models.Model):
         self.builder_reports_count = len(self.builder_id.report_xml_ids)
 
     def run_qweb_report(self, report_id):
-        rep = self.env['ir.actions.report.xml'].browse(report_id)
+        rep = self.env['ir.actions.report'].browse(report_id)
         data = {
             'ids': [self.id],
             'model': 'orbeon.runner',
@@ -48,7 +48,7 @@ class OrbeonRunner(models.Model):
             'context':{}
         }      
         return {
-            'type' : 'ir.actions.report.xml',
+            'type' : 'ir.actions.report',
             'report_name' : rep.report_name,
             'datas' : data,
             }

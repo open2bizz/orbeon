@@ -32,7 +32,7 @@ class OrbeonReportQwebChooser(models.TransientModel):
     _description = "Choose QWEB report"
 
     report_xml_id = fields.Many2one(
-        'ir.actions.report.xml',
+        'ir.actions.report',
         string="Reports"
     )  
     
