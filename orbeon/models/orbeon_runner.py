@@ -25,6 +25,7 @@ from orbeon_xml_api.runner_copy_builder_merge import RunnerCopyBuilderMerge as R
 from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
+
 from ..services.runner_xml_parser import runner_xml_parser
 
 import logging
@@ -232,7 +233,6 @@ class OrbeonRunner(models.Model):
             raise UserError("The form can't be loaded. No (user) language was set.")
 
         res_lang = self.env['res.lang'].search([('code', '=', lang)], limit=1)
-
         # This Runner
         builder_xml = u'%s' % self.builder_id.xml
         builder_xml = bytes(bytearray(builder_xml, encoding='utf-8'))
@@ -247,7 +247,6 @@ class OrbeonRunner(models.Model):
         merge_builder_xml = u'%s' % builder_obj.xml
         merge_builder_xml = bytes(bytearray(merge_builder_xml, encoding='utf-8'))
         merge_builder_api = BuilderAPI(merge_builder_xml, res_lang.iso_code)
-
         try:
             # TODO Store the no_copy_prefix per orbeon.builder record (as field)?
             merger_api = RunnerCopyBuilderMergeAPI(runner_api, merge_builder_api, no_copy_prefix='NC.')

@@ -18,6 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import runner_form_copy_wizard
-import orbeon_runner
-import orbeon_builder
+from . import runner_form_copy_wizard
+from . import orbeon_runner
+from . import orbeon_builder
