@@ -35,6 +35,7 @@ STATE_NEW = 'new'
 STATE_PROGRESS = 'progress'
 STATE_COMPLETE = 'complete'
 STATE_CANCELED = 'canceled'
+STATE_TEMPLATE = 'template'
 
 
 class OrbeonRunner(models.Model):
@@ -80,6 +81,7 @@ class OrbeonRunner(models.Model):
             (STATE_PROGRESS, "In Progress"),
             (STATE_COMPLETE, "Complete"),
             (STATE_CANCELED, "Canceled"),
+            (STATE_TEMPLATE, "Template"),
         ],
         string="State",
         default=STATE_NEW)
