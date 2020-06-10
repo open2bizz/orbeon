@@ -33,7 +33,7 @@ class OrbeonBuilderCopyAction(models.Model):
 
     # This will add the founder_id to any newly made builder forms !!
     @api.model
-    def create(self, vals, context=None):
+    def create(self, vals):
         res = super(OrbeonBuilderCopyAction, self).create(vals)
         if res.version == 1:
             res.write({'founder_id': res.id})
