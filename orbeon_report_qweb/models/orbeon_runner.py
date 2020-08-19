@@ -19,7 +19,7 @@
 #
 ##############################################################################
 from odoo import fields, models, _, api, osv
-from openerp.exceptions import Warning
+from odoo.exceptions import UserError
 
 
 import logging
@@ -37,41 +37,19 @@ class OrbeonRunner(models.Model):
 
     @api.one
     def _builder_reports_count(self):
-        self.builder_reports_count = len(self.builder_id.report_xml_ids)
-
-    def run_qweb_report(self, report_id):
-        rep = self.env['ir.actions.report'].browse(report_id)
-        data = {
-            'ids': [self.id],
-            'model': 'orbeon.runner',
-            'form': [self.id],
-            'context':{}
-        }      
-        return {
-            'type' : 'ir.actions.report',
-            'report_name' : rep.report_name,
-            'datas' : data,
-            }
-        
-        
+        self.builder_reports_count = len(self.builder_id.report_xml_ids)    
 
     @api.multi
     def report_button(self, context=None):
         if self.builder_id.report_xml_ids:
-            if len(self.builder_id.report_xml_ids) > 1:
-                ids = [rec.ir_actions_report_xml_id.id for rec in self.builder_id.report_xml_ids ]
-                context.update({ 'rep_ids' : ids, 'orbeon_runner_id' : self.id })
-                return {
-                        'name': 'Choose report',
-                        'view_type': 'form',
-                        'view_mode': 'form',
-                        'res_model': 'orbeon.report.qweb.chooser',
-                        'type': 'ir.actions.act_window',
-                        'target': 'new',
-                        'context': context
-                        }
-            else:
-                return self.run_qweb_report(self.builder_id.report_xml_ids[0].ir_actions_report_xml_id.id )
-                
+            print(self.builder_id.report_xml_ids)
+            for report in self.builder_id.report_xml_ids:
+                print(report.ir_actions_report_xml_id)
+                print(report.ir_actions_report_xml_id.report_name)
+                return self.env.ref(report.ir_actions_report_xml_id.report_name).report_action(self)
+            
+        else:
+             raise UserError('There is no report linked to the Orbeon Builder Form of this Runner Form.')
+
                         
 
