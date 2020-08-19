@@ -4,6 +4,7 @@
         <menuitem id="orbeon_base_menu"
                   name="Orbeon"
                   groups="orbeon.orbeon_admin,orbeon.orbeon_user"
+                  web_icon="orbeon,static/description/icon.png"
                   sequence="101"/>
 
         <menuitem id="orbeon_builder_menu"
