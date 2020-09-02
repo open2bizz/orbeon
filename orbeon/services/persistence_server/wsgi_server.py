@@ -39,8 +39,8 @@ class OrbeonRequestHandler(object):
     """Orbeon (HTTP) request handler"""
 
     def __init__(self, request, configfile_path=None, wsgi_input=None):
-        _log("debug", "request => %s" % request)
-        _log("debug", "configfile_path => %s" % configfile_path)
+#        _log("debug", "request => %s" % request)
+#        _log("debug", "configfile_path => %s" % configfile_path)
 
         self.request = request
         self.path = request.path.split("/")
@@ -48,7 +48,7 @@ class OrbeonRequestHandler(object):
 
         # Correct for chunked encoding in Orbeon > 2016
         if request.headers.get('Transfer-Encoding', '') == 'chunked' and request.headers.get('Content-Length', ' ') != ' ':
-            body = ''
+            body = b''
             if wsgi_input is not None:
                 size = int(wsgi_input.readline(),16)
                 while size > 0:
@@ -58,7 +58,7 @@ class OrbeonRequestHandler(object):
         else:
             self.data = request.data
 
-        _log("debug", "path => %s" % self.path)
+#        _log("debug", "path => %s" % self.path)
 
         """Attrs extracted from the request its path"""
         self.namespace = None
@@ -90,7 +90,7 @@ class OrbeonRequestHandler(object):
             b64str = request.headers.get("Authorization").replace("Basic ", "")
             auth = b64str.split(":")
             usr, passwd = (base64.b64decode(auth[0]), base64.b64decode(auth[1]))
-            _logger.error("%s,%s,%s" %(usr, passwd, url))
+ #           _logger.error("%s,%s,%s" %(usr, passwd, url))
             self.handler.set_xmlrpc(db, usr, passwd, url)
 
     def set_path_attrs(self):
