@@ -50,18 +50,18 @@ class RunnerXmlParser(object):
         except etree.XMLSyntaxError:
             parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
             xml_root = etree.XML(xml, parser)
-            _logger.debug("Bad XML: %s, Id: %d" % ('orbeon.runner', self.runner.id))
         return xml_root
+
 
     def parse(self):
         """Call each parser and update the xml (self.xml)"""
 
         for parser_class in self.parsers:
+
             parser = globals()[parser_class](self.runner, self.xml_root)
             parser.parse()
 
             # Append any errors
             self.xml_root = parser.xml_root
             self.errors += parser.errors
-
-        self.xml = etree.tostring(self.xml_root, encoding='unicode')
+            self.xml = etree.tostring(self.xml_root, encoding='unicode')

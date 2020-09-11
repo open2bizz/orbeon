@@ -95,7 +95,7 @@ class OrbeonRunner(models.Model):
     legend_done = fields.Char(related='stage_id.legend_done', string='Kanban Valid Explanation', readonly=True)
     legend_normal = fields.Char(related='stage_id.legend_normal', string='Kanban Ongoing Explanation', readonly=True)
 
-    @api.one
+    
     @api.depends('res_model', 'res_id')
     def _compute_project_id(self):
         if self.res_model == 'project.project':
@@ -150,7 +150,7 @@ class OrbeonRunner(models.Model):
         runner = super(OrbeonRunner, self.with_context(context)).create(vals)
         return runner
 
-    @api.multi
+    
     def write(self, vals):
         now = fields.Datetime.now()
         # stage change: update date_last_stage_update
@@ -171,7 +171,7 @@ class OrbeonRunner(models.Model):
     # Mail gateway
     # ---------------------------------------------------
 
-    @api.multi
+    
     def _track_template(self, tracking):
         res = super(OrbeonRunner, self)._track_template(tracking)
         test_runner = self[0]
@@ -180,7 +180,7 @@ class OrbeonRunner(models.Model):
             res['stage_id'] = (test_runner.stage_id.mail_template_id, {'composition_mode': 'mass_mail'})
         return res
 
-    @api.multi
+    
     def _track_subtype(self, init_values):
         self.ensure_one()
         if 'kanban_state' in init_values and self.kanban_state == 'blocked':

@@ -35,17 +35,14 @@ class OrbeonRunner(models.Model):
         string='Builder reports count'
     )
 
-    @api.one
+    
     def _builder_reports_count(self):
         self.builder_reports_count = len(self.builder_id.report_xml_ids)    
 
-    @api.multi
+    
     def report_button(self, context=None):
         if self.builder_id.report_xml_ids:
-            print(self.builder_id.report_xml_ids)
             for report in self.builder_id.report_xml_ids:
-                print(report.ir_actions_report_xml_id)
-                print(report.ir_actions_report_xml_id.report_name)
                 return self.env.ref(report.ir_actions_report_xml_id.report_name).report_action(self)
             
         else:

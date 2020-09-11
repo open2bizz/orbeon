@@ -143,18 +143,18 @@ class OrbeonBuilder(models.Model):
         help="Shows debug info (by field) in Orbeon Runner Form.\r\nAdds debug-info as messages (by field) on the Runner record."
     )
 
-    @api.one
+    
     @api.depends('title', 'name', 'version')
     def _compute_complete_name(self):
         self.complete_name = "%s (%s @ %s @ %s)" % (self.title, self.name, self.state, self.version)
 
-    @api.one
+    
     @api.constrains('name')
     def constaint_check_name(self):
         if re.search(r"[^a-zA-Z0-9_-]", self.name) is not None:
             raise ValidationError('Name is invalid. Use ASCII letters, digits, "-" or "_"')
 
-    @api.one
+    
     @api.constrains("name", "state")
     def constraint_one_current(self):
         """Per name there can be only 1 record with
@@ -168,7 +168,7 @@ class OrbeonBuilder(models.Model):
             raise ValidationError("%s already has a record with status 'current'.\
                     Only one builder form can be current at a time." % self.name)
 
-    @api.one
+    
     @api.constrains("name", "version")
     def constraint_one_version(self):
         """Per name there can be only 1 record with
@@ -222,7 +222,7 @@ class OrbeonBuilder(models.Model):
 
         return res
 
-    @api.one
+    
     @api.returns('self', lambda value: value)
     def copy_as_new_version(self):
         """Get last version for builder-forms by traversing-up on parent_id"""
@@ -244,7 +244,7 @@ class OrbeonBuilder(models.Model):
 
         return res
 
-    @api.multi
+    
     def new_version_builder_form(self):
         res = self.copy_as_new_version()
 
@@ -260,7 +260,6 @@ class OrbeonBuilder(models.Model):
             "name": self.name,
             "type": "ir.actions.act_window",
             "res_model": "orbeon.builder",
-            "view_type": "form",
             "view_mode": "form, tree",
             "views": [
                 [form_view.id, "form"],
@@ -271,7 +270,7 @@ class OrbeonBuilder(models.Model):
             "context": {}
         }
 
-    @api.multi
+    
     def open_orbeon_builder_form(self):
         return {
             "name": 'Orbeon',
@@ -280,7 +279,7 @@ class OrbeonBuilder(models.Model):
             'url': self.url
         }
 
-    @api.one
+    
     def _get_url(self):
         self.ensure_one()
         if isinstance(self.id, models.NewId):
@@ -297,7 +296,7 @@ class OrbeonBuilder(models.Model):
 
         self.url = url
 
-    @api.one
+    
     def _current_builder(self):
         query = """WITH RECURSIVE
             builder_children AS (
@@ -336,18 +335,17 @@ class OrbeonBuilder(models.Model):
 
         return res
 
-    @api.one
+    
     def get_xml_form_node(self):
         parser = etree.XMLParser(ns_clean=True, encoding='utf-8')
 
+
         # Cast to string, to prevent Unicode error!
         root = etree.XML(self.xml.encode('utf-8'), parser)
-
         form_node = root.xpath(
             "//xf:instance[@id='fr-form-instance']/form",
             namespaces={'xf': "http://www.w3.org/2002/xforms"}
         )[0]
-
         form = etree.XML(etree.tostring(form_node, encoding='unicode'), parser)
         etree.cleanup_namespaces(form)
 

@@ -82,14 +82,14 @@ class Project(models.Model):
         'orbeon.project.runner.stage', 'orbeon_project_runner_stage_rel', 'project_id', 'orbeon_project_runner_stage_id', string='Form Stages'
     )
 
-    @api.one
+    
     def _get_orbeon_runner_forms_count(self):
         self.orbeon_runner_forms_count = self.env["orbeon.runner"].search_count([
             ("res_id", "=", self.id),
             ("res_model", "=", 'project.project'),
         ])
 
-    @api.multi
+    
     def write(self, vals):
         res = super(Project, self).write(vals)
         if 'active' in vals:
@@ -98,7 +98,7 @@ class Project(models.Model):
             forms.write({'active': vals['active']})
         return res
 
-    @api.multi
+    
     def action_orbeon_runner_forms(self, context=None, *args, **kwargs):
         kanban_view = self.env["ir.ui.view"].search([("name", "=", "orbeon.runner_form.kanban")])[0]
         tree_view = self.env["ir.ui.view"].search([("name", "=", "orbeon.runner_form.tree")])[0]
@@ -113,7 +113,6 @@ class Project(models.Model):
             "name": _("Forms"),
             "type": "ir.actions.act_window",
             "res_model": "orbeon.runner",
-            "view_type": "kanban",
             "view_mode": "kanban, form, tree",
             "views": [
                 [kanban_view.id, "kanban"],
@@ -126,7 +125,7 @@ class Project(models.Model):
             "domain": [("id", "in", runner_form_ids)],
         }
         
-    @api.multi
+    
     def map_orbeon_forms(self, new_project_id):
         forms = self.env['orbeon.runner']
         for form in self.orbeon_runner_form_ids:
@@ -149,7 +148,7 @@ class Project(models.Model):
             forms += new_form
         return self.browse(new_project_id).write({'orbeon_runner_form_ids': [(6, 0, forms.ids)]})
 
-    @api.multi
+    
     def copy(self, default=None):
         project = super(Project, self).copy(default) 
         self.map_orbeon_forms(project.id)

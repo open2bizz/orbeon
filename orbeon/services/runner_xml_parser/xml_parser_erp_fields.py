@@ -68,7 +68,7 @@ class XmlParserERPFields(XmlParserBase):
         (xpath) find all ERP-fields in XML and store these in a dictionary key'd
         by the tagname.
         """
-        query = "//*[starts-with(local-name(), '%s.')]" % ERP_FIELD_PREFIX
+        query = "//*[starts-with(local-name(), '%s.')]" % ERP_FIELD_PREFIX       
         res = self.xml_root.xpath(query)
 
         if len(res) == 0:

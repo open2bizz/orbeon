@@ -22,10 +22,10 @@
 {
     "name": "Orbeon Forms on Projects",
     'summary': 'Orbeon Forms on Projects',
-    "version": "0.2",
+    "version": "13.0.1",
     "author": "Open2bizz",
     "website": "http://www.open2bizz.nl",
-    "license": "AGPL-3",
+    "license": "LGPL-3",
     "category": "Project",
     "depends": [
         "project",

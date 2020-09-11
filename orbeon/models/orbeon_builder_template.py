@@ -75,7 +75,7 @@ class OrbeonBuilderTemplate(models.Model):
     def _set_name(self):
         self.name = "%s (%s)" % (self.form_name, self.module_id.name)
 
-    @api.one
+    
     @api.constrains('form_name')
     def constaint_check_name(self):
         if re.search(r"[^a-zA-Z0-9_-]", self.form_name) is not None:

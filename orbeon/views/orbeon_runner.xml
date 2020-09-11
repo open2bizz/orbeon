@@ -126,7 +126,6 @@
       <field name="name">Orbeon Runner Forms</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">orbeon.runner</field>
-      <field name="view_type">form</field>
       <field name="view_mode">tree,form</field>
     </record>
     <record id="orbeon_runner_form_action_tree" model="ir.actions.act_window.view">
