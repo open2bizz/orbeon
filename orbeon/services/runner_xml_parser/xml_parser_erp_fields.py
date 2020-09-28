@@ -21,6 +21,8 @@
 import copy
 import logging
 import re
+import sys
+import datetime
 
 _logger = logging.getLogger(__name__)
 
@@ -92,10 +94,8 @@ class XmlParserERPFields(XmlParserBase):
         # TODO Refactor this beast into smaller functions
         if not self.has_erp_fields():
             return
-
         for tagname, erp_field_obj in self.erp_fields.items():
             target_object = self.res_object
-
             # copy model_fields because of alternations in the while-loop reducer below.
             model_fields = copy.copy(erp_field_obj.model_fields)
 
@@ -111,7 +111,6 @@ class XmlParserERPFields(XmlParserBase):
             # All traversed (parent) fields
             traversed_fields = []
             relational_field_error = False
-
             while len(model_fields) > 1:
                 field = model_fields.pop(0)
                 all_fields.append(field)
@@ -132,7 +131,6 @@ class XmlParserERPFields(XmlParserBase):
 
             # Add last model_field
             all_fields.append(model_fields[0])
-
             if not relational_field_error:
                 try:
                     # The last/solely item in model_fields should be the value
@@ -160,6 +158,7 @@ class XmlParserERPFields(XmlParserBase):
                         field_val = UNKNOWN_ERP_FIELD
 
                     _logger.info('[orbeon] %s' % error.message)
+            
                     self.errors.append(error)
             else:
                 # elif isinstance(relational_field_error, KeyError):
@@ -169,7 +168,6 @@ class XmlParserERPFields(XmlParserBase):
                     field_val = error.message
                 else:
                     field_val = UNKNOWN_ERP_FIELD
-
             erp_field_obj.set_element_text(field_val)
 
     def _exception_erpfield(self, tagname, fields_chain, msg):
@@ -190,6 +188,9 @@ class ERPField(object):
 
     def set_element_text(self, value):
         try:
-            self.element.text = value
+            if isinstance(value , datetime.date):
+                value = value.strftime("%d-%m-%Y")
+            self.element.text = "%s" %(value)
         except:
+            _logger.info("Unexpected error:", sys.exc_info()[0])
             pass
