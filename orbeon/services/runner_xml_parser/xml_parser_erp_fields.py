@@ -136,7 +136,8 @@ class XmlParserERPFields(XmlParserBase):
                     # The last/solely item in model_fields should be the value
                     field = model_fields[0]
                     field_val = target_object[field]
-
+                    if isinstance(field_val , datetime.date):
+                        field_val = field_val.isoformat()
                 except KeyError:
                     msg = "NOT IN MODEL %s" % self.res_model
                     error = self._exception_erpfield(erp_field_obj.tagname, all_fields, msg)
