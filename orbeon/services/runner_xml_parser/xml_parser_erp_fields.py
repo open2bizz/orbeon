@@ -189,8 +189,9 @@ class ERPField(object):
     def set_element_text(self, value):
         try:
             if isinstance(value , datetime.date):
-                value = value.strftime("%d-%m-%Y")
-            self.element.text = "%s" %(value)
+                pass
+            else:
+                self.element.text = value
         except:
             _logger.info("Unexpected error:", sys.exc_info()[0])
             pass
