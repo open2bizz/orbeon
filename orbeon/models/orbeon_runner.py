@@ -190,15 +190,6 @@ class OrbeonRunner(models.Model):
             rec.message_post(body=body)
 
     @api.multi
-    def write(self, vals):
-        if 'is_merged' not in vals:
-            if vals.get('builder_id', False) and vals['builder_id'] != self.builder_id:
-                raise ValidationError("Changing the builder is not allowed.")
-
-        res = super(OrbeonRunner, self).write(vals)
-        return res
-
-    @api.multi
     def copy(self, default=None):
         runner = super(OrbeonRunner, self).copy(default)
         ctx = self._context.copy()
