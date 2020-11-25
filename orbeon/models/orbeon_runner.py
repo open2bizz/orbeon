@@ -189,18 +189,11 @@ class OrbeonRunner(models.Model):
             body = "Er is een nieuwe versie beschikbaar van dit formulier!\nDe versie van dit formulier is nu geupdate van %s naar %s." % (old_builder_id,new_builder_id)
             rec.message_post(body=body)
 
-
-    # def orbeon_runner_form(self, cr, uid, ids, context=None):
-    #     _logger.error('open orbeon_runner_form')
-    #     # TODO From here open wizard (action window: to coppy or create/new
-
     @api.multi
     def write(self, vals):
-        print(vals)
-        if self.xml:
-            if 'is_merged' not in vals:
-                if vals.get('builder_id', False) and vals['builder_id'] != self.builder_id:
-                    raise ValidationError("Changing the builder is not allowed.")
+        if 'is_merged' not in vals:
+            if vals.get('builder_id', False) and vals['builder_id'] != self.builder_id:
+                raise ValidationError("Changing the builder is not allowed.")
 
         res = super(OrbeonRunner, self).write(vals)
         return res
