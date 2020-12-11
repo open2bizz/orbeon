@@ -122,8 +122,8 @@ class AnyUriControlOdoo(controls.AnyUriControl):
 
         attach_model = self._builder.context['model_object'].env['ir.attachment']
         attach_obj = attach_model.search([('name', '=', comps[-1])], limit=1)
-
-        res['value'] = "%s%s" % ('data:image/jpeg;base64,', attach_obj.datas)
+        decoded_datas  = attach_obj.datas.decode('utf-8')
+        res['value'] = "%s%s" % ('data:image/jpeg;base64,', decoded_datas)
 
         return res
 
