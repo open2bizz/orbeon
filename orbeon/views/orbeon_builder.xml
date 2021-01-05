@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field clickable="True" name="state" widget="statusbar" />
+                      <field options="{'clickable': '1'}" name="state" widget="statusbar" />
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">

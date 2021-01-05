@@ -146,7 +146,8 @@ class OrbeonBuilder(models.Model):
     
     @api.depends('title', 'name', 'version')
     def _compute_complete_name(self):
-        self.complete_name = "%s (%s @ %s @ %s)" % (self.title, self.name, self.state, self.version)
+        for record in self:
+            self.complete_name = "%s (%s @ %s @ %s)" % (record.title, record.name, record.state, record.version)
 
     
     @api.constrains('name')
