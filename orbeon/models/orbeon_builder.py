@@ -121,7 +121,6 @@ class OrbeonBuilder(models.Model):
     res_model_id = fields.Many2one(
         "ir.model",
         "Resource Model",
-        ondelete='restrict',
         help="Model as resource this form represents or acts on"
     )
 
