@@ -40,7 +40,7 @@ class OrbeonRequestHandler(object):
 
     def __init__(self, request, configfile_path=None, wsgi_input=None):
         #_log("debug", "request => %s" % request)
-        configfile_path = '/home/dochse/develop/profipartner/profipartner13.conf'
+        configfile_path = '/etc/odoo-server.conf'
         _log("debug", "configfile_path => %s" % configfile_path)
 
         self.request = request
