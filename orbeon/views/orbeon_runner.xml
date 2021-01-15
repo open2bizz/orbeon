@@ -9,7 +9,7 @@
           <sheet>
             <div class="oe_button_box" name="button_box">
               <button name="action_open_orbeon_runner" type="object" attrs="{'invisible':[('id','=',False)]}" string="Edit" class="oe_stat_button" icon="fa-edit" />
-              <button name="merge_current_builder" type="object" attrs="{'invisible':['|', ('id','=',False), '|', ('xml','=',False), '|', ('any_new_current_builder','=',False),'|', ('state', 'in', ['complete', 'canceled'])]}" string="Merge Current Builder" help="Merge the Form Design (structure additions) into this Runner Form." class="oe_stat_button" icon="fa-random" />
+              <button name="merge_current_builder" type="object" attrs="{'invisible':[('xml','=',False), '|', ('any_new_current_builder','=',False),'|', ('state', 'in', ['complete', 'canceled'])]}" string="Merge Current Builder" help="Merge the Form Design (structure additions) into this Runner Form." class="oe_stat_button" icon="fa-random" />
             </div>
             <div class="oe_title">
               <h1>
