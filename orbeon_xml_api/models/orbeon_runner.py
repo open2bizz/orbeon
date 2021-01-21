@@ -36,7 +36,11 @@ class OrbeonRunner(models.Model):
 
     def __getattr__(self, name):
         if name == 'o_xml':
-            if 'o_xml' not in self.__dict__:
+            _logger.error(builder)
+            _logger.error(runner)
+            _logger.error(controls)
+            return True
+            if name == 'o_xml':
                 context = self._context
                 if 'lang' in context:
                     lang = context['lang']
