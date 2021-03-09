@@ -168,18 +168,21 @@ class OrbeonRunner(models.Model):
     
     def action_open_orbeon_runner(self):
         self.ensure_one()
-        return {
-            'name': 'Orbeon',
-            'type': 'ir.actions.act_url',
-            'target': 'new',
-            'url': self.url
-        }
-
-    # def orbeon_runner_form(self, cr, uid, ids, context=None):
-    #     _logger.error('open orbeon_runner_form')
-    #     # TODO From here open wizard (action window: to coppy or create/new
-
-    
+        for rec in self:
+            if (self.builder_id.id != self.builder_id.current_builder_id.id):
+                # zet de nieuwe builder versie 
+                old_builder_id = self.builder_id.display_name
+                new_builder_id = self.builder_id.current_builder_id.display_name
+                new_builder_id_id = self.builder_id.current_builder_id.id
+                self.write({'builder_id': new_builder_id_id})
+                self.action_send_versionupdate(old_builder_id, new_builder_id)
+            return {
+                'name': 'Orbeon',
+                'type': 'ir.actions.act_url',
+                'target': 'new',
+                'url': self.url
+            }
+  
     def write(self, vals):
         if 'is_merged' not in vals:
             if vals.get('builder_id', False) and vals['builder_id'] != self.builder_id:
@@ -188,7 +191,12 @@ class OrbeonRunner(models.Model):
         res = super(OrbeonRunner, self).write(vals)
         return res
 
-    
+    @api.multi
+    def action_send_versionupdate(self, old_builder_id, new_builder_id):       
+        for rec in self:
+            body = "Er is een nieuwe versie beschikbaar van dit formulier!\nDe versie van dit formulier is nu geupdate van %s naar %s." % (old_builder_id,new_builder_id)
+            rec.message_post(body=body)
+   
     def copy(self, default=None):
         runner = super(OrbeonRunner, self).copy(default)
         ctx = self._context.copy()
