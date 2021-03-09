@@ -115,4 +115,5 @@ class XMLRPCService(object):
         @type fields: array of strings
         @return: array of dicts
         """
+
         return self.api.execute_kw(self.db, self.uid, self.pwd, "orbeon.runner", "orbeon_search_read_data", domain, {"fields":fields})

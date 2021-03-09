@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <field clickable="True" name="state" widget="statusbar" />
+                      <field options="{'clickable': '1'}" name="state" widget="statusbar" />
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
@@ -84,7 +84,6 @@
             <field name="name">Orbeon Builder Forms</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">orbeon.builder</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 

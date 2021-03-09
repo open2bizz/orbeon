@@ -34,7 +34,7 @@ class RunnerFormCopyWizard(models.TransientModel):
     patient_id = fields.Many2one('res.partner', string="Patient", readonly=True)
     founder_id = fields.Many2one('orbeon.builder', string="Origin Founder", readonly=True)
 
-    @api.multi
+    
     def copy_runner_form_xml(self):
         for record in self.env['orbeon.runner'].browse(self._context.get('active_ids', [])):
             record.write({'xml':self.origin_form_id.xml, 'is_merged': False, 'builder_id': self.origin_form_id.builder_id.id})

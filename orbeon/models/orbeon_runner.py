@@ -118,18 +118,18 @@ class OrbeonRunner(models.Model):
         compute="_any_new_current_builder",
         readonly=True)
 
-    @api.one
+    
     def _get_builder_name(self, id=None):
         if self.res_model != False and self.res_id != 0:
             self.builder_name = "%s v.%s (%s)" % (self.builder_id.name, self.builder_id.version, self.env[self.res_model].browse(self.res_id).display_name)
         else:
             self.builder_name = "%s v.%s" % (self.builder_id.name, self.builder_id.version)
             
-    @api.one
+    
     def _get_builder_version(self, id=None):
         self.builder_version = self.builder_id.version
 
-    @api.one
+    
     def _get_builder_title(self, id=None):
         self.builder_title = self.builder_id.title
 
@@ -137,7 +137,7 @@ class OrbeonRunner(models.Model):
     def _get_res_model(self):
         self.res_model = self.builder_id.res_model_id.model
 
-    @api.multi
+    
     @api.onchange('builder_id')
     def _get_url(self):
         for rec in self:
@@ -156,7 +156,7 @@ class OrbeonRunner(models.Model):
 
             rec.url = url
 
-    @api.multi
+    
     def _any_new_current_builder(self):
         self.ensure_one()
 
@@ -165,7 +165,7 @@ class OrbeonRunner(models.Model):
         else:
             self.any_new_current_builder = (self.builder_id.id != self.builder_id.current_builder_id.id)
 
-    @api.multi
+    
     def action_open_orbeon_runner(self):
         self.ensure_one()
         for rec in self:
@@ -182,21 +182,28 @@ class OrbeonRunner(models.Model):
                 'target': 'new',
                 'url': self.url
             }
+  
+    def write(self, vals):
+        if 'is_merged' not in vals:
+            if vals.get('builder_id', False) and vals['builder_id'] != self.builder_id:
+                raise ValidationError("Changing the builder is not allowed.")
+
+        res = super(OrbeonRunner, self).write(vals)
+        return res
 
     @api.multi
     def action_send_versionupdate(self, old_builder_id, new_builder_id):       
         for rec in self:
             body = "Er is een nieuwe versie beschikbaar van dit formulier!\nDe versie van dit formulier is nu geupdate van %s naar %s." % (old_builder_id,new_builder_id)
             rec.message_post(body=body)
-
-    @api.multi
+   
     def copy(self, default=None):
         runner = super(OrbeonRunner, self).copy(default)
         ctx = self._context.copy()
         runner.with_context(ctx).merge_current_builder()
         return runner
 
-    @api.multi
+    
     def can_merge(self):
         """Can this Runner (xml) be merged with a new current Builder? """
         self.ensure_one()
@@ -206,7 +213,7 @@ class OrbeonRunner(models.Model):
         else:
             return True
 
-    @api.multi
+    
     @api.returns('self')
     def merge_current_builder(self):
         """ Merge (and replace) this Runner XML with XML from the current/published Builder """
@@ -220,7 +227,7 @@ class OrbeonRunner(models.Model):
             _logger.error("Orbeon Runner merge Exception: %s" % e)
             raise UserError("Orbeon Runner merge Exception: %s" % e)
 
-    @api.one
+    
     @api.returns('self')
     def merge_builder(self, builder_obj):
         """ Merge (and replace) this Runner XML with XML from builder_obj """
@@ -267,7 +274,7 @@ class OrbeonRunner(models.Model):
             raise UserError("Merge failed with error: %s" % e)
 
     # TODO
-    # @api.multi
+    # 
     # def duplicate_runner_form(self):
     #     alter = {}
     #     alter["state"] = STATE_NEW
@@ -299,8 +306,7 @@ class OrbeonRunner(models.Model):
                 # TODO
                 # preprend the <xml> tag from elsewhere? Via builder-API to get right version?
                 # code: runner.builder_id.get_xml_form_node(with_xml_tag)
-                xml = '<?xml version="1.0" encoding="utf-8"?>%s' % \
-                             runner.builder_id.get_xml_form_node()[0]
+                xml = '<?xml version="1.0" encoding="utf-8"?>%s' % runner.builder_id.get_xml_form_node()
             else:
                 xml = runner.xml
 

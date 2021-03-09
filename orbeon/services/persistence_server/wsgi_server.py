@@ -39,12 +39,14 @@ class OrbeonRequestHandler(object):
     """Orbeon (HTTP) request handler"""
 
     def __init__(self, request, configfile_path=None, wsgi_input=None):
-#        _log("debug", "request => %s" % request)
-#        _log("debug", "configfile_path => %s" % configfile_path)
+        #_log("debug", "request => %s" % request)
+        configfile_path = '/etc/odoo-server.conf'
+        _log("debug", "configfile_path => %s" % configfile_path)
 
         self.request = request
         self.path = request.path.split("/")
         self.args = request.args
+        #_log("debug", "%s" % (self.args))
 
         # Correct for chunked encoding in Orbeon > 2016
         if request.headers.get('Transfer-Encoding', '') == 'chunked' and request.headers.get('Content-Length', ' ') != ' ':
@@ -117,7 +119,7 @@ class OrbeonRequestHandler(object):
         elif self.namespace == 'search' and self.app == 'orbeon' and self.form == 'builder':
             self.handler_type = BUILDER_HANDLER
 
-        _log('debug', "handler_type => %s" % self.handler_type)
+        #_log('debug', "handler_type => %s" % self.handler_type)
 
     def set_handler(self):
         """Set the Orbeon handler, determined by (path-)attrs (i.e. URL path-components)"""

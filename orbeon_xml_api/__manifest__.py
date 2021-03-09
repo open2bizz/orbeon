@@ -105,10 +105,10 @@ Syntax examples (by "Form Control Name")
     The value of (form) field *primaryimage*, as a Python *base64 string*.
 
 """,
-    "version": "0.1",
+    "version": "13.0.1",
     "author": "Open2bizz",
     "website": "http://www.open2bizz.nl",
-    "license": "AGPL-3",
+    "license": "LGPL-3",
     "category": "Extra Tools",
     "depends": [
         "orbeon",

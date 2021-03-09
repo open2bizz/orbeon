@@ -23,10 +23,10 @@
     "name": "Orbeon Forms",
     "summary": 'Integrate Orbeon Forms with Odoo',
     "description": 'Orbeon Forms integration',
-    "version": "0.3",
+    "version": "13.0.1",
     "author": "Open2bizz",
     "website": "http://www.open2bizz.nl",
-    "license": "AGPL-3",
+    "license": "LGPL-3",
     "category": "Extra Tools",
     "depends": ['base', 'mail'],
     'external_dependencies': {

@@ -81,7 +81,7 @@ class OrbeonHandlerBase(object):
         domain = [
             ('res_id', '=', self.form_doc_id),
             ('res_model', '=', self.model),
-            ('datas_fname', '=', self.form_data_id)
+            ('description', '=', self.form_data_id)
         ]
 
         res = self.xmlrpc.search_read(
@@ -101,7 +101,7 @@ class OrbeonHandlerBase(object):
             "res_model": self.model,
             'name': self.form_data_id,
             'store_fname': self.form_data_id,
-            'datas_fname': self.form_data_id,
+            'description': self.form_data_id,
             "datas": base64.b64encode(self.data)
         }
         self.xmlrpc.create(

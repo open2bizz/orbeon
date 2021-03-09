@@ -114,7 +114,6 @@
         <record id="open_orbeon_project_runner_stage" model="ir.actions.act_window">
             <field name="name">Form Stages</field>
             <field name="res_model">orbeon.project.runner.stage</field>
-            <field name="view_type">form</field>
             <field name="view_id" ref="orbeon_project_runner_stage_tree"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">

@@ -146,7 +146,7 @@ class OrbeonServer(models.Model):
         if len(cur_record) > 1:
             raise ValidationError("Server with URL '%s' already exists!" % self.url)
 
-    @api.multi
+    
     def start_persistence_server(self, context=None, *args, **kwargs):
         if not self.persistence_server_active:
             raise ValidationError("Server with name %s can't start, because marked inactive." % self.name)
@@ -168,7 +168,7 @@ class OrbeonServer(models.Model):
         except Exception as e:
             _logger.error('Exception: %s' % e)
 
-    @api.multi
+    
     def stop_persistence_server(self, context=None, *args, **kwargs):
         self._stop_persistence_server(self.persistence_server_uuid, self.persistence_server_port)
         self.persistence_server_uuid = None
@@ -268,7 +268,7 @@ class OrbeonServer(models.Model):
                 _logger.info("Stopping HTTP (werkzeug) %s (thread: %s) on port %s", ORBEON_PERSISTENCE_SERVER_PREFIX, uuid, port)
                 thread.server.server_close()
 
-    @api.multi
+    
     def create_orbeon_builder_templates(self):
         if self.builder_templates_created:
             return
