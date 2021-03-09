@@ -191,7 +191,6 @@ class OrbeonRunner(models.Model):
         res = super(OrbeonRunner, self).write(vals)
         return res
 
-    @api.multi
     def action_send_versionupdate(self, old_builder_id, new_builder_id):       
         for rec in self:
             body = "Er is een nieuwe versie beschikbaar van dit formulier!\nDe versie van dit formulier is nu geupdate van %s naar %s." % (old_builder_id,new_builder_id)
