@@ -84,10 +84,11 @@ class Project(models.Model):
 
     
     def _get_orbeon_runner_forms_count(self):
-        self.orbeon_runner_forms_count = self.env["orbeon.runner"].search_count([
-            ("res_id", "=", self.id),
-            ("res_model", "=", 'project.project'),
-        ])
+        for rec in self:
+            rec.orbeon_runner_forms_count = self.env["orbeon.runner"].search_count([
+                ("res_id", "=", rec.id),
+                ("res_model", "=", 'project.project'),
+            ])
 
     
     def write(self, vals):
