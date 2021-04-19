@@ -14,7 +14,7 @@
 									</group>
 											<p><strong>Select the form that you would like to copy:</strong></p>
 									<group>
-										<field name="origin_form_id" domain="[('founder_id','=',founder_id),('partner_id','=',patient_id),('state','=','complete')]" widget="selection"/>
+										<field name="origin_form_id" domain="[('founder_id','=',founder_id),('patient_id','=',patient_id),('state','=','complete')]" widget="selection"/>
 										<field name="founder_id" invisible="1"/>
 									</group>
 				          </div>
