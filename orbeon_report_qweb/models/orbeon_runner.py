@@ -35,19 +35,19 @@ class OrbeonRunner(models.Model):
         string='Builder reports count'
     )
 
-    @api.one
+    
     def _builder_reports_count(self):
         self.builder_reports_count = len(self.builder_id.report_xml_ids)    
 
-    @api.multi
+    
     def report_button(self, context=None):
         if self.builder_id.report_xml_ids:
-            print(self.builder_id.report_xml_ids)
             for report in self.builder_id.report_xml_ids:
-                print(report.ir_actions_report_xml_id)
-                print(report.ir_actions_report_xml_id.report_name)
-                return self.env.ref(report.ir_actions_report_xml_id.report_name).report_action(self)
-            
+                report_ext_id = self.env['ir.model.data'].search([('model','=','ir.actions.report'),('res_id','=',report.ir_actions_report_xml_id.id)])
+                if report_ext_id:
+                    return self.env.ref(report_ext_id.complete_name).report_action(self)
+                else:
+                    raise UserError('There is no report linked to the Orbeon Builder Form of this Runner Form.')
         else:
              raise UserError('There is no report linked to the Orbeon Builder Form of this Runner Form.')
 
