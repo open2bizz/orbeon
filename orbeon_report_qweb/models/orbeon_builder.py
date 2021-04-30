@@ -34,3 +34,23 @@ class OrbeonBuilder(models.Model):
         "orbeon_builder_id",
         string="Reports"
     )
+
+    def new_version_builder_form(self):
+        res = super(OrbeonBuilder, self).new_version_builder_form()
+
+        report_name = "%s %s" %(self.title, (self.version + 1))
+        tech_report_name = "orbeon_qweb.%s_%s" %(self.title, (self.version + 1))
+
+        new_report = self.env['ir.actions.report'].create({
+            'name' : report_name,
+            'report_type' : 'qweb-pdf',
+            'model' : 'orbeon.runner',
+            'report_name' : tech_report_name
+        })
+
+        new_report_line = self.env['orbeon.builder.report.xml'].create({
+            'orbeon_builder_id' : res['res_id'],
+            'ir_actions_report_xml_id' : new_report.id
+        })
+
+        return res
