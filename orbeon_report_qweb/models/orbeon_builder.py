@@ -39,7 +39,7 @@ class OrbeonBuilder(models.Model):
         res = super(OrbeonBuilder, self).new_version_builder_form()
 
         report_name = "%s %s" %(self.title, (self.version + 1))
-        tech_report_name = "orbeon_qweb.%s_%s" %(self.title, (self.version + 1))
+        tech_report_name = "orbeon_qweb.%s_%s" %(self.name, (self.version + 1))
 
         new_report = self.env['ir.actions.report'].create({
             'name' : report_name,
@@ -47,6 +47,10 @@ class OrbeonBuilder(models.Model):
             'model' : 'orbeon.runner',
             'report_name' : tech_report_name
         })
+        
+        name = "%s_%s_report" %(self.name, (self.version + 1))
+        vals = {'module': 'orbeon_qweb', 'name': name, 'res_id': new_report.id, 'model': 'ir.actions.report'}
+        self.env["ir.model.data"].create(vals)
 
         new_report_line = self.env['orbeon.builder.report.xml'].create({
             'orbeon_builder_id' : res['res_id'],

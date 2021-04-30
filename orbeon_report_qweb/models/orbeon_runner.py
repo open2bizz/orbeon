@@ -37,7 +37,8 @@ class OrbeonRunner(models.Model):
 
     
     def _builder_reports_count(self):
-        self.builder_reports_count = len(self.builder_id.report_xml_ids)    
+        for rec in self:
+            rec.builder_reports_count = len(rec.builder_id.report_xml_ids)    
 
     
     def report_button(self, context=None):
