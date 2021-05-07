@@ -7,9 +7,6 @@
       <field name="inherit_id" ref="orbeon.orbeon_runner_form_form" />
       <field name="arch" type="xml">
         <data>
-          <xpath expr="//field[@name='url']" position="after">
-            <field name="xml" invisible="1" />
-          </xpath>
           <xpath expr="//button[@name='action_open_orbeon_runner']" position="after">
             <button class="btn btn-outline-primary" name="wizard_copy_form" type="object" attrs="{'invisible':[('xml','!=',False)]}">Copy</button>
           </xpath>

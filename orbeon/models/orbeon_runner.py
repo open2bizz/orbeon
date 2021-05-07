@@ -200,6 +200,7 @@ class OrbeonRunner(models.Model):
         runner = super(OrbeonRunner, self).copy(default)
         ctx = self._context.copy()
         runner.with_context(ctx).merge_current_builder()
+        print(runner)
         return runner
 
     
