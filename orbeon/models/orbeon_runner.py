@@ -151,7 +151,7 @@ class OrbeonRunner(models.Model):
                 url = "%s/new" % base_url
             else:
                 get_mode = {STATE_NEW: 'edit', STATE_PROGRESS: 'edit'}
-                path_mode = get_mode.get(rec.state, 'view')
+                path_mode = get_mode.get(rec.state, 'edit')
                 url = "%s/%s/%i" % (base_url, path_mode, rec.id)
 
             rec.url = url
