@@ -169,7 +169,7 @@ class OrbeonRunner(models.Model):
     def action_open_orbeon_runner(self):
         self.ensure_one()
         for rec in self:
-            if (self.builder_id.id != self.builder_id.current_builder_id.id):
+            if rec.xml == False and (self.builder_id.id != self.builder_id.current_builder_id.id):
                 # zet de nieuwe builder versie 
                 old_builder_id = self.builder_id.display_name
                 new_builder_id = self.builder_id.current_builder_id.display_name
@@ -184,9 +184,9 @@ class OrbeonRunner(models.Model):
             }
   
     def write(self, vals):
-        if 'is_merged' not in vals:
-            if vals.get('builder_id', False) and vals['builder_id'] != self.builder_id:
-                raise ValidationError("Changing the builder is not allowed.")
+        #if 'is_merged' not in vals:
+        #    if vals.get('builder_id', False) and vals['builder_id'] != self.builder_id:
+        #        raise ValidationError("Changing the builder is not allowed.")
 
         res = super(OrbeonRunner, self).write(vals)
         return res
