@@ -120,18 +120,21 @@ class OrbeonRunner(models.Model):
 
     
     def _get_builder_name(self, id=None):
-        if self.res_model != False and self.res_id != 0:
-            self.builder_name = "%s v.%s (%s)" % (self.builder_id.name, self.builder_id.version, self.env[self.res_model].browse(self.res_id).display_name)
-        else:
-            self.builder_name = "%s v.%s" % (self.builder_id.name, self.builder_id.version)
+        for record in self:
+            if record.res_model != False and record.res_id != 0:
+                record.builder_name = "%s v.%s (%s)" % (record.builder_id.name, record.builder_id.version, record.env[record.res_model].browse(record.res_id).display_name)
+            else:
+                record.builder_name = "%s v.%s" % (record.builder_id.name, record.builder_id.version)
             
     
     def _get_builder_version(self, id=None):
-        self.builder_version = self.builder_id.version
+        for record in self:
+            record.builder_version = record.builder_id.version
 
     
     def _get_builder_title(self, id=None):
-        self.builder_title = self.builder_id.title
+        for record in self:
+            record.builder_title = record.builder_id.title
 
     @api.depends('builder_id')
     def _get_res_model(self):
@@ -158,12 +161,12 @@ class OrbeonRunner(models.Model):
 
     
     def _any_new_current_builder(self):
-        self.ensure_one()
-
-        if not self.builder_id.current_builder_id.id:
-            self.any_new_current_builder = False
-        else:
-            self.any_new_current_builder = (self.builder_id.id != self.builder_id.current_builder_id.id)
+        for record in self:
+            record.any_new_current_builder = False
+            if not record.builder_id.current_builder_id.id:
+                record.any_new_current_builder = False
+            else:
+                record.any_new_current_builder = (record.builder_id.id != record.builder_id.current_builder_id.id)
 
     
     def action_open_orbeon_runner(self):

@@ -298,6 +298,7 @@ class OrbeonBuilder(models.Model):
 
     
     def _current_builder(self):
+        self.current_builder_id = False
         query = """WITH RECURSIVE
             builder_children AS (
               SELECT
