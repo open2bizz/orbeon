@@ -28,7 +28,7 @@ _logger = logging.getLogger(__name__)
 
 ERP_FIELD_PREFIX = 'ERP'
 UNKNOWN_ERP_FIELD = 'UNKNOWN ERP-FIELD'
-
+relational_field_error = False
 
 class XMLParserERPFieldsException(Exception):
     def __init__(self, msg):
@@ -91,6 +91,7 @@ class XmlParserERPFields(XmlParserBase):
         self.res_object = self.runner.env[self.runner.builder_id.res_model_id.model].browse(self.runner.res_id)
 
     def parse(self):
+        global relational_field_error
         # TODO Refactor this beast into smaller functions
         if not self.has_erp_fields():
             return
@@ -110,7 +111,6 @@ class XmlParserERPFields(XmlParserBase):
             all_fields = []
             # All traversed (parent) fields
             traversed_fields = []
-            relational_field_error = False
             while len(model_fields) > 1:
                 field = model_fields.pop(0)
                 all_fields.append(field)
@@ -125,13 +125,13 @@ class XmlParserERPFields(XmlParserBase):
                     msg = "ERROR with model %s" % self.res_model
                     error = self._exception_erpfield(erp_field_obj.tagname, all_fields, msg)
 
-                if relational_field_error:
-                    self.errors.append(error)
-                    _logger.info('[orbeon] %s' % error.message)
+                #if relational_field_error:
+                #    self.errors.append(error)
+                #    _logger.info('[orbeon] %s' % error.message)
 
             # Add last model_field
             all_fields.append(model_fields[0])
-            if not relational_field_error:
+            if all_fields:
                 try:
                     # The last/solely item in model_fields should be the value
                     field = model_fields[0]
@@ -151,7 +151,7 @@ class XmlParserERPFields(XmlParserBase):
                     self.errors.append(error)
 
                 except Exception as e:
-                    error = self._exception_erpfield(erp_field_obj.tagname, all_fields, e.message)
+                    error = self._exception_erpfield(erp_field_obj.tagname, all_fields, e)
 
                     if self.runner.builder_id.debug_mode:
                         field_val = error.message
