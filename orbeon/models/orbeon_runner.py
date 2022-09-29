@@ -223,13 +223,7 @@ class OrbeonRunner(models.Model):
         if not self.can_merge():
             return False
 
-        try:
-            # Do the real merge
-            return self.merge_builder(self.builder_id.current_builder_id)
-        except Exception as e:
-            _logger.error("Orbeon Runner merge Exception: %s" % e)
-            raise UserError("Orbeon Runner merge Exception: %s" % e)
-
+        return self.merge_builder(self.builder_id.current_builder_id)
     
     @api.returns('self')
     def merge_builder(self, builder_obj):
@@ -260,31 +254,15 @@ class OrbeonRunner(models.Model):
         merge_builder_xml = u'%s' % builder_obj.xml
         merge_builder_xml = bytes(bytearray(merge_builder_xml, encoding='utf-8'))
         merge_builder_api = BuilderAPI(merge_builder_xml, res_lang.iso_code)
-        try:
-            # TODO Store the no_copy_prefix per orbeon.builder record (as field)?
-            merger_api = RunnerCopyBuilderMergeAPI(runner_api, merge_builder_api, no_copy_prefix='NC.')
-            merged_runner = merger_api.merge()
+        merger_api = RunnerCopyBuilderMergeAPI(runner_api, merge_builder_api, no_copy_prefix='NC.')
+        merged_runner = merger_api.merge()
+        self.write({
+            'xml': merged_runner.xml,
+            'builder_id': builder_obj.id,
+            'is_merged': True
+        })
 
-            self.write({
-                'xml': merged_runner.xml,
-                'builder_id': builder_obj.id,
-                'is_merged': True
-            })
-
-            return self
-        except Exception as e:
-            _logger.error("[orbeon] Merge failed with error: %s" % e)
-            raise UserError("Merge failed with error: %s" % e)
-
-    # TODO
-    # 
-    # def duplicate_runner_form(self):
-    #     alter = {}
-    #     alter["state"] = STATE_NEW
-    #     alter["is_merged"] = False
-    #     # XXX maybe useless if merge_xml_current_builder() returns None?
-    #     alter["xml"] = self.merge_xml_current_builder()
-    #     super(OrbeonRunner, self).copy(alter)
+        return self
 
     @api.model
     def orbeon_search_read_builder(self, domain=None, fields=None):
