@@ -41,7 +41,7 @@ STATE_TEMPLATE = 'template'
 class OrbeonRunner(models.Model):
     _name = 'orbeon.runner'
     _inherit = ['mail.thread']
-    _description = 'Orbeon Runner'
+    _description = 'Formulier'
 
     _rec_name = "builder_name"
 
