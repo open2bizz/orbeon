@@ -59,7 +59,7 @@
                             <!-- All form resources -->
                             <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
                                 <resources>
-                                    <resource xml:lang="en">
+                                    <resource xml:lang="nl">
                                         <section-1>
                                             <label>Untitled Section</label>
                                         </section-1>
