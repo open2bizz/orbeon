@@ -28,9 +28,12 @@ from xml.dom.minidom import parseString
 from .xmlrpc_service import XMLRPCService
 from .xmlgen import XmlGenerator
 from .. import utils
+import requests
 
 import logging
 _logger = logging.getLogger(__name__)
+
+import os
 
 
 _log = utils._log
@@ -62,7 +65,7 @@ class OrbeonHandlerBase(object):
         """Set XML-RPC service connection object"""
         self.xmlrpc = XMLRPCService(db, usr, passwd, url)
 
-    def set_xmlrpc_by_config(self, request):
+    def set_xmlrpc_by_config(self):
         """Set XML-RPC by config (e.g. config-file)"""
         url = "%s:%s" % (
             self.config.get("odoo config", "server_url"),
@@ -71,12 +74,7 @@ class OrbeonHandlerBase(object):
         db = self.config.get("odoo config", "database_name")
         usr = self.config.get("odoo config", "username")
         pwd = self.config.get("odoo config", "password")
-        b64str = request.headers.get("Authorization").replace("Basic ", "")
-        auth = b64str.split(":")
-        user = auth[0]
-        passwd =  auth[1]
-        usr = user
-        pwd = passwd
+        x
         self.xmlrpc = XMLRPCService(db, usr, pwd, url)
 
     def get_binary_data(self):
@@ -88,13 +86,16 @@ class OrbeonHandlerBase(object):
             ('res_model', '=', self.model),
             ('description', '=', self.form_data_id)
         ]
-
+        if self.form_data_id == 'e8843828ac3d0bfb99e474ab543dacd720862d14.bin':
+            _logger.error(self.form_doc_id)
+            _logger.error(self.model)
+            _logger.error(self.form_data_id)
         res = self.xmlrpc.search_read(
             'ir.attachment',
             [domain],
             ['datas'],
         )
-        _logger.error(res[0]['id'])
+        _logger.error(res)
         if len(res) > 0:
             return base64.b64decode(res[0]['datas'])
 
@@ -109,10 +110,12 @@ class OrbeonHandlerBase(object):
             'description': self.form_data_id,
             "datas": base64.b64encode(self.data)
         }
+        _logger.error("start")
         self.xmlrpc.create(
             'ir.attachment',
             [ira_data],
         )
+        _logger.error("eind")
 
 
 class BuilderHandler(OrbeonHandlerBase):

@@ -19,12 +19,20 @@
 #
 ##############################################################################
 import xmlrpc.client
+import logging
+import base64
+
+_logger = logging.getLogger(__name__)
 
 class XMLRPCService(object):
 
     def __init__(self, db, uid, pwd, url):
+        user = base64.b64decode(uid).decode('utf-8')
+        passw = base64.b64decode(pwd).decode('utf-8')
         self.db = db
-        self.uid, self.pwd = uid,pwd 
+#        self.uid, self.pwd = uid,pwd 
+        self.uid = user
+        self.pwd = passw
         self.url = url
         self.connect()
         
@@ -105,6 +113,7 @@ class XMLRPCService(object):
         @type fields: array of strings
         @return: array of dicts
         """
+        _logger.error(self.uid)
         return self.api.execute_kw(self.db, self.uid, self.pwd, "orbeon.runner", "orbeon_search_read_builder", domain, {"fields":fields})
         
     def runner_search_read_data(self, domain, fields):
