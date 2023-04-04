@@ -351,3 +351,12 @@ class OrbeonBuilder(models.Model):
         etree.cleanup_namespaces(form)
 
         return etree.tostring(form, encoding='unicode')
+
+    def view_runner_forms(self):
+        self.ensure_one()
+        action = self.env["ir.actions.actions"]._for_xml_id("orbeon.orbeon_runner_form_action")
+        action['domain'] = [
+            ('builder_id', '=', self.id)
+        ]
+        action['context'] = {'default_builder_id': self.id}
+        return action

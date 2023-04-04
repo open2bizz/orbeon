@@ -17,6 +17,8 @@
                                     string="Edit" class="oe_stat_button" icon="fa-edit" />
                             <button name="open_orbeon_builder_form" type="object" attrs="{'invisible':['|', ('state','=','new'), ('id','=',False)]}"
                                     string="View" class="oe_stat_button" icon="fa-eye" />
+                            <button name="view_runner_forms" type="object"
+                                    string="View runner forms" class="oe_stat_button" icon="fa-list-alt" />
                         </div>
 
                         <div class="oe_title">
@@ -51,9 +53,6 @@
                             </page>
                             <page name="xml" string="XML">
                                 <field name="xml"/>
-                            </page>
-                            <page name="runner_forms" string="Runner Forms">
-                                <field name="runner_form_ids" />
                             </page>
                         </notebook>
                     </sheet>
