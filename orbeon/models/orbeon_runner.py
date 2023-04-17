@@ -24,8 +24,10 @@ from orbeon_xml_api.runner_copy_builder_merge import RunnerCopyBuilderMerge as R
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
-
-
+from lxml import etree
+import xmltodict
+import pprint
+import json
 from ..services.runner_xml_parser import runner_xml_parser
 
 import logging
@@ -203,7 +205,6 @@ class OrbeonRunner(models.Model):
         runner = super(OrbeonRunner, self).copy(default)
         ctx = self._context.copy()
         runner.with_context(ctx).merge_current_builder()
-        print(runner)
         return runner
 
     
@@ -222,7 +223,9 @@ class OrbeonRunner(models.Model):
         """ Merge (and replace) this Runner XML with XML from the current/published Builder """
         if not self.can_merge():
             return False
-
+        _logger.error("/opt/odoo/addons/orbeon/orbeon/models/orbeon_runner.py  line 245")
+        _logger.error(self.builder_id)
+        _logger.error(self.builder_id.current_builder_id)
         return self.merge_builder(self.builder_id.current_builder_id)
     
     @api.returns('self')
@@ -255,9 +258,32 @@ class OrbeonRunner(models.Model):
         merge_builder_xml = bytes(bytearray(merge_builder_xml, encoding='utf-8'))
         merge_builder_api = BuilderAPI(merge_builder_xml, res_lang.iso_code)
         merger_api = RunnerCopyBuilderMergeAPI(runner_api, merge_builder_api, no_copy_prefix='NC.')
-        merged_runner = merger_api.merge()
+        #merged_runner = merger_api.merge()
+#        query = "//*[@id='fr-form-resources']/resources//resource[@xml:lang='nl']"
+        query = "//*[@id='fr-form-instance']/form"
+        resource = merge_builder_api.xml_root.xpath(query)
+        _logger.error(resource[0].text)
+        parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
+        resource_root = etree.XML(etree.tostring(resource[0], encoding='UTF-8'), parser)
+        #resource_xml = etree.tostring(resource_root, encoding="unicode")
+        #res_dict = xmltodict.parse(resource_xml)
+        root = etree.XML(runner_xml, parser)
+        for key in builder_api.controls:
+            key = str(key, encoding='utf-8')
+            q = "//" + key
+            result = root.xpath(q)
+            if result:
+                 _logger.error(result[0].text)
+            new_result = resource_root.xpath(q)
+            if new_result:
+                if new_result[0].tag[0:3] != 'NC.':
+                    new_result[0].text = result[0].text
+        new_xml = etree.tostring(resource_root, encoding="utf-8")            
+
+
+
         self.write({
-            'xml': merged_runner.xml,
+            'xml': new_xml,
             'builder_id': builder_obj.id,
             'is_merged': True
         })
