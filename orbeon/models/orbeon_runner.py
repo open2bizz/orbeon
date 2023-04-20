@@ -223,9 +223,6 @@ class OrbeonRunner(models.Model):
         """ Merge (and replace) this Runner XML with XML from the current/published Builder """
         if not self.can_merge():
             return False
-        _logger.error("/opt/odoo/addons/orbeon/orbeon/models/orbeon_runner.py  line 245")
-        _logger.error(self.builder_id)
-        _logger.error(self.builder_id.current_builder_id)
         return self.merge_builder(self.builder_id.current_builder_id)
     
     @api.returns('self')
@@ -275,8 +272,10 @@ class OrbeonRunner(models.Model):
             if result:
                  _logger.error(result[0].text)
             new_result = resource_root.xpath(q)
-            if new_result:
+            if new_result and result:
                 if new_result[0].tag[0:3] != 'NC.':
+                    _logger.error(new_result)
+                    _logger.error(result)
                     new_result[0].text = result[0].text
         new_xml = etree.tostring(resource_root, encoding="utf-8")            
 
