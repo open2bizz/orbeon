@@ -62,7 +62,7 @@ class OrbeonBuilder(models.Model):
     complete_name = fields.Char(
         "Full Name",
         compute='_compute_complete_name',
-        store=False
+        store=True
     )
 
     parent_id = fields.Many2one(
