@@ -83,6 +83,7 @@ class OrbeonHandlerBase(object):
         "Get binary data"
 
         """Currently get data from 'ir_attachment' (model)"""
+        all_versions = []
         domain = [
             ('res_id', '=', self.form_doc_id),
             ('res_model', '=', self.model),
@@ -94,9 +95,30 @@ class OrbeonHandlerBase(object):
             [domain],
             ['datas'],
         )
+        # _logger.debug('--------- RES-ID ----------------- %s', res[0]['id'])
         _logger.debug('------ RES -- %s ---  %s --- %s --- %s', len(res), self.form_doc_id, self.model, self.form_data_id)
         if len(res) > 0:
             return base64.b64decode(res[0]['datas'])
+        else:
+            # Update TP june 13, 2023. When copying from a older version, the images can be renamed (or newly uploaded)
+            # if we also look in previous versions, this should be OK. The binary (BIN) name should be unique?)
+            builder_name = self.form_doc_id.name
+            all_versions = self.env['orbeon.builder'].search([('name','=',builder_name)]).sorted(key=lambda r: r.id, reverse=True)
+            _logger.debug('------ RES -- %s ', all_versions)
+            if len(all_versions) > 1:
+                domain_all = [
+                    ('res_id', 'in', all_versions.ids),
+                    ('res_model', '=', self.model),
+                    ('name', '=', self.form_data_id)
+                ]
+
+                res = self.xmlrpc.search_read(
+                    'ir.attachment',
+                    [domain_all],
+                    ['datas'],
+                )
+                if len(res) > 0:
+                    return base64.b64decode(res[-1]['datas'])
 
     def handle_binary_data(self):
         """Handle binray data"""
