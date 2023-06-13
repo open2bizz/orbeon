@@ -86,7 +86,7 @@ class OrbeonHandlerBase(object):
         domain = [
             ('res_id', '=', self.form_doc_id),
             ('res_model', '=', self.model),
-            ('description', '=', self.form_data_id)
+            ('name', '=', self.form_data_id)
         ]
 
         res = self.xmlrpc.search_read(
@@ -94,7 +94,7 @@ class OrbeonHandlerBase(object):
             [domain],
             ['datas'],
         )
-        _logger.error(res[0]['id'])
+        _logger.debug('------ RES -- %s ---  %s --- %s --- %s', len(res), self.form_doc_id, self.model, self.form_data_id)
         if len(res) > 0:
             return base64.b64decode(res[0]['datas'])
 
