@@ -95,23 +95,37 @@ class OrbeonHandlerBase(object):
             [domain],
             ['datas'],
         )
-        # _logger.debug('--------- RES-ID ----------------- %s', res[0]['id'])
         _logger.debug('------ RES -- %s ---  %s --- %s --- %s', len(res), self.form_doc_id, self.model, self.form_data_id)
         if len(res) > 0:
             return base64.b64decode(res[0]['datas'])
         else:
             # Update TP june 13, 2023. When copying from a older version, the images can be renamed (or newly uploaded)
             # if we also look in previous versions, this should be OK. The binary (BIN) name should be unique?)
-            builder_name = self.form_doc_id.name
-            all_versions = self.env['orbeon.builder'].search([('name','=',builder_name)]).sorted(key=lambda r: r.id, reverse=True)
-            _logger.debug('------ RES -- %s ', all_versions)
+            # ToDo: can we make this more efficient? We can't now get all ids at once,
+            #  we need to read name first, then create a loop.
+            #  Maybe we could add a extra field on attachmens to search directly?
+            #  something like a master_id for orbeon builders which have the same name?
+            builder_name = self.xmlrpc.search_read(
+                'orbeon.builder',
+                [[("id", "=", self.form_doc_id)]],
+                ['name'],
+            )
+            # _logger.debug('------ BUILDER NAME -- %s ', builder_name[0]['name'])
+            all_versions = self.xmlrpc.search_read(
+                "orbeon.builder",
+                [[("name", "=", builder_name[0]['name'])]],
+                ['id'],
+            )
+            versions_ids = []
+            for version in all_versions:
+                # _logger.debug('------ VERSION -- %s ', version)
+                versions_ids.append(version['id'])
             if len(all_versions) > 1:
                 domain_all = [
-                    ('res_id', 'in', all_versions.ids),
+                    ('res_id', 'in', versions_ids),
                     ('res_model', '=', self.model),
                     ('name', '=', self.form_data_id)
                 ]
-
                 res = self.xmlrpc.search_read(
                     'ir.attachment',
                     [domain_all],
