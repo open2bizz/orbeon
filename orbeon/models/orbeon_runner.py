@@ -276,7 +276,8 @@ class OrbeonRunner(models.Model):
                 if new_result[0].tag[0:3] != 'NC.':
                     _logger.error(new_result)
                     _logger.error(result)
-                    new_result[0].text = result[0].text
+                    if new_result and result:
+                        new_result[0].text = result[0].text
         new_xml = etree.tostring(resource_root, encoding="utf-8")            
 
 
