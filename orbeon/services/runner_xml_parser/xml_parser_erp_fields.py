@@ -87,8 +87,7 @@ class XmlParserERPFields(XmlParserBase):
     def load_res_object(self):
         if not self.has_erp_fields():
             return
-
-        self.res_object = self.runner.env[self.runner.builder_id.res_model_id.model].browse(self.runner.res_id)
+        self.res_object = self.runner.env[self.runner.builder_id.res_model_id.model].browse(self.runner.id)
 
     def parse(self):
         global relational_field_error
@@ -96,6 +95,7 @@ class XmlParserERPFields(XmlParserBase):
         if not self.has_erp_fields():
             return
         for tagname, erp_field_obj in self.erp_fields.items():
+            
             target_object = self.res_object
             # copy model_fields because of alternations in the while-loop reducer below.
             model_fields = copy.copy(erp_field_obj.model_fields)
@@ -114,7 +114,6 @@ class XmlParserERPFields(XmlParserBase):
             while len(model_fields) > 1:
                 field = model_fields.pop(0)
                 all_fields.append(field)
-
                 try:
                     target_object = target_object[field]
                     traversed_fields.append(field)
@@ -131,6 +130,7 @@ class XmlParserERPFields(XmlParserBase):
 
             # Add last model_field
             all_fields.append(model_fields[0])
+            print(all_fields)
             if all_fields:
                 try:
                     # The last/solely item in model_fields should be the value
@@ -194,5 +194,5 @@ class ERPField(object):
             else:
                 self.element.text = value
         except:
-            _logger.info("Unexpected error:", sys.exc_info()[0])
+#            _logger.info("Unexpected error:", sys.exc_info()[0])
             pass
