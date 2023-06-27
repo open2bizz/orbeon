@@ -83,10 +83,11 @@ class OrbeonHandlerBase(object):
         "Get binary data"
 
         """Currently get data from 'ir_attachment' (model)"""
+        all_versions = []
         domain = [
             ('res_id', '=', self.form_doc_id),
             ('res_model', '=', self.model),
-            ('description', '=', self.form_data_id)
+            ('name', '=', self.form_data_id)
         ]
 
         res = self.xmlrpc.search_read(
@@ -94,9 +95,44 @@ class OrbeonHandlerBase(object):
             [domain],
             ['datas'],
         )
-        _logger.error(res[0]['id'])
+        _logger.debug('------ RES -- %s ---  %s --- %s --- %s', len(res), self.form_doc_id, self.model, self.form_data_id)
         if len(res) > 0:
             return base64.b64decode(res[0]['datas'])
+        else:
+            # Update TP june 13, 2023. When copying from a older version, the images can be renamed (or newly uploaded)
+            # if we also look in previous versions, this should be OK. The binary (BIN) name should be unique?)
+            # ToDo: can we make this more efficient? We can't now get all ids at once,
+            #  we need to read name first, then create a loop.
+            #  Maybe we could add a extra field on attachmens to search directly?
+            #  something like a master_id for orbeon builders which have the same name?
+            builder_name = self.xmlrpc.search_read(
+                'orbeon.builder',
+                [[("id", "=", self.form_doc_id)]],
+                ['name'],
+            )
+            # _logger.debug('------ BUILDER NAME -- %s ', builder_name[0]['name'])
+            all_versions = self.xmlrpc.search_read(
+                "orbeon.builder",
+                [[("name", "=", builder_name[0]['name'])]],
+                ['id'],
+            )
+            versions_ids = []
+            for version in all_versions:
+                # _logger.debug('------ VERSION -- %s ', version)
+                versions_ids.append(version['id'])
+            if len(all_versions) > 1:
+                domain_all = [
+                    ('res_id', 'in', versions_ids),
+                    ('res_model', '=', self.model),
+                    ('name', '=', self.form_data_id)
+                ]
+                res = self.xmlrpc.search_read(
+                    'ir.attachment',
+                    [domain_all],
+                    ['datas'],
+                )
+                if len(res) > 0:
+                    return base64.b64decode(res[-1]['datas'])
 
     def handle_binary_data(self):
         """Handle binray data"""
