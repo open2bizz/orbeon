@@ -79,7 +79,7 @@ class OrbeonRequestHandler(object):
             self.handler.set_config_by_file_path(configfile_path)
 
         if self.handler.config is not None and len(self.handler.config.sections()) > 0:
-            self.handler.set_xmlrpc_by_config()
+            self.handler.set_xmlrpc_by_config(request)
         else:
             url = "http://%s:%s" % (
                 request.headers.get("Openerp-Server"),

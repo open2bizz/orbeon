@@ -69,7 +69,7 @@ class OrbeonBuilder(models.Model):
     complete_name = fields.Char(
         "Full Name",
         compute='_compute_complete_name',
-        store=False
+        store=True
     )
 
     parent_id = fields.Many2one(
@@ -383,3 +383,12 @@ class OrbeonBuilder(models.Model):
         etree.cleanup_namespaces(form)
 
         return etree.tostring(form, encoding='unicode')
+
+    def view_runner_forms(self):
+        self.ensure_one()
+        action = self.env["ir.actions.actions"]._for_xml_id("orbeon.orbeon_runner_form_action")
+        action['domain'] = [
+            ('builder_id', '=', self.id)
+        ]
+        action['context'] = {'default_builder_id': self.id}
+        return action

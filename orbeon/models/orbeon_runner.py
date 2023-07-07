@@ -24,8 +24,10 @@ from orbeon_xml_api.runner_copy_builder_merge import RunnerCopyBuilderMerge as R
 
 from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
-
-
+from lxml import etree
+import xmltodict
+import pprint
+import json
 from ..services.runner_xml_parser import runner_xml_parser
 
 import logging
@@ -41,7 +43,7 @@ STATE_TEMPLATE = 'template'
 class OrbeonRunner(models.Model):
     _name = 'orbeon.runner'
     _inherit = ['mail.thread']
-    _description = 'Orbeon Runner'
+    _description = 'Formulier'
 
     _rec_name = "builder_name"
 
@@ -203,7 +205,6 @@ class OrbeonRunner(models.Model):
         runner = super(OrbeonRunner, self).copy(default)
         ctx = self._context.copy()
         runner.with_context(ctx).merge_current_builder()
-        print(runner)
         return runner
 
     
@@ -222,14 +223,7 @@ class OrbeonRunner(models.Model):
         """ Merge (and replace) this Runner XML with XML from the current/published Builder """
         if not self.can_merge():
             return False
-
-        try:
-            # Do the real merge
-            return self.merge_builder(self.builder_id.current_builder_id)
-        except Exception as e:
-            _logger.error("Orbeon Runner merge Exception: %s" % e)
-            raise UserError("Orbeon Runner merge Exception: %s" % e)
-
+        return self.merge_builder(self.builder_id.current_builder_id)
     
     @api.returns('self')
     def merge_builder(self, builder_obj):
@@ -260,31 +254,41 @@ class OrbeonRunner(models.Model):
         merge_builder_xml = u'%s' % builder_obj.xml
         merge_builder_xml = bytes(bytearray(merge_builder_xml, encoding='utf-8'))
         merge_builder_api = BuilderAPI(merge_builder_xml, res_lang.iso_code)
-        try:
-            # TODO Store the no_copy_prefix per orbeon.builder record (as field)?
-            merger_api = RunnerCopyBuilderMergeAPI(runner_api, merge_builder_api, no_copy_prefix='NC.')
-            merged_runner = merger_api.merge()
+        merger_api = RunnerCopyBuilderMergeAPI(runner_api, merge_builder_api, no_copy_prefix='NC.')
+        #merged_runner = merger_api.merge()
+#        query = "//*[@id='fr-form-resources']/resources//resource[@xml:lang='nl']"
+        query = "//*[@id='fr-form-instance']/form"
+        resource = merge_builder_api.xml_root.xpath(query)
+        _logger.error(resource[0].text)
+        parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
+        resource_root = etree.XML(etree.tostring(resource[0], encoding='UTF-8'), parser)
+        #resource_xml = etree.tostring(resource_root, encoding="unicode")
+        #res_dict = xmltodict.parse(resource_xml)
+        root = etree.XML(runner_xml, parser)
+        for key in builder_api.controls:
+            key = str(key, encoding='utf-8')
+            q = "//" + key
+            result = root.xpath(q)
+            if result:
+                 _logger.error(result[0].text)
+            new_result = resource_root.xpath(q)
+            if new_result and result:
+                if new_result[0].tag[0:3] != 'NC.':
+                    _logger.error(new_result)
+                    _logger.error(result)
+                    if new_result and result:
+                        new_result[0].text = result[0].text
+        new_xml = etree.tostring(resource_root, encoding="utf-8")            
 
-            self.write({
-                'xml': merged_runner.xml,
-                'builder_id': builder_obj.id,
-                'is_merged': True
-            })
 
-            return self
-        except Exception as e:
-            _logger.error("[orbeon] Merge failed with error: %s" % e)
-            raise UserError("Merge failed with error: %s" % e)
 
-    # TODO
-    # 
-    # def duplicate_runner_form(self):
-    #     alter = {}
-    #     alter["state"] = STATE_NEW
-    #     alter["is_merged"] = False
-    #     # XXX maybe useless if merge_xml_current_builder() returns None?
-    #     alter["xml"] = self.merge_xml_current_builder()
-    #     super(OrbeonRunner, self).copy(alter)
+        self.write({
+            'xml': new_xml,
+            'builder_id': builder_obj.id,
+            'is_merged': True
+        })
+
+        return self
 
     @api.model
     def orbeon_search_read_builder(self, domain=None, fields=None):
