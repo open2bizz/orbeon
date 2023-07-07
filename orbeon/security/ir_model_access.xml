@@ -13,6 +13,16 @@
             <field name="perm_unlink" eval="1"/>
         </record>
 
+                <record id="access_orbeon_master_admin" model="ir.model.access">
+            <field name="name">orbeon.master.orbeon_admin</field>
+            <field name="model_id" ref="orbeon.model_orbeon_server"/>
+            <field name="group_id" ref="orbeon.orbeon_admin"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
         <record id="access_orbeon_server_user" model="ir.model.access">
             <field name="name">orbeon.server.orbeon_user</field>
             <field name="model_id" ref="orbeon.model_orbeon_server"/>
