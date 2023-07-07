@@ -55,6 +55,11 @@
                             <page name="runner_forms" string="Runner Forms">
                                 <field name="runner_form_ids" />
                             </page>
+                            <page name="master_slave" string="Master Builder" groups="base.group_no_one" attrs="{'invisible' : [('parent_id','=',False)]}">
+                                <group>
+                                    <field name="master_id"/>
+                                </group>                               
+                            </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
@@ -100,6 +105,47 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="orbeon_builder_form_form" />
         </record>
+
+        <record id="orbeon_master_form" model="ir.ui.view">
+            <field name="name">orbeon_master_form</field>
+            <field name="model">orbeon.master</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="master_builder_id"  readonly="1"/>
+                            <field name="slave_ids" readonly="1"/>            
+                        </group>   
+                    </sheet>     
+                </form>
+            </field>
+        </record>
+
+        <record id="orbeon_master_tree" model="ir.ui.view">
+            <field name="name">orbeon_master_tree</field>
+            <field name="model">orbeon.master</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="master_builder_id"/>
+                    <field name="slave_ids" widget="many2many_tags"/>                    
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="orbeon_master_action" model="ir.actions.act_window">
+            <field name="name">Orbeon Master</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">orbeon.master</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="orbeon_master_menu"
+            name="Orbeon Master"
+            parent="orbeon_settings_menu"
+            action="orbeon_master_action"
+            groups="orbeon.orbeon_admin"
+            sequence="10"/>
 
     </data>
 </odoo>

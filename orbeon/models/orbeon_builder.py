@@ -33,6 +33,13 @@ STATE_NEW = 'new'
 STATE_OBSOLETE = 'obsolete'
 
 
+
+class OrbeonBuilder(models.Model):
+    _name = 'orbeon.master'
+
+    master_builder_id = fields.Many2one('orbeon.builder', string="Master Builder")
+    slave_ids = fields.One2many('orbeon.builder','master_id', string="Slave Builders")
+
 class OrbeonBuilder(models.Model):
     _name = 'orbeon.builder'
     _inherit = ['mail.thread']
@@ -142,7 +149,23 @@ class OrbeonBuilder(models.Model):
         help="Shows debug info (by field) in Orbeon Runner Form.\r\nAdds debug-info as messages (by field) on the Runner record."
     )
 
-    
+    master_id = fields.Many2one("orbeon.master", string="Master Builder", help='This field links the first ever version of this builder will all the newly created builders.')
+
+    def init(self):
+        if self.env['ir.model'].search([('model','=','orbeon.master')]) and self.env['ir.model'].search([('model','=','orbeon.builder')]):
+            for builder in self.env['orbeon.builder'].search([('parent_id','=',False)]):
+                print(builder)
+                master_record = self.env['orbeon.master'].search([('master_builder_id','=',builder.id)])
+                
+                if not master_record:
+                    master_record = self.env['orbeon.master'].create({'master_builder_id' : builder.id})
+                print(master_record)
+                slave_ids = self.env['orbeon.builder'].search([('id','child_of',master_record.master_builder_id.id),('id','!=',master_record.master_builder_id.id)])
+                print(slave_ids)
+                master_record.slave_ids = [(6,0, slave_ids.ids)]
+                    
+                    
+
     @api.depends('title', 'name', 'version')
     def _compute_complete_name(self):
         for record in self:
@@ -218,8 +241,16 @@ class OrbeonBuilder(models.Model):
                 root.xpath('//xh:title', namespaces={'xh': "http://www.w3.org/1999/xhtml"})[0].text = vals['title']
 
         vals['xml'] = etree.tostring(root, encoding='unicode')
-        res = super(OrbeonBuilder, self).create(vals)
 
+        res = super(OrbeonBuilder, self).create(vals)
+        if 'parent_id' not in vals:
+            master_record = self.env['orbeon.master'].create({'master_builder_id' : res.id})
+        if 'parent_id' in vals:
+            master_record = self.env['orbeon.master'].search([('master_builder_id','=',vals['parent_id'])])
+            if master_record:
+                print(master_record)
+                res.master_id = master_record.id
+            
         return res
 
     
@@ -239,6 +270,7 @@ class OrbeonBuilder(models.Model):
         alter["state"] = STATE_NEW
         alter["version"] = builder.version + 1
         alter["builder_template_id"] = False
+
 
         res = super(OrbeonBuilder, self).copy(alter)
 
@@ -298,32 +330,32 @@ class OrbeonBuilder(models.Model):
 
     
     def _current_builder(self):
-        self.current_builder_id = False
-        query = """WITH RECURSIVE
-            builder_children AS (
-              SELECT
-                id, parent_id, name, state
-              FROM
-                  orbeon_builder
-              WHERE id = {builder_id}
-                UNION ALL
-              SELECT
-                ob.id, ob.parent_id, ob.name, ob.state
-              FROM
-                builder_children AS bc
-                INNER JOIN orbeon_builder AS ob ON ob.parent_id = bc.id
-            )
-            SELECT id AS builder_id
-            FROM builder_children
-            WHERE state = '{state}' LIMIT 1
-        """.format(builder_id=self.id, state=STATE_CURRENT)
+        for record in self:
+            query = """WITH RECURSIVE
+                builder_children AS (
+                SELECT
+                    id, parent_id, name, state
+                FROM
+                    orbeon_builder
+                WHERE id = {builder_id}
+                    UNION ALL
+                SELECT
+                    ob.id, ob.parent_id, ob.name, ob.state
+                FROM
+                    builder_children AS bc
+                    INNER JOIN orbeon_builder AS ob ON ob.parent_id = bc.id
+                )
+                SELECT id AS builder_id
+                FROM builder_children
+                WHERE state = '{state}' LIMIT 1
+            """.format(builder_id=record.id, state=STATE_CURRENT)
 
-        self.env.cr.execute(query)
+            record.env.cr.execute(query)
 
-        builder_id = self.env.cr.fetchone()
+            builder_id = record.env.cr.fetchone()
 
-        if builder_id:
-            self.current_builder_id = self.browse(builder_id[0])
+            if builder_id:
+                record.current_builder_id = record.browse(builder_id[0])
 
     @api.model
     def orbeon_search_read_data(self, domain=None, fields=None):
