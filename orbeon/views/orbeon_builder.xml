@@ -54,9 +54,6 @@
                             <page name="xml" string="XML">
                                 <field name="xml"/>
                             </page>
-                            <page name="runner_forms" string="Runner Forms">
-                                <field name="runner_form_ids" />
-                            </page>
                             <page name="master_slave" string="Master Builder" groups="base.group_no_one" attrs="{'invisible' : [('parent_id','=',False)]}">
                                 <group>
                                     <field name="master_id"/>
