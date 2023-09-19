@@ -112,7 +112,6 @@ class OrbeonRunner(models.Model):
 
     res_id = fields.Integer(
         "Record ID",
-        ondelete='restrict',
         help="Database ID of the record in res_model to which this applies")
 
     any_new_current_builder = fields.Boolean(
