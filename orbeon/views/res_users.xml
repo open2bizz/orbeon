@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="orbeon_api_key" model="ir.ui.view">
+      <field name="name">Orbeon API Key</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_form" /> 
+      <field name="arch" type="xml">
+      	<field name="partner_id" position="after">
+            <field name="api_key" groups="base.group_no_one"/>
+        </field>
+      </field>
+</record>
+</odoo>

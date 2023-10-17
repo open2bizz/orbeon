@@ -40,6 +40,7 @@
         "views/orbeon_runner.xml",
         "views/orbeon_server.xml",
         "views/base.xml",
+        "views/res_users.xml",
         "data/orbeon_builder_template_empty.xml"
     ],
     'demo': [
