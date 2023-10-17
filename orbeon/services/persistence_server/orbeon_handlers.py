@@ -71,12 +71,6 @@ class OrbeonHandlerBase(object):
         db = self.config.get("odoo config", "database_name")
         usr = self.config.get("odoo config", "username")
         pwd = self.config.get("odoo config", "password")
-        b64str = request.headers.get("Authorization").replace("Basic ", "")
-        auth = b64str.split(":")
-        user = auth[0]
-        passwd =  auth[1]
-        usr = user
-        pwd = passwd
         self.xmlrpc = XMLRPCService(db, usr, pwd, url)
 
     def get_binary_data(self):

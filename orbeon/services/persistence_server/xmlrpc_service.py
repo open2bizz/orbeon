@@ -27,12 +27,13 @@ _logger = logging.getLogger(__name__)
 class XMLRPCService(object):
 
     def __init__(self, db, uid, pwd, url):
-        user = base64.b64decode(uid).decode('utf-8')
-        passw = base64.b64decode(pwd).decode('utf-8')
+        #REMOVE ADMIN = USER
+#        user = base64.b64decode(uid).decode('utf-8')
+#        passw = base64.b64decode(pwd).decode('utf-8')
         self.db = db
 #        self.uid, self.pwd = uid,pwd 
-        self.uid = user
-        self.pwd = passw
+        self.uid = uid
+        self.pwd = pwd
         self.url = url
         self.connect()
         
