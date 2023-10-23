@@ -22,7 +22,7 @@ from orbeon_xml_api.builder import Builder as BuilderAPI
 from orbeon_xml_api.runner import Runner as RunnerAPI
 from orbeon_xml_api.runner_copy_builder_merge import RunnerCopyBuilderMerge as RunnerCopyBuilderMergeAPI
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from lxml import etree
 import xmltodict
@@ -173,6 +173,14 @@ class OrbeonRunner(models.Model):
     def action_open_orbeon_runner(self):
         self.ensure_one()
         for rec in self:
+            #2FA Orbeon
+            user = self.env['res.users'].browse(self.env.uid)
+            if not user.api_key and user.totp_enabled:
+                raise UserError(
+                    "Two-Factor authentication is configured, but the API key is missing in the user profile. \n"
+                    "For more information, please refer to the documentation: \n"
+                    "https://www.odoo.com/documentation/16.0/developer/reference/external_api.html?highlight=api%20key#api-keys",
+                )
             if rec.xml == False and (self.builder_id.id != self.builder_id.current_builder_id.id):
                 # zet de nieuwe builder versie 
                 old_builder_id = self.builder_id.display_name

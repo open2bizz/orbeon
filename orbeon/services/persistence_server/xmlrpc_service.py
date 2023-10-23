@@ -38,7 +38,10 @@ class XMLRPCService(object):
         odoo_user = models.execute_kw(odoo_db, odoo_uid, odoo_password, 'res.users', 'search_read', [[["login","=",user]]], {'fields': ['api_key','login']})
         if odoo_user:
             key=odoo_user[0]['api_key']
-            self.pwd = key
+            if key:
+                self.pwd = key
+            else:
+                self.pwd = passw
         else:
             self.pwd = passw
         self.db = db
