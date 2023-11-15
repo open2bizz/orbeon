@@ -19,7 +19,7 @@
 #
 ##############################################################################
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError,UserError
 
 from lxml import etree
 
@@ -353,9 +353,11 @@ class OrbeonBuilder(models.Model):
             record.env.cr.execute(query)
 
             builder_id = record.env.cr.fetchone()
-
             if builder_id:
                 record.current_builder_id = record.browse(builder_id[0])
+            else:
+                record.current_builder_id = False
+                raise UserError("Er is geen huidige versie van het formulier ontwerp, neem contact op met de systeembeheerder!")
 
     @api.model
     def orbeon_search_read_data(self, domain=None, fields=None):
