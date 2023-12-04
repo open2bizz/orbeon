@@ -21,17 +21,21 @@
 import xmlrpc.client
 import logging
 import base64
+import configparser
 
 _logger = logging.getLogger(__name__)
 
 class XMLRPCService(object):
 
     def __init__(self, db, uid, pwd, url):
+        config = configparser.ConfigParser()
+        config.read('/etc/odoo-server.conf')
+        odoo_username = config.get('Odoo-Orbeon', 'username')
+        odoo_password = config.get('Odoo-Orbeon', 'password')
         user = base64.b64decode(uid).decode('utf-8')
         passw = base64.b64decode(pwd).decode('utf-8')
-        odoo_db = 'acceptatie'
-        odoo_username = 'admin'
-        odoo_password = '82745yc2874dyn2387'
+        odoo_db = config.get('Odoo-Orbeon', 'odoo_db')
+        
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
         odoo_uid = common.authenticate(odoo_db,odoo_username , odoo_password, {})
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
