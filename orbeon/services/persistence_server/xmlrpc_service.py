@@ -135,8 +135,6 @@ class XMLRPCService(object):
         @type fields: array of strings
         @return: array of dicts
         """
-        print("runner_search_read_builder: start")
-        print(self.uid)
         return self.api.execute_kw(self.db, self.uid, self.pwd, "orbeon.runner", "orbeon_search_read_builder", domain, {"fields":fields})
         
     def runner_search_read_data(self, domain, fields):

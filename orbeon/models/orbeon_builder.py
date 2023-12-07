@@ -154,14 +154,11 @@ class OrbeonBuilder(models.Model):
     def init(self):
         if self.env['ir.model'].search([('model','=','orbeon.master')]) and self.env['ir.model'].search([('model','=','orbeon.builder')]):
             for builder in self.env['orbeon.builder'].search([('parent_id','=',False)]):
-                print(builder)
                 master_record = self.env['orbeon.master'].search([('master_builder_id','=',builder.id)])
                 
                 if not master_record:
                     master_record = self.env['orbeon.master'].create({'master_builder_id' : builder.id})
-                print(master_record)
                 slave_ids = self.env['orbeon.builder'].search([('id','child_of',master_record.master_builder_id.id),('id','!=',master_record.master_builder_id.id)])
-                print(slave_ids)
                 master_record.slave_ids = [(6,0, slave_ids.ids)]
                     
                     
@@ -248,7 +245,6 @@ class OrbeonBuilder(models.Model):
         if 'parent_id' in vals:
             master_record = self.env['orbeon.master'].search([('master_builder_id','=',vals['parent_id'])])
             if master_record:
-                print(master_record)
                 res.master_id = master_record.id
             
         return res
