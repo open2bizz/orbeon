@@ -41,7 +41,7 @@ class Orbeon(http.Controller):
         else:
             orbeon_server = orbeon_server[0]
         o = urlparse(orbeon_server['url'])
-        _logger.error(o)
+        _logger.debug('___Orbeon Server URL___ %s', o)
 
         odoo_session = http.request.session
 
@@ -52,13 +52,13 @@ class Orbeon(http.Controller):
         in_headers.update({'Openerp-Server': 'localhost'})
         in_headers.update({'Openerp-Port': str(config.get('xmlrpc_port_orbeon'))})
         in_headers.update({'Openerp-Database': odoo_session.get('db')})
-        _logger.error(odoo_session)
+        _logger.debug('___Odoo session___ %s', odoo_session)
         x = base64.b64encode(bytes(odoo_session.get('login'), 'utf-8'))
         y = base64.b64encode(bytes(odoo_session.get('password'), 'utf-8'))
         in_headers.update({'Authorization': 'Basic %s' % (x.decode('utf-8') + ':' + y.decode('utf-8'))})
         _logger.debug('Calling Orbeon on url %s with header %s' % (o.netloc, in_headers))
         curl = urlparse(http.request.httprequest.url)._replace(netloc=o.netloc, scheme='http')
-        _logger.error(curl)
+        _logger.debug('___Curl___ %s', curl)
         resp = requests.request(
             method=http.request.httprequest.method,
             url=curl.geturl(),
@@ -67,7 +67,7 @@ class Orbeon(http.Controller):
                 http.request.httprequest.form) > 0 else http.request.httprequest.get_data(),
             # cookies=http.request.httprequest.cookies,
             allow_redirects=False)
-        _logger.error(resp)
+        _logger.debug('___Request___ %s', resp)
         excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection'
             , 'openerp-server', 'openerp-port', 'openerp-database', 'authorization']
         headers = [(name, value) for (name, value) in resp.raw.headers.items()

@@ -266,7 +266,7 @@ class OrbeonRunner(models.Model):
 #        query = "//*[@id='fr-form-resources']/resources//resource[@xml:lang='nl']"
         query = "//*[@id='fr-form-instance']/form"
         resource = merge_builder_api.xml_root.xpath(query)
-        _logger.error(resource[0].text)
+        _logger.debug('___Resource [0] ___ %s', resource[0].text)
         parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
         resource_root = etree.XML(etree.tostring(resource[0], encoding='UTF-8'), parser)
         #resource_xml = etree.tostring(resource_root, encoding="unicode")
@@ -276,13 +276,10 @@ class OrbeonRunner(models.Model):
             key = str(key, encoding='utf-8')
             q = "//" + key
             result = root.xpath(q)
-            if result:
-                 _logger.error(result[0].text)
             new_result = resource_root.xpath(q)
             if new_result and result:
+                _logger.debug('___Got result and new result ___ %s %s', result[0].text, new_result)
                 if new_result[0].tag[0:3] != 'NC.':
-                    _logger.error(new_result)
-                    _logger.error(result)
                     if new_result and result:
                         new_result[0].text = result[0].text
         new_xml = etree.tostring(resource_root, encoding="utf-8")            
