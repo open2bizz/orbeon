@@ -36,6 +36,7 @@ STATE_OBSOLETE = 'obsolete'
 
 class OrbeonBuilder(models.Model):
     _name = 'orbeon.master'
+    _description = 'Orbeon Master Version'
 
     master_builder_id = fields.Many2one('orbeon.builder', string="Master Builder")
     slave_ids = fields.One2many('orbeon.builder','master_id', string="Slave Builders")
