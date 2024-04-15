@@ -22,7 +22,7 @@ from orbeon_xml_api.builder import Builder as BuilderAPI
 from orbeon_xml_api.runner import Runner as RunnerAPI
 from orbeon_xml_api.runner_copy_builder_merge import RunnerCopyBuilderMerge as RunnerCopyBuilderMergeAPI
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from lxml import etree
 import xmltodict
@@ -112,7 +112,6 @@ class OrbeonRunner(models.Model):
 
     res_id = fields.Integer(
         "Record ID",
-        ondelete='restrict',
         help="Database ID of the record in res_model to which this applies")
 
     any_new_current_builder = fields.Boolean(
@@ -174,6 +173,14 @@ class OrbeonRunner(models.Model):
     def action_open_orbeon_runner(self):
         self.ensure_one()
         for rec in self:
+            #2FA Orbeon
+            user = self.env['res.users'].browse(self.env.uid)
+            if not user.api_key and user.totp_enabled:
+                raise UserError(
+                    "Two-Factor authentication is configured, but the API key is missing in the user profile. \n"
+                    "For more information, please refer to the documentation: \n"
+                    "https://www.odoo.com/documentation/16.0/developer/reference/external_api.html?highlight=api%20key#api-keys",
+                )
             if rec.xml == False and (self.builder_id.id != self.builder_id.current_builder_id.id):
                 # zet de nieuwe builder versie 
                 old_builder_id = self.builder_id.display_name
@@ -259,7 +266,7 @@ class OrbeonRunner(models.Model):
 #        query = "//*[@id='fr-form-resources']/resources//resource[@xml:lang='nl']"
         query = "//*[@id='fr-form-instance']/form"
         resource = merge_builder_api.xml_root.xpath(query)
-        _logger.error(resource[0].text)
+        _logger.debug('___Resource [0] ___ %s', resource[0].text)
         parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
         resource_root = etree.XML(etree.tostring(resource[0], encoding='UTF-8'), parser)
         #resource_xml = etree.tostring(resource_root, encoding="unicode")
@@ -269,13 +276,10 @@ class OrbeonRunner(models.Model):
             key = str(key, encoding='utf-8')
             q = "//" + key
             result = root.xpath(q)
-            if result:
-                 _logger.error(result[0].text)
             new_result = resource_root.xpath(q)
             if new_result and result:
+                _logger.debug('___Got result and new result ___ %s %s', result[0].text, new_result)
                 if new_result[0].tag[0:3] != 'NC.':
-                    _logger.error(new_result)
-                    _logger.error(result)
                     if new_result and result:
                         new_result[0].text = result[0].text
         new_xml = etree.tostring(resource_root, encoding="utf-8")            

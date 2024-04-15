@@ -21,25 +21,47 @@
 import xmlrpc.client
 import logging
 import base64
+import configparser
 
 _logger = logging.getLogger(__name__)
 
 class XMLRPCService(object):
 
     def __init__(self, db, uid, pwd, url):
+        config = configparser.ConfigParser()
+        config.read('/etc/odoo-server.conf')
+        odoo_username = config.get('Odoo-Orbeon', 'username')
+        odoo_password = config.get('Odoo-Orbeon', 'password')
         user = base64.b64decode(uid).decode('utf-8')
         passw = base64.b64decode(pwd).decode('utf-8')
+        odoo_db = config.get('Odoo-Orbeon', 'odoo_db')
+        
+        common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
+        odoo_uid = common.authenticate(odoo_db,odoo_username , odoo_password, {})
+        models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
+        odoo_user = models.execute_kw(odoo_db, odoo_uid, odoo_password, 'res.users', 'search_read', [[["login","=",user]]], {'fields': ['api_key','login']})
+        if odoo_user:
+            key=odoo_user[0]['api_key']
+            if key:
+                self.pwd = key
+            else:
+                self.pwd = passw
+        else:
+            self.pwd = passw
         self.db = db
 #        self.uid, self.pwd = uid,pwd 
         self.uid = user
-        self.pwd = passw
         self.url = url
-        self.connect()
+        self.connect(key=odoo_user[0]['api_key'])
         
-    def connect(self):
+        
+    def connect(self, key=False):
         self.common = xmlrpc.client.ServerProxy("%s/xmlrpc/2/common" % self.url)
         self.api = xmlrpc.client.ServerProxy("%s/xmlrpc/2/object" % self.url)
-        self.uid = self.common.authenticate(self.db, self.uid, self.pwd, {})
+        if key:
+            self.uid = self.common.authenticate(self.db, self.uid, key, {})
+        else:
+            self.uid = self.common.authenticate(self.db, self.uid, self.pwd, {})
 
     def search(self, model, domain):
         """
@@ -113,7 +135,6 @@ class XMLRPCService(object):
         @type fields: array of strings
         @return: array of dicts
         """
-        _logger.error(self.uid)
         return self.api.execute_kw(self.db, self.uid, self.pwd, "orbeon.runner", "orbeon_search_read_builder", domain, {"fields":fields})
         
     def runner_search_read_data(self, domain, fields):

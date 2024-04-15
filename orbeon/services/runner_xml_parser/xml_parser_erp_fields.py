@@ -130,7 +130,6 @@ class XmlParserERPFields(XmlParserBase):
 
             # Add last model_field
             all_fields.append(model_fields[0])
-            print(all_fields)
             if all_fields:
                 try:
                     # The last/solely item in model_fields should be the value
