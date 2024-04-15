@@ -139,12 +139,36 @@
             <field name="view_mode">tree,form</field>
         </record>
 
+        <menuitem id="orbeon_builder_menu"
+          name="Builder"
+          parent="orbeon_base_menu"
+          groups="orbeon.orbeon_admin"
+          sequence="20"
+        />
+
+        <menuitem id="orbeon_builder_form_menu"
+          name="Builder Forms"
+          parent="orbeon_builder_menu"
+          action="orbeon_builder_form_action"
+          groups="orbeon.orbeon_admin"
+          sequence="10"
+        />
+
+        <menuitem id="orbeon_builder_template_menu"
+          name="Builder Form Templates"
+          parent="orbeon_builder_menu"
+          action="orbeon_builder_template_action"
+          groups="orbeon.orbeon_admin"
+          sequence="20"
+        />
+
         <menuitem id="orbeon_master_menu"
             name="Orbeon Master"
             parent="orbeon_settings_menu"
             action="orbeon_master_action"
             groups="orbeon.orbeon_admin"
-            sequence="10"/>
+            sequence="10"
+        />
 
     </data>
 </odoo>
