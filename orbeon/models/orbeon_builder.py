@@ -245,8 +245,8 @@ class OrbeonBuilder(models.Model):
             master_record = self.env['orbeon.master'].create({'master_builder_id' : res.id})
         if 'parent_id' in vals:
             master_record = self.env['orbeon.master'].search([('master_builder_id','=',vals['parent_id'])])
-            if master_record:
-                res.master_id = master_record.id
+        if master_record:
+            res.master_id = master_record.id
             
         return res
 
