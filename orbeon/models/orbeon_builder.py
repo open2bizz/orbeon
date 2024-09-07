@@ -40,6 +40,12 @@ class OrbeonBuilder(models.Model):
 
     master_builder_id = fields.Many2one('orbeon.builder', string="Master Builder")
     slave_ids = fields.One2many('orbeon.builder','master_id', string="Slave Builders")
+    display_name = fields.Char("Name", compute="_set_name")
+
+    def _set_name(self):
+        for master in self:
+            b_name = master.master_builder_id.complete_name or "Unknown"
+            master.display_name = "Master " + "(" + b_name + ")"
 
 class OrbeonBuilder(models.Model):
     _name = 'orbeon.builder'

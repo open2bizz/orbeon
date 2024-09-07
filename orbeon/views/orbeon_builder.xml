@@ -111,6 +111,13 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <div class="oe_title" >
+                            <h2>
+                                <strong>
+                                    <field name="display_name"/>
+                                </strong>
+                            </h2>
+                        </div>
                         <group>
                             <field name="master_builder_id"  readonly="1"/>
                             <field name="slave_ids" readonly="1"/>            
@@ -125,6 +132,7 @@
             <field name="model">orbeon.master</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="display_name"/>
                     <field name="master_builder_id"/>
                     <field name="slave_ids" widget="many2many_tags"/>                    
                 </tree>
