@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        
+
         <!-- Form-related subtypes for messaging / Chatter -->
         <record id="mt_orbeon_project_runner_new" model="mail.message.subtype">
             <field name="name">Form Opened</field>

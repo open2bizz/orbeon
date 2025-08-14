@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    open2bizz
-#    Copyright (C) 2016 open2bizz (open2bizz.nl).
+#    Copyright Open2Bizz 2025
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,7 +21,7 @@
 {
     "name": "Orbeon Forms on Projects",
     'summary': 'Orbeon Forms on Projects',
-    "version": "14.0.2",
+    "version": "18.0.1.0.0",
     "author": "Open2bizz",
     "website": "http://www.open2bizz.nl",
     "license": "LGPL-3",

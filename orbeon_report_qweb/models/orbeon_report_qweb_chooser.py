@@ -19,7 +19,6 @@
 #
 ##############################################################################
 from odoo import fields, models, _, api, osv
-from openerp.exceptions import Warning
 
 
 import logging

@@ -134,20 +134,20 @@ class OrbeonRunner(models.Model):
         # perform search, return the first found
         return self.env['orbeon.project.runner.stage'].search(search_domain, order=order, limit=1).id
 
-    @api.model
-    def create(self, vals):
+    @api.model_create_multi
+    def create(self, vals_list):
         # context: no_log, because subtype already handle this
         context = dict(self.env.context, mail_create_nolog=True)
 
         # for default stage
-        if vals.get('project_id') and not context.get('default_project_id'):
-            context['default_res_id'] = vals.get('project_id')
+        if vals_list.get('project_id') and not context.get('default_project_id'):
+            context['default_res_id'] = vals_list.get('project_id')
         else:
-            vals['res_id'] = context.get('default_project_id', False)
+            vals_list['res_id'] = context.get('default_project_id', False)
         # user_id change: update date_assign
-        if vals.get('user_id'):
-            vals['date_assign'] = fields.Datetime.now()
-        runner = super(OrbeonRunner, self.with_context(context)).create(vals)
+        if vals_list.get('user_id'):
+            vals_list['date_assign'] = fields.Datetime.now()
+        runner = super(OrbeonRunner, self.with_context(context)).create(vals_list)
         return runner
 
     

@@ -129,10 +129,9 @@ class OrbeonServer(models.Model):
         help="Whether Builder Form Templates had been created. Unset to delete and re-create Builder Template Forms."
     )
 
-    def __init__(self, pool, cr):
-        res = super(OrbeonServer, self).__init__(pool, cr)
-        self._autostart_persistence_servers(pool, cr)
-        return res
+    def __init__(self, env, *args):
+        super().__init__(env, *args)
+        self._autostart_persistence_servers(env)
 
     @api.constrains("name")
     def constraint_unique_name(self):
@@ -188,7 +187,8 @@ class OrbeonServer(models.Model):
         elif processtype == PERSISTENCE_SERVER_FORKING:
             return ForkingWSGIServer
 
-    def _is_installed(self, pool, cr):
+    def _is_installed(self, env):
+        cr = env.cr
         cr.execute(
                 "SELECT "
                 "    1 "
@@ -201,14 +201,14 @@ class OrbeonServer(models.Model):
 
         return cr.fetchone() is not None
 
-    def _autostart_persistence_servers(self, pool, cr):
+    def _autostart_persistence_servers(self, env):
         """These (last resort) SQL could led to API-change breakage.  However,
         currently funky errors with ORM search/reads on
         odoo.api.Environment.
         """
-        if not self._is_installed(pool, cr):
+        if not self._is_installed(env):
             return
-
+        cr = env.cr
         try:
             cr.execute(
                 "SELECT "

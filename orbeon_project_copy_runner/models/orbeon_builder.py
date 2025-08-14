@@ -30,11 +30,11 @@ class OrbeonBuilderCopyAction(models.Model):
         readonly=True,
         help="This builder form highest parent_id"
         )
-
+    
     # This will add the founder_id to any newly made builder forms !!
-    @api.model
-    def create(self, vals):
-        res = super(OrbeonBuilderCopyAction, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super(OrbeonBuilderCopyAction, self).create(vals_list)
         if res.version == 1:
             res.write({'founder_id': res.id})
         return res

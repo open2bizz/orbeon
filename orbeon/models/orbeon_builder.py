@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-# Author: Open2Bizz (www.open2bizz.nl)
-# Employee: Dennis Ochse
-# Date: 2019-05-02
-#
+# Copyright Open2Bizz 2025
 # GNU LESSER GENERAL PUBLIC LICENSE
 # Version 3, 29 June 2007
 #
@@ -210,15 +207,15 @@ class OrbeonBuilder(models.Model):
         if not vals.get('builder_template_id', False) and not vals.get('xml', False):
             raise ValidationError("Missing either a \"Builder Form Template\" or XML")
 
-    @api.model
-    def create(self, vals):
-        self.validate_create_xml(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        self.validate_create_xml(vals_list)
 
-        if vals.get('builder_template_id', False):
-            template = self.env['orbeon.builder.template'].browse(vals['builder_template_id'])
+        if vals_list.get('builder_template_id', False):
+            template = self.env['orbeon.builder.template'].browse(vals_list['builder_template_id'])
             root = etree.fromstring(template.xml)
-        elif 'xml' in vals:
-            xml = u"%s" % vals['xml']
+        elif 'xml' in vals_list:
+            xml = u"%s" % vals_list['xml']
             xml = bytes(bytearray(xml, encoding='utf-8'))
 
             root = etree.fromstring(xml)
@@ -226,25 +223,25 @@ class OrbeonBuilder(models.Model):
         if len(root.xpath('//application-name')) > 0:
             root.xpath('//application-name')[0].text = 'odoo'
 
-        if 'name' in vals and len(root.xpath('//form-name')) > 0:
-            root.xpath('//form-name')[0].text = vals['name']
+        if 'name' in vals_list and len(root.xpath('//form-name')) > 0:
+            root.xpath('//form-name')[0].text = vals_list['name']
 
-        if 'title' in vals and vals['title']:
-            root.xpath('//metadata/title')[0].text = vals['title']
+        if 'title' in vals_list and vals_list['title']:
+            root.xpath('//metadata/title')[0].text = vals_list['title']
 
             if len(root.xpath('//title')) > 0:
-                root.xpath('//title')[0].text = vals['title']
+                root.xpath('//title')[0].text = vals_list['title']
 
             if len(root.xpath('//xh:title', namespaces={'xh': "http://www.w3.org/1999/xhtml"})) > 0:
                 root.xpath('//xh:title', namespaces={'xh': "http://www.w3.org/1999/xhtml"})[0].text = vals['title']
 
-        vals['xml'] = etree.tostring(root, encoding='unicode')
+        vals_list['xml'] = etree.tostring(root, encoding='unicode')
 
-        res = super(OrbeonBuilder, self).create(vals)
-        if 'parent_id' not in vals:
+        res = super(OrbeonBuilder, self).create(vals_list)
+        if 'parent_id' not in vals_list:
             master_record = self.env['orbeon.master'].create({'master_builder_id' : res.id})
-        if 'parent_id' in vals:
-            master_record = self.env['orbeon.master'].search([('master_builder_id','=',vals['parent_id'])])
+        if 'parent_id' in vals_list:
+            master_record = self.env['orbeon.master'].search([('master_builder_id','=',vals_list['parent_id'])])
             if master_record:
                 res.master_id = master_record.id
             

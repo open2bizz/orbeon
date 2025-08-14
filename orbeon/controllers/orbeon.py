@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-# Author: Open2Bizz (www.open2bizz.nl)
-# Employee: Dennis Ochse
-# Date: 2019-05-02
+# Copyright Open2Bizz 2025
 #
 # GNU LESSER GENERAL PUBLIC LICENSE
 # Version 3, 29 June 2007
@@ -20,13 +18,12 @@
 ##############################################################################
 import requests
 from urllib.parse import urlparse
-from werkzeug.wrappers import Response
+from requests import Response
 from odoo import http
 import base64
 from odoo.tools import config
 
 import logging
-
 _logger = logging.getLogger(__name__)
 
 

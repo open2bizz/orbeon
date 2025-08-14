@@ -20,7 +20,7 @@
 ##############################################################################
 
 from odoo import fields, models, api, _
-from odoo.osv import osv
+from odoo import osv
 from odoo.exceptions import UserError, ValidationError
 
 class OrbeonRunnerCopyAction(models.Model):
@@ -33,6 +33,8 @@ class OrbeonRunnerCopyAction(models.Model):
         related="builder_id.founder_id"
         )
 
+    # Added to migrate
+    patient_id = fields.Many2one('res.partner', string="Patient", readonly=True)
     
     def wizard_copy_form(self):
         if self.xml == False:
@@ -40,7 +42,6 @@ class OrbeonRunnerCopyAction(models.Model):
                     'name': _('Copy Runner Form'),
                     'type': 'ir.actions.act_window',
                     'res_model': 'wizard.runner.form.copy',
-                    #'view_id': 'runner_form_copy_wizard',
                     'view_mode': 'form',
                     'target': 'new',
                     'context': {'default_patient_id': self.project_id.partner_id.id,'default_target_form_id': self.id, 'default_project_id': self.project_id.id, 'default_founder_id': self.builder_id.founder_id.id},
