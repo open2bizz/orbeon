@@ -37,6 +37,12 @@ class OrbeonBuilder(models.Model):
 
     master_builder_id = fields.Many2one('orbeon.builder', string="Master Builder")
     slave_ids = fields.One2many('orbeon.builder','master_id', string="Slave Builders")
+    display_name = fields.Char("Name", compute="_set_name")
+
+    def _set_name(self):
+        for master in self:
+            b_name = master.master_builder_id.complete_name or "Unknown"
+            master.display_name = "Master " + "(" + b_name + ")"
 
 class OrbeonBuilder(models.Model):
     _name = 'orbeon.builder'
@@ -243,8 +249,7 @@ class OrbeonBuilder(models.Model):
         if 'parent_id' in vals_list:
             master_record = self.env['orbeon.master'].search([('master_builder_id','=',vals_list['parent_id'])])
             if master_record:
-                res.master_id = master_record.id
-            
+                res.master_id = master_record.id            
         return res
 
     
