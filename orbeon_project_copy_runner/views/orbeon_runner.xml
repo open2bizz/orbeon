@@ -8,7 +8,7 @@
       <field name="arch" type="xml">
         <data>
           <xpath expr="//button[@name='action_open_orbeon_runner']" position="after">
-            <button class="btn btn-outline-primary" name="wizard_copy_form" type="object" attrs="{'invisible':[('xml','!=',False)]}">Copy</button>
+            <button class="btn btn-outline-primary" name="wizard_copy_form" type="object" invisible="xml != False">Copy</button>
           </xpath>
         </data>
       </field>

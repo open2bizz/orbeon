@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    open2bizz
-#    Copyright (C) 2016 open2bizz (open2bizz.nl).
+#    Copyright Open2Bizz 2025
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -23,7 +22,7 @@
     "name": "Orbeon Forms",
     "summary": 'Integrate Orbeon Forms with Odoo',
     "description": 'Orbeon Forms integration',
-    "version": "14.0.2",
+    "version": "18.0.1.0.0",
     "author": "Open2bizz",
     "website": "http://www.open2bizz.nl",
     "license": "LGPL-3",
@@ -35,11 +34,11 @@
     "data": [
         "security/res_groups.xml",
         "security/ir_model_access.xml",
+        "views/base.xml",
         "views/orbeon_builder_template.xml",
         "views/orbeon_builder.xml",
         "views/orbeon_runner.xml",
         "views/orbeon_server.xml",
-        "views/base.xml",
         "views/res_users.xml",
         "data/orbeon_builder_template_empty.xml"
     ],

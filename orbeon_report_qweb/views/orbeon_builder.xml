@@ -11,10 +11,10 @@
                     <page name="xml" position="after">
                         <page name="reports_qweb" string="Reports">
                             <field name="report_xml_ids">
-                                <tree>
+                                <list>
                                     <field name="sequence" widget="handle"/>
                                     <field name="ir_actions_report_xml_id" string="Name"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </page>

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 # Author: Open2Bizz (www.open2bizz.nl)
-# Employee: Dennis Ochse
-# Date: 2019-05-02
+# Date: 2025-14-08
 #
 # GNU LESSER GENERAL PUBLIC LICENSE
 # Version 3, 29 June 2007

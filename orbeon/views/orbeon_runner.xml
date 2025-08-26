@@ -8,45 +8,41 @@
         <form>
           <sheet>
             <div class="oe_button_box" name="button_box">
-              <button name="action_open_orbeon_runner" type="object" attrs="{'invisible':[('id','=',False)]}" string="Edit" class="oe_stat_button" icon="fa-edit" />
-              <button name="merge_current_builder" type="object" attrs="{'invisible':[('xml','=',False), '|', ('any_new_current_builder','=',False),'|', ('state', 'in', ['complete', 'canceled'])]}" string="Merge Current Builder" help="Merge the Form Design (structure additions) into this Runner Form." class="oe_stat_button" icon="fa-random" />
+              <button class="oe_stat_button" icon="fa-edit" invisible="id == False" name="action_open_orbeon_runner" string="Edit" type="object"/>
+              <button class="oe_stat_button" help="Merge the Form Design (structure additions) into this Runner Form." icon="fa-random" invisible="xml == False and (any_new_current_builder == False or state in ['complete', 'canceled'])" name="merge_current_builder" string="Merge Current Builder" type="object"/>
             </div>
-            <field name="active" invisible="1"/>
-            <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+            <field invisible="1" name="active"/>
+            <widget bg_color="bg-danger" invisible="active == True" name="web_ribbon" title="Archived"/>
             <div class="oe_title">
               <h1>
                 <strong>
-                  <field name="builder_title" readonly="1" />
+                  <field name="builder_title" readonly="1"/>
                 </strong>
               </h1>
             </div>
             <notebook>
               <page name="general" string="General">
                 <group>
-                  <field name="builder_id" domain="[(&quot;state&quot;, &quot;=&quot;, &quot;current&quot;)]" attrs="{'readonly': [('id','!=',False)]}" />
-                  <field name="url" widget="url" />
+                  <field domain='[("state", "=", "current")]' name="builder_id" readonly="id != False"/>
+                  <field name="url" widget="url"/>
                 </group>
               </page>
-              <page name="xml" string="XML" groups='base.group_system'>
-                <field name="xml" />
+              <page groups="base.group_system" name="xml" string="XML">
+                <field name="xml"/>
               </page>
-              <page name="technical" string="TECH" groups='base.group_system'>
+              <page groups="base.group_system" name="technical" string="TECH">
                 <group>
-                  <field name="id" invisible="1" />
-                  <field name="any_new_current_builder" invisible="1" />
-                  <field name="res_model" />
-                  <field name="res_id" readonly="1" />
-                  <field name="is_merged" groups="orbeon.orbeon_admin" />
-                  <field name="state" />
+                  <field invisible="1" name="id"/>
+                  <field invisible="1" name="any_new_current_builder"/>
+                  <field name="res_model"/>
+                  <field name="res_id" readonly="1"/>
+                  <field groups="orbeon.orbeon_admin" name="is_merged"/>
+                  <field name="state"/>
                 </group>
               </page>
             </notebook>
           </sheet>
-          <div class="oe_chatter">
-            <field name="message_follower_ids" widget="mail_followers" />
-            <field name="activity_ids"/>
-            <field name="message_ids" widget="mail_thread" />
-          </div>
+          <chatter/>
         </form>
       </field>
     </record>
@@ -54,13 +50,13 @@
       <field name="name">orbeon.runner_form.tree</field>
       <field name="model">orbeon.runner</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="builder_id" />
-          <field name="url" />
-          <field name="res_model" />
-          <field name="res_id" />
-          <field name="is_merged" groups="orbeon.orbeon_admin" />
-        </tree>
+        <list>
+          <field name="builder_id"/>
+          <field name="url"/>
+          <field name="res_model"/>
+          <field name="res_id"/>
+          <field groups="orbeon.orbeon_admin" name="is_merged"/>
+        </list>
       </field>
     </record>
     <record id="orbeon_runner_form_kanban" model="ir.ui.view">
@@ -68,31 +64,31 @@
       <field name="model">orbeon.runner</field>
       <field name="arch" type="xml">
         <kanban class="oe_background_grey o_kanban_dashboard">
-          <field name="builder_id" />
-          <field name="builder_name" />
-          <field name="url" />
+          <field name="builder_id"/>
+          <field name="builder_name"/>
+          <field name="url"/>
           <templates>
             <t t-name="kanban-box">
               <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
                 <div class="o_kanban_card_header">
                   <div class="o_kanban_card_header_title">
                     <div class="o_primary">
-                      <field name="builder_title" />
+                      <field name="builder_title"/>
                     </div>
                   </div>
                 </div>
                 <div class="container o_kanban_card_content o_visible">
                   <div class="row">
-                    <div class="col-xs-10 o_kanban_primary_left" />
+                    <div class="col-xs-10 o_kanban_primary_left"/>
                     <div class="col-xs-2 o_kanban_primary_right">
                       <div class="o_dropdown_kanban dropdown" groups="base.group_user">
                         <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
-                          <span class="fa fa-bars fa-lg" />
+                          <span class="fa fa-bars fa-lg"/>
                         </a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <ul aria-labelledby="dLabel" class="dropdown-menu" role="menu">
                           <li>
-                            Set Color
-                            <ul class="oe_kanban_colorpicker" data-field="color" />
+              Set Color
+                            <ul class="oe_kanban_colorpicker" data-field="color"/>
                           </li>
                         </ul>
                       </div>
@@ -102,12 +98,14 @@
                 <div class="o_primary" name="buttons">
                   <div style="padding-bottom: 8px;">
                     <small class="text-muted">
-                      Builder:
-                      <field name="builder_name" />
+           Builder:
+                      <field name="builder_name"/>
                     </small>
                   </div>
                   <center>
-                    <button class="btn btn-primary" name="action_open_orbeon_runner" type="object">Edit</button>
+                    <button class="btn btn-primary" name="action_open_orbeon_runner" type="object">
+           Edit
+                    </button>
                   </center>
                 </div>
               </div>
@@ -121,7 +119,7 @@
       <field name="model">orbeon.runner</field>
       <field name="arch" type="xml">
         <search>
-          <field name="builder_id" />
+          <field name="builder_id"/>
         </search>
       </field>
     </record>
@@ -129,19 +127,21 @@
       <field name="name">Orbeon Runner Forms</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">orbeon.runner</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">list,form</field>
     </record>
     <record id="orbeon_runner_form_action_tree" model="ir.actions.act_window.view">
-      <field name="act_window_id" ref="orbeon_runner_form_action" />
-      <field name="sequence" eval="1" />
-      <field name="view_mode">tree</field>
-      <field name="view_id" ref="orbeon_runner_form_tree" />
+      <field name="act_window_id" ref="orbeon_runner_form_action"/>
+      <field eval="1" name="sequence"/>
+      <field name="view_mode">list</field>
+      <field name="view_id" ref="orbeon_runner_form_tree"/>
     </record>
     <record id="orbeon_runner_form_action_form" model="ir.actions.act_window.view">
-      <field name="act_window_id" ref="orbeon_runner_form_action" />
-      <field name="sequence" eval="2" />
+      <field name="act_window_id" ref="orbeon_runner_form_action"/>
+      <field eval="2" name="sequence"/>
       <field name="view_mode">form</field>
-      <field name="view_id" ref="orbeon_runner_form_form" />
+      <field name="view_id" ref="orbeon_runner_form_form"/>
     </record>
+    <menuitem groups="orbeon.orbeon_admin" id="orbeon_runner_menu" name="Runner" parent="orbeon_base_menu" sequence="30"/>
+    <menuitem action="orbeon_runner_form_action" groups="orbeon.orbeon_admin,orbeon.orbeon_user" id="orbeon_runner_forms_menu" name="Runner Forms" parent="orbeon_runner_menu" sequence="10"/>
   </data>
 </odoo>

@@ -11,9 +11,9 @@
                     <page name="advanced" position="after">
                         <page name="orbeon" string="Orbeon Forms">
                             <field name="orbeon_builder_ids">
-                                <tree>
+                                <list>
                                     <field name="orbeon_builder_id" string="Name"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </page>

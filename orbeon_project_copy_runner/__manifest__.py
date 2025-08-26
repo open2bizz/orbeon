@@ -23,7 +23,7 @@
     "name": "Orbeon Project Runner Form Copy",
     "summary": 'Copy the XML from a orbeon runner form that was previously added from the same type of form builder and same partner_id',
     "description": 'Copy Runner Forms',
-    "version": "14.0.2",
+    "version": "18.0.1.0.0",
     "author": "Open2bizz",
     "website": "http://www.open2bizz.nl",
     "license": "LGPL-3",

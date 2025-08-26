@@ -13,7 +13,7 @@
                     </page>
 	        </notebook>
 
-                <button name="toggle_active" position="before">
+                <button name="project_update_all_action" position="before">
                     <button name="action_orbeon_runner_forms" type="object" context="{'default_project_id':id}"
                             class="oe_stat_button" icon="fa-file-text">
                         <field string="Forms " name="orbeon_runner_forms_count" widget="statinfo" context="{'default_project_id':id}"/>
@@ -30,10 +30,10 @@
             <field name="inherit_id" ref="project.view_project_kanban" />
             <field name="arch" type="xml">
 		    <data>
-			    <field name="rating_status" position="after">
+			    <field name="sequence" position="after">
                                 <field name="orbeon_runner_forms_count" />
                            </field>
-                        <xpath expr="//div[@class='o_project_kanban_boxes']" position="inside">
+                        <xpath expr="//div[contains(@class, 'o_project_kanban_boxes')]" position="inside">
                            <a class="o_project_kanban_box" name="action_orbeon_runner_forms" type="object">
                               <span class="o_value"><t t-esc="record.orbeon_runner_forms_count.value"/></span>
                               <span class="o_label">Formulieren</span>
@@ -102,12 +102,12 @@
             <field name="name">orbeon.project.runner.stage.tree</field>
             <field name="model">orbeon.project.runner.stage</field>
             <field name="arch" type="xml">
-                <tree string="Form Stage">
+                <list string="Form Stage">
                     <field name="sequence" widget="handle" groups="base.group_no_one"/>
                     <field name="name"/>
                     <field name="fold"/>
                     <field name="description"/>
-                </tree>
+                </list>
             </field>
         </record>
 

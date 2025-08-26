@@ -22,7 +22,7 @@
 {
     "name": "Qweb reports for Orbeon Forms",
     'summary': 'Attach Qweb reports to Orbeon Forms, which becomes printable from the Runner Form',
-    "version": "14.0.2",
+    "version": "18.0.1.0.0",
     "author": "Open2bizz",
     "website": "http://www.open2bizz.nl",
     "license": "LGPL-3",
