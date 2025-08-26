@@ -129,11 +129,6 @@ class OrbeonServer(models.Model):
         help="Whether Builder Form Templates had been created. Unset to delete and re-create Builder Template Forms."
     )
 
-    def __init__(self, pool, cr):
-        res = super(OrbeonServer, self).__init__(pool, cr)
-        self._autostart_persistence_servers(pool, cr)
-        return res
-
     @api.constrains("name")
     def constraint_unique_name(self):
         cur_record = self.search([("name", "=", self.name)])

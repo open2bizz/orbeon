@@ -102,12 +102,12 @@
             <field name="name">orbeon.project.runner.stage.tree</field>
             <field name="model">orbeon.project.runner.stage</field>
             <field name="arch" type="xml">
-                <tree string="Form Stage">
+                <list string="Form Stage">
                     <field name="sequence" widget="handle" groups="base.group_no_one"/>
                     <field name="name"/>
                     <field name="fold"/>
                     <field name="description"/>
-                </tree>
+                </list>
             </field>
         </record>
 

@@ -44,7 +44,6 @@ class Orbeon(http.Controller):
         _logger.debug('___Orbeon Server URL___ %s', o)
 
         odoo_session = http.request.session
-
         orbeon_headers = ['cookie']
         in_headers = {name: value for (name, value) in http.request.httprequest.headers.items()
                       if name.lower() in orbeon_headers}
@@ -52,6 +51,7 @@ class Orbeon(http.Controller):
         in_headers.update({'Openerp-Server': 'localhost'})
         in_headers.update({'Openerp-Port': str(config.get('xmlrpc_port_orbeon'))})
         in_headers.update({'Openerp-Database': odoo_session.get('db')})
+<<<<<<< Updated upstream
         _logger.debug('___Odoo session___ %s', odoo_session)
         x = base64.b64encode(bytes(odoo_session.get('login'), 'utf-8'))
         y = base64.b64encode(bytes(odoo_session.get('password'), 'utf-8'))
@@ -59,19 +59,35 @@ class Orbeon(http.Controller):
         _logger.debug('Calling Orbeon on url %s with header %s' % (o.netloc, in_headers))
         curl = urlparse(http.request.httprequest.url)._replace(netloc=o.netloc, scheme='http')
         _logger.debug('___Curl___ %s', curl)
+=======
+        login = base64.b64encode(bytes(odoo_session.get('login'), 'utf-8'))
+        password = str(config.get('password'))
+        in_headers.update({'Authorization': 'Basic %s' % (login.decode('utf-8') + ':' + password)})
+        _logger.error(f"o.netloc : {o.netloc}")
+        curl = urlparse(http.request.httprequest.url)._replace(netloc=o.netloc, scheme='http')
+        _logger.error(f"curl: {curl}")
+>>>>>>> Stashed changes
         resp = requests.request(
             method=http.request.httprequest.method,
             url=curl.geturl(),
             headers=in_headers,
             data=http.request.httprequest.form if len(
                 http.request.httprequest.form) > 0 else http.request.httprequest.get_data(),
-            # cookies=http.request.httprequest.cookies,
             allow_redirects=False)
+<<<<<<< Updated upstream
         _logger.debug('___Request___ %s', resp)
+=======
+        _logger.error(f"resp: {resp}")
+>>>>>>> Stashed changes
         excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection'
             , 'openerp-server', 'openerp-port', 'openerp-database', 'authorization']
         headers = [(name, value) for (name, value) in resp.raw.headers.items()
                    if name.lower() not in excluded_headers]
-
+        _logger.error(f"headers: {headers}")
         response = Response(resp.content, resp.status_code, headers)
+<<<<<<< Updated upstream
         return response
+=======
+        _logger.error(f"response: {response}")
+        return response
+>>>>>>> Stashed changes

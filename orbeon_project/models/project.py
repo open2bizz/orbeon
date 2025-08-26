@@ -114,11 +114,15 @@ class Project(models.Model):
             "name": _("Forms"),
             "type": "ir.actions.act_window",
             "res_model": "orbeon.runner",
+<<<<<<< Updated upstream
             "view_mode": "kanban, form, tree",
+=======
+            "view_mode": "kanban, form, list",
+>>>>>>> Stashed changes
             "views": [
                 [kanban_view.id, "kanban"],
                 [form_view.id, "form"],
-                [tree_view.id, "tree"]
+                [tree_view.id, "list"]
             ],
             "target": "current",
             "default_project_id": self.id,

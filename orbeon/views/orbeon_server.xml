@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <odoo>
     <data>
 
@@ -9,32 +8,26 @@
                 <form string="Orbeon Server">
                     <sheet>
                         <div class="oe_title">
-                            <h1><field name="name" string="Name" /></h1>
+                            <h1><field name="name" string="Name"/></h1>
 	                    <div class="oe_button_box" name="button_box">
-	                        <button class="btn btn-primary" icon="fa-play" string="Start persistence"
-                                        name="start_persistence_server" type="object"
-                                        groups="orbeon.orbeon_admin"
-                                        attrs="{'invisible':['|', ('persistence_server_uuid','!=',False), ('persistence_server_active', '=', False)]}" />
-                                <button class="btn btn-primary" icon="fa-stop" string="Stop persistence"
-		                        name="stop_persistence_server" type="object"
-                                        groups="orbeon.orbeon_admin"
-                                        attrs="{'invisible':[('persistence_server_uuid','=',False)]}" />
+	                        <button class="btn btn-primary" icon="fa-play" string="Start persistence" name="start_persistence_server" type="object" groups="orbeon.orbeon_admin" invisible="persistence_server_uuid or not persistence_server_active"/>
+                                <button class="btn btn-primary" icon="fa-stop" string="Stop persistence" name="stop_persistence_server" type="object" groups="orbeon.orbeon_admin" invisible="not persistence_server_uuid"/>
                             </div>
                         </div>
 
                         <notebook>
                             <page name="configuration" string="Configuration">
                                 <group string="Orbeon Server">
-                                    <field name="url" widget="url" string="URL" />
+                                    <field name="url" widget="url" string="URL"/>
                                     <field name="description"/>
                                 </group>
                                 <group string="Orbeon Persistence Server">
-                                    <field name="persistence_server_port" string="Port" />
-                                    <field name="persistence_server_processtype" string="Process-type" />
-                                    <field name="persistence_server_configfile_path" string="Config-file path" />
-                                    <field name="persistence_server_autostart" string="Autostart" />
-                                    <field name="persistence_server_active" string="Active" />
-	                            <field name="persistence_server_uuid" string="UUID (thread)" readonly="1" />
+                                    <field name="persistence_server_port" string="Port"/>
+                                    <field name="persistence_server_processtype" string="Process-type"/>
+                                    <field name="persistence_server_configfile_path" string="Config-file path"/>
+                                    <field name="persistence_server_autostart" string="Autostart"/>
+                                    <field name="persistence_server_active" string="Active"/>
+	                            <field name="persistence_server_uuid" string="UUID (thread)" readonly="1"/>
                                 </group>
                             </page>
                             <page name="maintenance" string="Maintenance">
@@ -47,10 +40,7 @@
                             </page>
                         </notebook>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" />
-                        <field name="message_ids" widget="mail_thread" />
-                    </div>
+                    <chatter/>
                 </form>
             </field>
         </record>
@@ -59,14 +49,14 @@
             <field name="name">orbeon.server.tree</field>
             <field name="model">orbeon.server</field>
             <field name="arch" type="xml">
-                <tree>
-                    <field name="name" />
-                    <field name="persistence_server_port" />
-                    <field name="persistence_server_processtype" />
-                    <field name="persistence_server_autostart" />
-                    <field name="persistence_server_active" />
-                    <field name="persistence_server_uuid" />
-                </tree>
+                <list>
+                    <field name="name"/>
+                    <field name="persistence_server_port"/>
+                    <field name="persistence_server_processtype"/>
+                    <field name="persistence_server_autostart"/>
+                    <field name="persistence_server_active"/>
+                    <field name="persistence_server_uuid"/>
+                </list>
             </field>
         </record>
 
@@ -74,21 +64,25 @@
             <field name="name">Orbeon Server</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">orbeon.server</field>
+<<<<<<< Updated upstream
             <field name="view_mode">tree,form</field>
+=======
+            <field name="view_mode">list,form</field>
+>>>>>>> Stashed changes
         </record>
 
         <record id="orbeon_server_action_tree" model="ir.actions.act_window.view">
-            <field name="act_window_id" ref="orbeon_server_action" />
-            <field name="sequence" eval="1" />
-            <field name="view_mode">tree</field>
-            <field name="view_id" ref="orbeon_server_tree" />
+            <field name="act_window_id" ref="orbeon_server_action"/>
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="orbeon_server_tree"/>
         </record>
 
         <record id="orbeon_server_action_form" model="ir.actions.act_window.view">
-            <field name="act_window_id" ref="orbeon_server_action" />
-            <field name="sequence" eval="2" />
+            <field name="act_window_id" ref="orbeon_server_action"/>
+            <field name="sequence" eval="2"/>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="orbeon_server_form" />
+            <field name="view_id" ref="orbeon_server_form"/>
         </record>
 
     </data>

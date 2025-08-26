@@ -18,16 +18,17 @@
 # https://www.gnu.org/licenses/lgpl.txt.
 #
 ##############################################################################
-from orbeon_xml_api.builder import Builder as BuilderAPI
-from orbeon_xml_api.runner import Runner as RunnerAPI
-from orbeon_xml_api.runner_copy_builder_merge import RunnerCopyBuilderMerge as RunnerCopyBuilderMergeAPI
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
+<<<<<<< Updated upstream
 from lxml import etree
 import xmltodict
 import pprint
 import json
+=======
+
+>>>>>>> Stashed changes
 from ..services.runner_xml_parser import runner_xml_parser
 
 import logging
@@ -169,6 +170,14 @@ class OrbeonRunner(models.Model):
             else:
                 record.any_new_current_builder = (record.builder_id.id != record.builder_id.current_builder_id.id)
 
+<<<<<<< Updated upstream
+=======
+        if not self.builder_id.current_builder_id.id:
+            self.any_new_current_builder = False
+        else:
+            self.any_new_current_builder = (self.builder_id.id != self.builder_id.current_builder_id.id)
+
+>>>>>>> Stashed changes
     
     def action_open_orbeon_runner(self):
         self.ensure_one()
@@ -203,11 +212,20 @@ class OrbeonRunner(models.Model):
         res = super(OrbeonRunner, self).write(vals)
         return res
 
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     def action_send_versionupdate(self, old_builder_id, new_builder_id):       
         for rec in self:
             body = "Er is een nieuwe versie beschikbaar van dit formulier!\nDe versie van dit formulier is nu geupdate van %s naar %s." % (old_builder_id,new_builder_id)
             rec.message_post(body=body)
+<<<<<<< Updated upstream
    
+=======
+
+    
+>>>>>>> Stashed changes
     def copy(self, default=None):
         runner = super(OrbeonRunner, self).copy(default)
         ctx = self._context.copy()
@@ -230,6 +248,7 @@ class OrbeonRunner(models.Model):
         """ Merge (and replace) this Runner XML with XML from the current/published Builder """
         if not self.can_merge():
             return False
+<<<<<<< Updated upstream
         return self.merge_builder(self.builder_id.current_builder_id)
     
     @api.returns('self')
@@ -293,6 +312,15 @@ class OrbeonRunner(models.Model):
         })
 
         return self
+=======
+
+        try:
+            # Do the real merge
+            return self.merge_builder(self.builder_id.current_builder_id)
+        except Exception as e:
+            _logger.error("Orbeon Runner merge Exception: %s" % e)
+            raise UserError("Orbeon Runner merge Exception: %s" % e)
+>>>>>>> Stashed changes
 
     @api.model
     def orbeon_search_read_builder(self, domain=None, fields=None):
