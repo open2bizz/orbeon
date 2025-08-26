@@ -1,4 +1,4 @@
-gi# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 # Author: Open2Bizz (www.open2bizz.nl)
 # Employee: Dennis Ochse
@@ -156,7 +156,6 @@ class OrbeonBuilder(models.Model):
         help="Shows debug info (by field) in Orbeon Runner Form.\r\nAdds debug-info as messages (by field) on the Runner record."
     )
 
-<<<<<<< Updated upstream
     master_id = fields.Many2one("orbeon.master", string="Master Builder", help='This field links the first ever version of this builder will all the newly created builders.')
 
     def init(self):
@@ -171,9 +170,6 @@ class OrbeonBuilder(models.Model):
                     
                     
 
-=======
-    
->>>>>>> Stashed changes
     @api.depends('title', 'name', 'version')
     def _compute_complete_name(self):
         for record in self:
@@ -299,14 +295,10 @@ class OrbeonBuilder(models.Model):
             "name": self.name,
             "type": "ir.actions.act_window",
             "res_model": "orbeon.builder",
-<<<<<<< Updated upstream
             "view_mode": "form, tree",
-=======
-            "view_mode": "form, list",
->>>>>>> Stashed changes
             "views": [
                 [form_view.id, "form"],
-                [tree_view.id, "list"],
+                [tree_view.id, "tree"],
             ],
             "target": "current",
             "res_id": res.id,

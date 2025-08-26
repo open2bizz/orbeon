@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <record id="orbeon_builder_form_form" model="ir.ui.view">
@@ -7,7 +7,6 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-<<<<<<< Updated upstream
                       <field options="{'clickable': '1'}" name="state" widget="statusbar" />
                     </header>
                     <sheet>
@@ -20,21 +19,12 @@
                                     string="View" class="oe_stat_button" icon="fa-eye" />
                             <button name="view_runner_forms" type="object"
                                     string="View runner forms" class="oe_stat_button" icon="fa-list-alt" />
-=======
-                        <field clickable="True" name="state" widget="statusbar"/>
-                    </header>
-                    <sheet>
-                        <div class="oe_button_box" name="button_box">
-                            <button name="new_version_builder_form" type="object" invisible="not id" string="New Version" class="oe_stat_button" icon="fa-clone"/>
-                            <button name="open_orbeon_builder_form" type="object" invisible="state != 'new' or not id" string="Edit" class="oe_stat_button" icon="fa-edit"/>
-                            <button name="open_orbeon_builder_form" type="object" invisible="state == 'new' or not id" string="View" class="oe_stat_button" icon="fa-eye"/>
->>>>>>> Stashed changes
                         </div>
 
                         <div class="oe_title">
                             <h1>
                                 <strong>
-                                    <field name="name" placeholder="Name..." readonly="(version &gt; 1 and version == 1) or state != 'new'"/>
+                                    <field name="name" placeholder="Name..." attrs='{"readonly": ["|", "&amp;", ("version",">",1), ("version","=",1), ("state","!=","new")]}'/>
                                 </strong>
                             </h1>
                         </div>
@@ -43,40 +33,38 @@
                             <page name="general" string="General">
                                 <group>
                                     <field name="id" invisible="1"/>
-                                    <field name="title"/>
-                                    <field name="description"/>
-                                    <field name="res_model_id"/>
+                                    <field name="title" />
+                                    <field name="description" />
+                                    <field name="res_model_id" />
                                 </group>
                                 <group string="Version">
-                                    <field name="version"/>
-                                    <field name="version_comment"/>
-                                    <field name="parent_id"/>
-                                    <field name="builder_template_id"/>
+                                    <field name="version" />
+                                    <field name="version_comment" />
+                                    <field name="parent_id" />
+                                    <field name="builder_template_id" />
                                 </group>
                             </page>
                             <page name="settings" string="Settings">
                                 <group>
-                                    <field name="server_id"/>
-                                    <field name="url" widget="url"/>
-                                    <field name="debug_mode"/>
+                                    <field name="server_id" />
+                                    <field name="url" widget="url"></field>
+                                    <field name="debug_mode" />
                                 </group>
                             </page>
                             <page name="xml" string="XML">
                                 <field name="xml"/>
                             </page>
-<<<<<<< Updated upstream
                             <page name="master_slave" string="Master Builder" groups="base.group_no_one" attrs="{'invisible' : [('parent_id','=',False)]}">
                                 <group>
                                     <field name="master_id"/>
                                 </group>                               
-=======
-                            <page name="runner_forms" string="Runner Forms">
-                                <field name="runner_form_ids"/>
->>>>>>> Stashed changes
                             </page>
                         </notebook>
                     </sheet>
-                    <chatter/>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" />
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
                 </form>
             </field>
         </record>
@@ -85,14 +73,14 @@
             <field name="name">orbeon.builder_form.tree</field>
             <field name="model">orbeon.builder</field>
             <field name="arch" type="xml">
-                <list>
-                    <field name="name"/>
-                    <field name="version"/>
-                    <field name="title"/>
-                    <field name="state"/>
-                    <field name="res_model_id"/>
-                    <field name="parent_id"/>
-                </list>
+                <tree>
+                    <field name="name" />
+                    <field name="version" />
+                    <field name="title" />
+                    <field name="state" />
+                    <field name="res_model_id" />
+                    <field name="parent_id" />
+                </tree>
             </field>
         </record>
 
@@ -100,25 +88,21 @@
             <field name="name">Orbeon Builder Forms</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">orbeon.builder</field>
-<<<<<<< Updated upstream
             <field name="view_mode">tree,form</field>
-=======
-            <field name="view_mode">list,form</field>
->>>>>>> Stashed changes
         </record>
 
         <record id="builder_form_action_tree" model="ir.actions.act_window.view">
-            <field name="act_window_id" ref="orbeon_builder_form_action"/>
-            <field name="sequence" eval="1"/>
-            <field name="view_mode">list</field>
-            <field name="view_id" ref="orbeon_builder_form_tree"/>
+            <field name="act_window_id" ref="orbeon_builder_form_action" />
+            <field name="sequence" eval="1" />
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="orbeon_builder_form_tree" />
         </record>
 
         <record id="builder_form_action_form" model="ir.actions.act_window.view">
-            <field name="act_window_id" ref="orbeon_builder_form_action"/>
-            <field name="sequence" eval="2"/>
+            <field name="act_window_id" ref="orbeon_builder_form_action" />
+            <field name="sequence" eval="2" />
             <field name="view_mode">form</field>
-            <field name="view_id" ref="orbeon_builder_form_form"/>
+            <field name="view_id" ref="orbeon_builder_form_form" />
         </record>
 
         <record id="orbeon_master_form" model="ir.ui.view">
