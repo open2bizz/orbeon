@@ -77,9 +77,8 @@ class OrbeonHandlerBase(object):
         b64str = request.headers.get("Authorization").replace("Basic ", "")
         auth = b64str.split(":")
         user = auth[0]
-        passwd =  auth[1]
+        passwd =  pwd
         usr = user
-        pwd = passwd
         self.xmlrpc = XMLRPCService(db, usr, pwd, url)
 
     def get_binary_data(self):
