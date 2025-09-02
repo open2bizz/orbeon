@@ -32,6 +32,8 @@ from .. import utils
 import logging
 _logger = logging.getLogger(__name__)
 
+from datetime import datetime, timezone
+from werkzeug.wrappers import Response
 
 _log = utils._log
 
@@ -307,6 +309,84 @@ class RunnerHandler(OrbeonHandlerBase):
         #         "xml": str(self.data),
         #     }
 
+class FormMetadataHandler:
+    """
+    Minimal Forms Metadata API (v1) handler.
+    Serves: GET /fr/service/persistence/form[/<app>[/<form>]]
+    Query params honored (best-effort): all-versions, all-forms
+    """
+
+    requires_xmlrpc = False  # for parity with other handlers
+
+    def __init__(self, app, form, data_type, path, args, data):
+        self.app = app or ""
+        self.form = form or ""
+        self.data_type = data_type
+        self.path = path
+        self.args = args or {}
+        self.data = data
+        self.config = None
+        _logger.error("FormMetadataHandler.__init__: app=%s form=%s args=%s", self.app, self.form, dict(self.args))
+
+    def set_config_by_file_path(self, _configfile_path):
+        pass
+
+    def set_xmlrpc_by_config(self, _request):
+        pass
+
+    def set_xmlrpc(self, *_args, **_kwargs):
+        pass
+
+    @staticmethod
+    def _iso_utc_now():
+        # Format Orbeon expects: java.time.Instant.parse("2025-09-02T09:59:07Z")
+        return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+    def _pick_version(self):
+        # Default to "1"; you can plumb request headers later if you want to honor Orbeon-Form-Definition-Version
+        return "1"
+
+    def _render_forms_xml(self, version, all_versions=False, all_forms=False):
+        if not self.app or not self.form:
+            return "<forms/>"
+
+        now_z = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        # Minimal, valid payload for Orbeon’s Form Metadata API
+        return f"""<forms>
+          <form operations="admin *">
+            <application-name>{self.app}</application-name>
+            <form-name>{self.form}</form-name>
+            <title>{self.form}</title>
+            <available>true</available>
+            <created-time>{now_z}</created-time>
+            <last-modified-time>{now_z}</last-modified-time>
+            <published-time>{now_z}</published-time>
+            <form-version>1</form-version>
+          </form>
+        </forms>"""
+
+    def read(self):
+        all_versions = str(self.args.get("all-versions", "false")).lower() == "true"
+        all_forms = str(self.args.get("all-forms", "false")).lower() == "true"
+
+        try:
+            version = self._pick_version(getattr(self, "request_headers", {}))
+        except Exception:
+            version = "1"
+
+        xml_text = self._render_forms_xml(version, all_versions=all_versions, all_forms=all_forms)
+        _logger.error(f"xml_text: {xml_text}")
+        return xml_text  # ← plain str, NOT Response
+
+    # Graceful fallbacks if these accidentally get called
+    def search(self):
+        return self.read()
+
+    def save(self):
+        return self.read()
+
+    def delete(self):
+        return Response("", status=204)
 
 class OdooServiceHandler(OrbeonHandlerBase):
     def __init__(self, app, form, data_type, path=(), args={}, data=None):
