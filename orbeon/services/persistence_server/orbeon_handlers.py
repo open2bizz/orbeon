@@ -33,6 +33,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 from datetime import datetime, timezone
+from xml.sax.saxutils import escape
 from werkzeug.wrappers import Response
 
 _log = utils._log
@@ -346,24 +347,31 @@ class FormMetadataHandler:
         # Default to "1"; you can plumb request headers later if you want to honor Orbeon-Form-Definition-Version
         return "1"
 
-    def _render_forms_xml(self, version, all_versions=False, all_forms=False):
+    def _render_forms_xml(self, version="1", all_versions=False, all_forms=False):
+        # If no app/form, return an empty, valid container
         if not self.app or not self.form:
             return "<forms/>"
 
         now_z = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        # Minimal, valid payload for Orbeon’s Form Metadata API
-        return f"""<forms>
-          <form operations="admin *">
-            <application-name>{self.app}</application-name>
-            <form-name>{self.form}</form-name>
-            <title>{self.form}</title>
-            <available>true</available>
-            <created-time>{now_z}</created-time>
-            <last-modified-time>{now_z}</last-modified-time>
-            <published-time>{now_z}</published-time>
-            <form-version>1</form-version>
-          </form>
-        </forms>"""
+        app = escape(str(self.app))
+        form = escape(str(self.form))
+        title = form  # adjust if you have a real title
+
+        # If you don’t actually support multiple forms/versions yet, still honor the flags
+        # by returning a single <form/> entry (that’s acceptable to Orbeon).
+        return f"""<?xml version="1.0" encoding="UTF-8"?>
+    <forms>
+      <form operations="admin *">
+        <application-name>{app}</application-name>
+        <form-name>{form}</form-name>
+        <title>{title}</title>
+        <available>true</available>
+        <created>{now_z}</created>
+        <last-modified>{now_z}</last-modified>
+        <published>{now_z}</published>
+        <form-version>{escape(str(version))}</form-version>
+      </form>
+    </forms>"""
 
     def read(self):
         all_versions = str(self.args.get("all-versions", "false")).lower() == "true"
@@ -376,7 +384,14 @@ class FormMetadataHandler:
 
         xml_text = self._render_forms_xml(version, all_versions=all_versions, all_forms=all_forms)
         _logger.error(f"xml_text: {xml_text}")
-        return xml_text  # ← plain str, NOT Response
+
+        # Return an explicit XML response so Werkzeug doesn’t default to text/plain
+        return Response(
+            response=xml_text,
+            status=200,
+            mimetype="application/xml",
+            content_type="application/xml; charset=UTF-8",
+        )
 
     # Graceful fallbacks if these accidentally get called
     def search(self):
