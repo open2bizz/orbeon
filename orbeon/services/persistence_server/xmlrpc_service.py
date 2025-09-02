@@ -22,37 +22,39 @@ import xmlrpc.client
 import logging
 import base64
 import configparser
-
+from odoo.tools import config as odoo_config
 _logger = logging.getLogger(__name__)
 
 class XMLRPCService(object):
 
     def __init__(self, db, uid, pwd, url):
-        config = configparser.ConfigParser()
-        config.read('/etc/odoo-server.conf')
-        odoo_username = config.get('Odoo-Orbeon', 'username')
-        odoo_password = config.get('Odoo-Orbeon', 'password')
-        user = base64.b64decode(uid).decode('utf-8')
-        passw = base64.b64decode(pwd).decode('utf-8')
-        odoo_db = config.get('Odoo-Orbeon', 'odoo_db')
+        odoo_username = str(odoo_config.get("orbeon_user") or "")
+        odoo_password = str(odoo_config.get("orbeon_password") or "")
+        _logger.error(uid)
+        #user = base64.b64decode(uid).decode('utf-8')
+        #passw = base64.b64decode(pwd).decode('utf-8')
+        odoo_db = str(odoo_config.get("odoo_db") or "")
         
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
         odoo_uid = common.authenticate(odoo_db,odoo_username , odoo_password, {})
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
-        odoo_user = models.execute_kw(odoo_db, odoo_uid, odoo_password, 'res.users', 'search_read', [[["login","=",user]]], {'fields': ['api_key','login']})
+        odoo_user = models.execute_kw(odoo_db, odoo_uid, odoo_password, 'res.users', 'search_read', [[["login","=",odoo_username    ]]], {'fields': ['api_key','login']})
         if odoo_user:
             key=odoo_user[0]['api_key']
             if key:
                 self.pwd = key
             else:
-                self.pwd = passw
+                self.pwd = odoo_password
         else:
-            self.pwd = passw
+            self.pwd = odoo_password
         self.db = db
 #        self.uid, self.pwd = uid,pwd 
-        self.uid = user
+        self.uid = odoo_username
         self.url = url
-        self.connect(key=odoo_user[0]['api_key'])
+        if odoo_user:
+            self.connect(key=odoo_user[0]['api_key'])
+        else:
+            self.connect()
         
         
     def connect(self, key=False):

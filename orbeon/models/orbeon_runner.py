@@ -18,9 +18,6 @@
 # https://www.gnu.org/licenses/lgpl.txt.
 #
 ##############################################################################
-from orbeon_xml_api.builder import Builder as BuilderAPI
-from orbeon_xml_api.runner import Runner as RunnerAPI
-from orbeon_xml_api.runner_copy_builder_merge import RunnerCopyBuilderMerge as RunnerCopyBuilderMergeAPI
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
@@ -231,68 +228,7 @@ class OrbeonRunner(models.Model):
         if not self.can_merge():
             return False
         return self.merge_builder(self.builder_id.current_builder_id)
-    
-    @api.returns('self')
-    def merge_builder(self, builder_obj):
-        """ Merge (and replace) this Runner XML with XML from builder_obj """
-        context = self._context
 
-        if 'lang' in context:
-            lang = context['lang']
-        elif 'lang' not in context and 'uid' in context:
-            lang = self.env['res.users'].browse(context['uid']).lang
-        elif 'lang' not in context and 'uid' not in context:
-            lang = self.env['res.users'].browse(self.write_uid.id).lang
-        else:
-            raise UserError("The form can't be loaded. No (user) language was set.")
-
-        res_lang = self.env['res.lang'].search([('code', '=', lang)], limit=1)
-        # This Runner
-        builder_xml = u'%s' % self.builder_id.xml
-        builder_xml = bytes(bytearray(builder_xml, encoding='utf-8'))
-        builder_api = BuilderAPI(builder_xml, res_lang.iso_code)
-
-        runner_xml = u'%s' % self.xml
-        runner_xml = bytes(bytearray(runner_xml, encoding='utf-8'))
-
-        runner_api = RunnerAPI(runner_xml, builder_api)
-
-        # Builder to be merged with
-        merge_builder_xml = u'%s' % builder_obj.xml
-        merge_builder_xml = bytes(bytearray(merge_builder_xml, encoding='utf-8'))
-        merge_builder_api = BuilderAPI(merge_builder_xml, res_lang.iso_code)
-        merger_api = RunnerCopyBuilderMergeAPI(runner_api, merge_builder_api, no_copy_prefix='NC.')
-        #merged_runner = merger_api.merge()
-#        query = "//*[@id='fr-form-resources']/resources//resource[@xml:lang='nl']"
-        query = "//*[@id='fr-form-instance']/form"
-        resource = merge_builder_api.xml_root.xpath(query)
-        _logger.debug('___Resource [0] ___ %s', resource[0].text)
-        parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
-        resource_root = etree.XML(etree.tostring(resource[0], encoding='UTF-8'), parser)
-        #resource_xml = etree.tostring(resource_root, encoding="unicode")
-        #res_dict = xmltodict.parse(resource_xml)
-        root = etree.XML(runner_xml, parser)
-        for key in builder_api.controls:
-            key = str(key, encoding='utf-8')
-            q = "//" + key
-            result = root.xpath(q)
-            new_result = resource_root.xpath(q)
-            if new_result and result:
-                _logger.debug('___Got result and new result ___ %s %s', result[0].text, new_result)
-                if new_result[0].tag[0:3] != 'NC.':
-                    if new_result and result:
-                        new_result[0].text = result[0].text
-        new_xml = etree.tostring(resource_root, encoding="utf-8")            
-
-
-
-        self.write({
-            'xml': new_xml,
-            'builder_id': builder_obj.id,
-            'is_merged': True
-        })
-
-        return self
 
     @api.model
     def orbeon_search_read_builder(self, domain=None, fields=None):

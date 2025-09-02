@@ -213,15 +213,15 @@ class OrbeonBuilder(models.Model):
         if not vals.get('builder_template_id', False) and not vals.get('xml', False):
             raise ValidationError("Missing either a \"Builder Form Template\" or XML")
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        self.validate_create_xml(vals_list)
+    @api.model
+    def create(self, vals):
+        self.validate_create_xml(vals)
 
-        if vals_list.get('builder_template_id', False):
-            template = self.env['orbeon.builder.template'].browse(vals_list['builder_template_id'])
+        if vals.get('builder_template_id', False):
+            template = self.env['orbeon.builder.template'].browse(vals['builder_template_id'])
             root = etree.fromstring(template.xml)
-        elif 'xml' in vals_list:
-            xml = u"%s" % vals_list['xml']
+        elif 'xml' in vals:
+            xml = u"%s" % vals['xml']
             xml = bytes(bytearray(xml, encoding='utf-8'))
 
             root = etree.fromstring(xml)
@@ -229,27 +229,28 @@ class OrbeonBuilder(models.Model):
         if len(root.xpath('//application-name')) > 0:
             root.xpath('//application-name')[0].text = 'odoo'
 
-        if 'name' in vals_list and len(root.xpath('//form-name')) > 0:
-            root.xpath('//form-name')[0].text = vals_list['name']
+        if 'name' in vals and len(root.xpath('//form-name')) > 0:
+            root.xpath('//form-name')[0].text = vals['name']
 
-        if 'title' in vals_list and vals_list['title']:
-            root.xpath('//metadata/title')[0].text = vals_list['title']
+        if 'title' in vals and vals['title']:
+            root.xpath('//metadata/title')[0].text = vals['title']
 
             if len(root.xpath('//title')) > 0:
-                root.xpath('//title')[0].text = vals_list['title']
+                root.xpath('//title')[0].text = vals['title']
 
             if len(root.xpath('//xh:title', namespaces={'xh': "http://www.w3.org/1999/xhtml"})) > 0:
                 root.xpath('//xh:title', namespaces={'xh': "http://www.w3.org/1999/xhtml"})[0].text = vals['title']
 
-        vals_list['xml'] = etree.tostring(root, encoding='unicode')
+        vals['xml'] = etree.tostring(root, encoding='unicode')
 
-        res = super(OrbeonBuilder, self).create(vals_list)
-        if 'parent_id' not in vals_list:
-            master_record = self.env['orbeon.master'].create({'master_builder_id' : res.id})
-        if 'parent_id' in vals_list:
-            master_record = self.env['orbeon.master'].search([('master_builder_id','=',vals_list['parent_id'])])
-            if master_record:
-                res.master_id = master_record.id            
+        res = super(OrbeonBuilder, self).create(vals)
+        if 'parent_id' not in vals:
+            master_record = self.env['orbeon.master'].create({'master_builder_id': res.id})
+        if 'parent_id' in vals:
+            master_record = self.env['orbeon.master'].search([('master_builder_id', '=', vals['parent_id'])])
+        if master_record:
+            res.master_id = master_record.id
+
         return res
 
     
@@ -291,10 +292,10 @@ class OrbeonBuilder(models.Model):
             "name": self.name,
             "type": "ir.actions.act_window",
             "res_model": "orbeon.builder",
-            "view_mode": "form, tree",
+            "view_mode": "form, list",
             "views": [
                 [form_view.id, "form"],
-                [tree_view.id, "tree"],
+                [list_view.id, "list"],
             ],
             "target": "current",
             "res_id": res.id,

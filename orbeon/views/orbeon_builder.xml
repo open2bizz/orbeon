@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
         <record id="orbeon_builder_form_form" model="ir.ui.view">
@@ -7,24 +7,20 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                      <field options="{'clickable': '1'}" name="state" widget="statusbar" />
+                      <field options="{'clickable': '1'}" name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button name="new_version_builder_form" type="object" attrs="{'invisible':[('id','=',False)]}"
-                                    string="New Version" class="oe_stat_button" icon="fa-clone" />
-                            <button name="open_orbeon_builder_form" type="object" attrs="{'invisible':['|', ('state','!=','new'), ('id','=',False)]}"
-                                    string="Edit" class="oe_stat_button" icon="fa-edit" />
-                            <button name="open_orbeon_builder_form" type="object" attrs="{'invisible':['|', ('state','=','new'), ('id','=',False)]}"
-                                    string="View" class="oe_stat_button" icon="fa-eye" />
-                            <button name="view_runner_forms" type="object"
-                                    string="View runner forms" class="oe_stat_button" icon="fa-list-alt" />
+                            <button name="new_version_builder_form" type="object" invisible="not id" string="New Version" class="oe_stat_button" icon="fa-clone"/>
+                            <button name="open_orbeon_builder_form" type="object" invisible="state != 'new' or not id" string="Edit" class="oe_stat_button" icon="fa-edit"/>
+                            <button name="open_orbeon_builder_form" type="object" invisible="state == 'new' or not id" string="View" class="oe_stat_button" icon="fa-eye"/>
+                            <button name="view_runner_forms" type="object" string="View runner forms" class="oe_stat_button" icon="fa-list-alt"/>
                         </div>
 
                         <div class="oe_title">
                             <h1>
                                 <strong>
-                                    <field name="name" placeholder="Name..." attrs='{"readonly": ["|", "&amp;", ("version",">",1), ("version","=",1), ("state","!=","new")]}'/>
+                                    <field name="name" placeholder="Name..." readonly="(version &gt; 1 and version == 1) or state != 'new'"/>
                                 </strong>
                             </h1>
                         </div>
@@ -33,38 +29,35 @@
                             <page name="general" string="General">
                                 <group>
                                     <field name="id" invisible="1"/>
-                                    <field name="title" />
-                                    <field name="description" />
-                                    <field name="res_model_id" />
+                                    <field name="title"/>
+                                    <field name="description"/>
+                                    <field name="res_model_id"/>
                                 </group>
                                 <group string="Version">
-                                    <field name="version" />
-                                    <field name="version_comment" />
-                                    <field name="parent_id" />
-                                    <field name="builder_template_id" />
+                                    <field name="version"/>
+                                    <field name="version_comment"/>
+                                    <field name="parent_id"/>
+                                    <field name="builder_template_id"/>
                                 </group>
                             </page>
                             <page name="settings" string="Settings">
                                 <group>
-                                    <field name="server_id" />
-                                    <field name="url" widget="url"></field>
-                                    <field name="debug_mode" />
+                                    <field name="server_id"/>
+                                    <field name="url" widget="url"/>
+                                    <field name="debug_mode"/>
                                 </group>
                             </page>
                             <page name="xml" string="XML">
                                 <field name="xml"/>
                             </page>
-                            <page name="master_slave" string="Master Builder" groups="base.group_no_one" attrs="{'invisible' : [('parent_id','=',False)]}">
+                            <page name="master_slave" string="Master Builder" groups="base.group_no_one" invisible="not parent_id">
                                 <group>
                                     <field name="master_id"/>
                                 </group>                               
                             </page>
                         </notebook>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" />
-                        <field name="message_ids" widget="mail_thread" />
-                    </div>
+                    <chatter/>
                 </form>
             </field>
         </record>
@@ -73,14 +66,14 @@
             <field name="name">orbeon.builder_form.tree</field>
             <field name="model">orbeon.builder</field>
             <field name="arch" type="xml">
-                <tree>
-                    <field name="name" />
-                    <field name="version" />
-                    <field name="title" />
-                    <field name="state" />
-                    <field name="res_model_id" />
-                    <field name="parent_id" />
-                </tree>
+                <list>
+                    <field name="name"/>
+                    <field name="version"/>
+                    <field name="title"/>
+                    <field name="state"/>
+                    <field name="res_model_id"/>
+                    <field name="parent_id"/>
+                </list>
             </field>
         </record>
 
@@ -88,21 +81,21 @@
             <field name="name">Orbeon Builder Forms</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">orbeon.builder</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
         <record id="builder_form_action_tree" model="ir.actions.act_window.view">
-            <field name="act_window_id" ref="orbeon_builder_form_action" />
-            <field name="sequence" eval="1" />
-            <field name="view_mode">tree</field>
-            <field name="view_id" ref="orbeon_builder_form_tree" />
+            <field name="act_window_id" ref="orbeon_builder_form_action"/>
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="orbeon_builder_form_tree"/>
         </record>
 
         <record id="builder_form_action_form" model="ir.actions.act_window.view">
-            <field name="act_window_id" ref="orbeon_builder_form_action" />
-            <field name="sequence" eval="2" />
+            <field name="act_window_id" ref="orbeon_builder_form_action"/>
+            <field name="sequence" eval="2"/>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="orbeon_builder_form_form" />
+            <field name="view_id" ref="orbeon_builder_form_form"/>
         </record>
 
         <record id="orbeon_master_form" model="ir.ui.view">
@@ -111,7 +104,7 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <div class="oe_title" >
+                        <div class="oe_title">
                             <h2>
                                 <strong>
                                     <field name="display_name"/>
@@ -119,7 +112,7 @@
                             </h2>
                         </div>
                         <group>
-                            <field name="master_builder_id"  readonly="1"/>
+                            <field name="master_builder_id" readonly="1"/>
                             <field name="slave_ids" readonly="1"/>            
                         </group>   
                     </sheet>     
@@ -131,11 +124,11 @@
             <field name="name">orbeon_master_tree</field>
             <field name="model">orbeon.master</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="display_name"/>
                     <field name="master_builder_id"/>
                     <field name="slave_ids" widget="many2many_tags"/>                    
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -144,15 +137,10 @@
             <field name="name">Orbeon Master</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">orbeon.master</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
-        <menuitem id="orbeon_master_menu"
-            name="Orbeon Master"
-            parent="orbeon_settings_menu"
-            action="orbeon_master_action"
-            groups="orbeon.orbeon_admin"
-            sequence="10"/>
+        <menuitem id="orbeon_master_menu" name="Orbeon Master" parent="orbeon_settings_menu" action="orbeon_master_action" groups="orbeon.orbeon_admin" sequence="10"/>
 
     </data>
 </odoo>
