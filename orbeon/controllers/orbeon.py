@@ -51,7 +51,7 @@ class Orbeon(http.Controller):
         in_headers.update({'Openerp-Database': odoo_session.get('db')})
         _logger.debug('___Odoo session___ %s', odoo_session)
         x = base64.b64encode(bytes(odoo_session.get('login'), 'utf-8'))
-        y = base64.b64encode(str(config.get('orbeon_password'))
+        y = base64.b64encode(str(config.get('orbeon_password')))
         in_headers.update({'Authorization': 'Basic %s' % (x.decode('utf-8') + ':' + y.decode('utf-8'))})
         _logger.debug('Calling Orbeon on url %s with header %s' % (o.netloc, in_headers))
         curl = urlparse(http.request.httprequest.url)._replace(netloc=o.netloc, scheme='http')
