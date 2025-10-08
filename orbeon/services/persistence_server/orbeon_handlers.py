@@ -107,15 +107,16 @@ class OrbeonHandlerBase(object):
             #  we need to read name first, then create a loop.
             #  Maybe we could add a extra field on attachmens to search directly?
             #  something like a master_id for orbeon builders which have the same name?
+            _logger.error(f"form_doc_id: {self.form_doc_id}")
             builder_name = self.xmlrpc.search_read(
-                'orbeon.builder',
+                'orbeon.runner',
                 [[("id", "=", self.form_doc_id)]],
-                ['name'],
+                ['name','builder_id'],
             )
             # _logger.debug('------ BUILDER NAME -- %s ', builder_name[0]['name'])
             all_versions = self.xmlrpc.search_read(
                 "orbeon.builder",
-                [[("name", "=", builder_name[0]['name'])]],
+                [[("id", "=", builder_name[0]['builder_id'][0])]],
                 ['id'],
             )
             versions_ids = []
@@ -145,7 +146,7 @@ class OrbeonHandlerBase(object):
             'name': self.form_data_id,
             'store_fname': self.form_data_id,
             'description': self.form_data_id,
-            "datas": base64.b64encode(self.data)
+            "datas": base64.b64encode(self.data).decode('utf-8')
         }
         self.xmlrpc.create(
             'ir.attachment',

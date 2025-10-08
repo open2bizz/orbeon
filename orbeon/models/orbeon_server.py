@@ -244,22 +244,16 @@ class OrbeonServer(models.Model):
         app = services.persistence_server.wsgi_server.create_app(configfile_path)
         wsgi_server = self._persistence_wsgi_server(processtype)
         wsgi_app_server = wsgi_server(ORBEON_PERSISTENCE_SERVER_INTERFACE, port, app)
-
         stopper = threading.Event()
-
-        t = OrbeonThreadedWSGIServer(
-            name=uuid,
-            server=wsgi_app_server,
-            stopper=stopper
-        )
-
-        t.setDaemon(True)
+        t = OrbeonThreadedWSGIServer(name=uuid, server=wsgi_app_server, stopper=stopper)
+        t.daemon = True
         _logger.info('Starting HTTP (werkzeug) %s (thread: %s) on port %s', ORBEON_PERSISTENCE_SERVER_PREFIX, uuid, port)
         t.start()
 
     def _stop_persistence_server(self, uuid, port):
         for thread in threading.enumerate():
-            if thread.getName() == uuid:
+            #if thread.getName() == uuid:
+            if thread.name == uuid:
                 thread.stopper.set()
                 _logger.info("Stopping HTTP (werkzeug) %s (thread: %s) on port %s", ORBEON_PERSISTENCE_SERVER_PREFIX, uuid, port)
                 thread.server.server_close()

@@ -95,6 +95,8 @@ class XMLRPCService(object):
         @type fields: single dictionary in an array
         @return: array of dicts
         """
+        _logger.error(f"model: {model}")
+        _logger.error(f"fields: {fields}")
         return self.api.execute_kw(self.db,self.uid,self.pwd, model, "create", fields)
 
     def write(self, model, id, fields):
