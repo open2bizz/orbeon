@@ -207,53 +207,145 @@ class OrbeonBuilder(models.Model):
                                   % (self.name, self.version))
 
     def validate_create_xml(self, vals):
-        if vals.get('builder_template_id', False) and vals.get('xml', False):
-            raise ValidationError("Provide either a \"Builder Form Template\" or XML. Both not allowed.")
+        _logger.debug(vals)
+        for rec in vals:
+            if rec['builder_template_id'] and rec['xml']:
+                raise ValidationError("Provide either a \"Builder Form Template\" or XML. Both not allowed.")
 
-        if not vals.get('builder_template_id', False) and not vals.get('xml', False):
-            raise ValidationError("Missing either a \"Builder Form Template\" or XML")
+            if not rec['builder_template_id'] and not rec['xml']:
+                raise ValidationError("Missing either a \"Builder Form Template\" or XML")
 
-    @api.model
-    def create(self, vals):
-        self.validate_create_xml(vals)
+    from lxml import etree
+    from odoo import api, models
+    from odoo.exceptions import ValidationError
+    import logging
 
-        if vals.get('builder_template_id', False):
-            template = self.env['orbeon.builder.template'].browse(vals['builder_template_id'])
-            root = etree.fromstring(template.xml)
-        elif 'xml' in vals:
-            xml = u"%s" % vals['xml']
-            xml = bytes(bytearray(xml, encoding='utf-8'))
+    _logger = logging.getLogger(__name__)
 
-            root = etree.fromstring(xml)
+    class OrbeonBuilder(models.Model):
+        _name = "orbeon.builder"
 
-        if len(root.xpath('//application-name')) > 0:
-            root.xpath('//application-name')[0].text = 'odoo'
+        # ... your fields here ...
 
-        if 'name' in vals and len(root.xpath('//form-name')) > 0:
-            root.xpath('//form-name')[0].text = vals['name']
+        @api.model_create_multi
+        def create(self, vals_list):
+            _logger.error("create called; #records=%s", len(vals_list))
+            self.validate_create_xml(vals_list)
+            _logger.error("validate_create_xml ok")
 
-        if 'title' in vals and vals['title']:
-            root.xpath('//metadata/title')[0].text = vals['title']
+            # XML namespaces we may need
+            ns = {
+                "xhtml": "http://www.w3.org/1999/xhtml",
+                "xh": "http://www.w3.org/1999/xhtml",  # alias used below
+            }
 
-            if len(root.xpath('//title')) > 0:
-                root.xpath('//title')[0].text = vals['title']
+            # --- 1) Preprocess XML for each payload ---
+            for idx, vals in enumerate(vals_list):
+                _logger.error("processing index=%s keys=%s", idx, list(vals.keys()))
+                root = None
 
-            if len(root.xpath('//xh:title', namespaces={'xh': "http://www.w3.org/1999/xhtml"})) > 0:
-                root.xpath('//xh:title', namespaces={'xh': "http://www.w3.org/1999/xhtml"})[0].text = vals['title']
+                try:
+                    # from template?
+                    if vals.get("builder_template_id"):
+                        _logger.error("using builder_template_id=%s", vals["builder_template_id"])
+                        template = self.env["orbeon.builder.template"].browse(vals["builder_template_id"])
+                        xml_bytes = template.xml if isinstance(template.xml, (bytes, bytearray)) else (
+                                    template.xml or "").encode("utf-8")
+                        root = etree.fromstring(xml_bytes)
+                        _logger.error("template xml parsed: %s", root is not None)
 
-        vals['xml'] = etree.tostring(root, encoding='unicode')
+                    # or from incoming xml field?
+                    elif "xml" in vals and vals["xml"]:
+                        _logger.error("using inline xml field")
+                        xml_val = vals["xml"]
+                        if isinstance(xml_val, (bytes, bytearray)):
+                            xml_bytes = bytes(xml_val)
+                        else:
+                            xml_bytes = str(xml_val).encode("utf-8")
+                        root = etree.fromstring(xml_bytes)
+                        _logger.error("inline xml parsed: %s", root is not None)
 
-        res = super(OrbeonBuilder, self).create(vals)
-        if 'parent_id' not in vals:
-            master_record = self.env['orbeon.master'].create({'master_builder_id': res.id})
-        if 'parent_id' in vals:
-            master_record = self.env['orbeon.master'].search([('master_builder_id', '=', vals['parent_id'])])
-        if master_record:
-            res.master_id = master_record.id
+                    else:
+                        _logger.error("no xml source found in vals; skipping xml edits for this record")
 
-        return res
+                except Exception:
+                    _logger.error("XML parsing failed at index=%s", idx, exc_info=True)
+                    # choose: either raise (strict) or continue without XML edits
+                    # raise ValidationError("Kon XML niet parsen; controleer het formulier/payload.")
+                    root = None
 
-    
+                # Update XML nodes only if we have a root
+                if root is not None:
+                    try:
+                        # //application-name (only if present in this template)
+                        nodes = root.xpath("//application-name")
+                        if nodes:
+                            nodes[0].text = "odoo"
+                            _logger.error("application-name set to 'odoo'")
+
+                        # //form-name from vals['name']
+                        if "name" in vals:
+                            nodes = root.xpath("//form-name")
+                            if nodes:
+                                nodes[0].text = str(vals["name"])
+                                _logger.error("form-name set to %r", vals["name"])
+
+                        # Title handling (several possible locations)
+                        title_val = vals.get("title")
+                        if title_val:
+                            # <metadata><title>
+                            nodes = root.xpath("//metadata/title")
+                            if nodes:
+                                nodes[0].text = str(title_val)
+                                _logger.error("metadata/title set to %r", title_val)
+
+                            # bare //title (non-XHTML) if present
+                            nodes = root.xpath("//title")
+                            if nodes:
+                                nodes[0].text = str(title_val)
+                                _logger.error("//title set to %r", title_val)
+
+                            # XHTML title <xhtml:title>
+                            nodes = root.xpath("//xh:title", namespaces=ns)
+                            if nodes:
+                                nodes[0].text = str(title_val)
+                                _logger.error("xhtml:title set to %r", title_val)
+
+                        # write back
+                        vals["xml"] = etree.tostring(root, encoding="unicode")
+                        _logger.error("xml re-serialized for index=%s", idx)
+
+                    except Exception:
+                        _logger.error("XML mutation/serialization failed at index=%s", idx, exc_info=True)
+                        # If desired, make this strict:
+                        # raise ValidationError("Kon XML niet bijwerken.")
+                        # Otherwise, leave original xml as-is.
+
+            # --- 2) Create records ---
+            records = super(OrbeonBuilder, self).create(vals_list)
+            _logger.error("super().create returned %s records", len(records))
+
+            # --- 3) Master linkage per created record ---
+            # zip keeps the 1:1 mapping between incoming vals and created rec
+            for rec, vals in zip(records, vals_list):
+                try:
+                    if "parent_id" not in vals:
+                        master = self.env["orbeon.master"].create({"master_builder_id": rec.id})
+                        rec.master_id = master.id
+                        _logger.error("created master %s for builder %s", master.id, rec.id)
+                    else:
+                        master = self.env["orbeon.master"].search([("master_builder_id", "=", vals["parent_id"])],
+                                                                  limit=1)
+                        if master:
+                            rec.master_id = master.id
+                            _logger.error("linked builder %s to existing master %s", rec.id, master.id)
+                        else:
+                            _logger.error("no master found for parent_id=%s (builder %s)", vals["parent_id"], rec.id)
+                except Exception:
+                    _logger.error("post-create master linkage failed for builder %s", rec.id, exc_info=True)
+
+            return records
+
     @api.returns('self', lambda value: value)
     def copy_as_new_version(self):
         """Get last version for builder-forms by traversing-up on parent_id"""
