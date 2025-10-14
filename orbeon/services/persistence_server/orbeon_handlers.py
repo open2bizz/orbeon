@@ -73,7 +73,7 @@ class OrbeonHandlerBase(object):
         )
         db = self.config.get("odoo config", "database_name")
         usr = self.config.get("odoo config", "username")
-        pwd = self.config.get("odoo config", "password")
+        pwd = self.config.get("odoo config", "password", raw=True)
         b64str = request.headers.get("Authorization").replace("Basic ", "")
         auth = b64str.split(":")
         user = auth[0]

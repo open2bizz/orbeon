@@ -30,32 +30,36 @@ class XMLRPCService(object):
     def __init__(self, db, uid, pwd, url):
         odoo_username = str(odoo_config.get("orbeon_user") or "")
         odoo_password = str(odoo_config.get("orbeon_password") or "")
-        _logger.error(uid)
+        _logger.error(odoo_password)
         #user = base64.b64decode(uid).decode('utf-8')
         #passw = base64.b64decode(pwd).decode('utf-8')
         odoo_db = str(odoo_config.get("odoo_db") or "")
         
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
         odoo_uid = common.authenticate(odoo_db,odoo_username , odoo_password, {})
+        _logger.error(odoo_uid)
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
-        odoo_user = models.execute_kw(odoo_db, odoo_uid, odoo_password, 'res.users', 'search_read', [[["login","=",odoo_username    ]]], {'fields': ['api_key','login']})
-        if odoo_user:
-            key=odoo_user[0]['api_key']
-            if key:
-                self.pwd = key
-            else:
-                self.pwd = odoo_password
-        else:
-            self.pwd = odoo_password
+        #odoo_user = models.execute_kw(odoo_db, odoo_uid, odoo_password, 'res.users', 'search_read', [[["login","=",odoo_username    ]]], {'fields': ['api_key','login']})
+        #if odoo_user:
+        #    key=odoo_user[0]['api_key']
+        #    if key:
+        #        self.pwd = key
+        #    else:
+        #        self.pwd = odoo_password
+        #else:
+        self.pwd = odoo_password
         self.db = db
 #        self.uid, self.pwd = uid,pwd 
         self.uid = odoo_username
         self.url = url
-        if odoo_user:
-            self.connect(key=odoo_user[0]['api_key'])
-        else:
-            self.connect()
-        
+        #if odoo_user:
+            #self.connect(key=odoo_user[0]['api_key'])
+            #self.connect()
+            #_logger.error("!")
+        #else:
+        self.connect()
+        _logger.error("!!")
+
         
     def connect(self, key=False):
         self.common = xmlrpc.client.ServerProxy("%s/xmlrpc/2/common" % self.url)
