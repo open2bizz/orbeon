@@ -225,9 +225,11 @@ class OrbeonRunner(models.Model):
     @api.returns('self')
     def merge_current_builder(self):
         """ Merge (and replace) this Runner XML with XML from the current/published Builder """
-        if not self.can_merge():
-            return False
-        return self.merge_builder(self.builder_id.current_builder_id)
+        # Todo version 18. Refactor! Function merge_builder() was removed because of XML api dependance
+        return True
+        # if not self.can_merge():
+        #     return False
+        # return self.merge_builder(self.builder_id.current_builder_id)
 
 
     @api.model
