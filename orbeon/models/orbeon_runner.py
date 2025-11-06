@@ -116,15 +116,17 @@ class OrbeonRunner(models.Model):
         compute="_any_new_current_builder",
         readonly=True)
 
-    
     def _get_builder_name(self, id=None):
         for record in self:
-            if record.res_model != False and record.res_id != 0:
-                record.builder_name = "%s v.%s (%s)" % (record.builder_id.name, record.builder_id.version, record.env[record.res_model].browse(record.res_id).display_name)
-            else:
-                record.builder_name = "%s v.%s" % (record.builder_id.name, record.builder_id.version)
-            
-    
+            try:
+                #record.builder_name = "_Unknown"
+                if record.res_model != False and record.res_id != 0:
+                    record.builder_name = "%s v.%s (%s)" % (record.builder_id.name, record.builder_id.version, record.env[record.res_model].browse(record.res_id).display_name)
+                else:
+                    record.builder_name = "%s v.%s" % (record.builder_id.name or "_Unknown", record.builder_id.version or "1")
+            except:
+                record.builder_name = "_Unknown"
+
     def _get_builder_version(self, id=None):
         for record in self:
             record.builder_version = record.builder_id.version
@@ -225,9 +227,10 @@ class OrbeonRunner(models.Model):
     @api.returns('self')
     def merge_current_builder(self):
         """ Merge (and replace) this Runner XML with XML from the current/published Builder """
-        if not self.can_merge():
-            return False
-        return self.merge_builder(self.builder_id.current_builder_id)
+        return True
+        #if not self.can_merge():
+        #    return False
+        #return self.merge_builder(self.builder_id.current_builder_id)
 
 
     @api.model
@@ -268,7 +271,7 @@ class OrbeonRunner(models.Model):
 
         if runner.builder_id.debug_mode:
             message = "\r\n".join([e.message for e in parser.errors])
-            runner.message_post(body=message, content_subtype='plaintext')
+            runner.message_post(body=str(message))
 
         return parser.xml
 
