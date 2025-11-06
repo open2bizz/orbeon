@@ -16,13 +16,14 @@
 #
 ##############################################################################
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError,UserError
+from odoo.exceptions import ValidationError, UserError
 
 from lxml import etree
 
 import re
 
 import logging
+
 _logger = logging.getLogger(__name__)
 
 STATE_CURRENT = 'current'
@@ -30,19 +31,19 @@ STATE_NEW = 'new'
 STATE_OBSOLETE = 'obsolete'
 
 
-
 class OrbeonBuilder(models.Model):
     _name = 'orbeon.master'
     _description = 'Orbeon Master Version'
 
     master_builder_id = fields.Many2one('orbeon.builder', string="Master Builder")
-    slave_ids = fields.One2many('orbeon.builder','master_id', string="Slave Builders")
+    slave_ids = fields.One2many('orbeon.builder', 'master_id', string="Slave Builders")
     display_name = fields.Char("Name", compute="_set_name")
 
     def _set_name(self):
         for master in self:
             b_name = master.master_builder_id.complete_name or "Unknown"
             master.display_name = "Master " + "(" + b_name + ")"
+
 
 class OrbeonBuilder(models.Model):
     _name = 'orbeon.builder'
@@ -153,32 +154,36 @@ class OrbeonBuilder(models.Model):
         help="Shows debug info (by field) in Orbeon Runner Form.\r\nAdds debug-info as messages (by field) on the Runner record."
     )
 
-    master_id = fields.Many2one("orbeon.master", string="Master Builder", help='This field links the first ever version of this builder will all the newly created builders.')
+    master_id = fields.Many2one("orbeon.master", string="Master Builder",
+                                help='This field links the first ever version of this builder will all the newly created builders.')
+
+    @api.onchange('builder_template_id')
+    def onchange_builder_template_id(self):
+        for record in self:
+            record.xml = record.builder_template_id.xml
 
     def init(self):
-        if self.env['ir.model'].search([('model','=','orbeon.master')]) and self.env['ir.model'].search([('model','=','orbeon.builder')]):
-            for builder in self.env['orbeon.builder'].search([('parent_id','=',False)]):
-                master_record = self.env['orbeon.master'].search([('master_builder_id','=',builder.id)])
-                
+        if self.env['ir.model'].search([('model', '=', 'orbeon.master')]) and self.env['ir.model'].search(
+                [('model', '=', 'orbeon.builder')]):
+            for builder in self.env['orbeon.builder'].search([('parent_id', '=', False)]):
+                master_record = self.env['orbeon.master'].search([('master_builder_id', '=', builder.id)])
+
                 if not master_record:
-                    master_record = self.env['orbeon.master'].create({'master_builder_id' : builder.id})
-                slave_ids = self.env['orbeon.builder'].search([('id','child_of',master_record.master_builder_id.id),('id','!=',master_record.master_builder_id.id)])
-                master_record.slave_ids = [(6,0, slave_ids.ids)]
-                    
-                    
+                    master_record = self.env['orbeon.master'].create({'master_builder_id': builder.id})
+                slave_ids = self.env['orbeon.builder'].search([('id', 'child_of', master_record.master_builder_id.id),
+                                                               ('id', '!=', master_record.master_builder_id.id)])
+                master_record.slave_ids = [(6, 0, slave_ids.ids)]
 
     @api.depends('title', 'name', 'version')
     def _compute_complete_name(self):
         for record in self:
             record.complete_name = "%s (%s @ %s @ %s)" % (record.title, record.name, record.state, record.version)
 
-    
     @api.constrains('name')
     def constaint_check_name(self):
         if re.search(r"[^a-zA-Z0-9_-]", self.name) is not None:
             raise ValidationError('Name is invalid. Use ASCII letters, digits, "-" or "_"')
 
-    
     @api.constrains("name", "state")
     def constraint_one_current(self):
         """Per name there can be only 1 record with
@@ -187,12 +192,11 @@ class OrbeonBuilder(models.Model):
         cur_record = self.search([
             ("name", "=", self.name),
             ("state", "=", STATE_CURRENT)
-            ])
+        ])
         if len(cur_record) > 1:
             raise ValidationError("%s already has a record with status 'current'.\
                     Only one builder form can be current at a time." % self.name)
 
-    
     @api.constrains("name", "version")
     def constraint_one_version(self):
         """Per name there can be only 1 record with
@@ -250,7 +254,7 @@ class OrbeonBuilder(models.Model):
                         _logger.error("using builder_template_id=%s", vals["builder_template_id"])
                         template = self.env["orbeon.builder.template"].browse(vals["builder_template_id"])
                         xml_bytes = template.xml if isinstance(template.xml, (bytes, bytearray)) else (
-                                    template.xml or "").encode("utf-8")
+                                template.xml or "").encode("utf-8")
                         root = etree.fromstring(xml_bytes)
                         _logger.error("template xml parsed: %s", root is not None)
 
@@ -363,12 +367,10 @@ class OrbeonBuilder(models.Model):
         alter["version"] = builder.version + 1
         alter["builder_template_id"] = False
 
-
         res = super(OrbeonBuilder, self).copy(alter)
 
         return res
 
-    
     def new_version_builder_form(self):
         res = self.copy_as_new_version()
 
@@ -394,7 +396,6 @@ class OrbeonBuilder(models.Model):
             "context": {}
         }
 
-    
     def open_orbeon_builder_form(self):
         return {
             "name": 'Orbeon',
@@ -403,7 +404,6 @@ class OrbeonBuilder(models.Model):
             'url': self.url
         }
 
-    
     def _get_url(self):
         self.ensure_one()
         if isinstance(self.id, models.NewId):
@@ -420,7 +420,6 @@ class OrbeonBuilder(models.Model):
 
         self.url = url
 
-    
     def _current_builder(self):
         for record in self:
             query = """WITH RECURSIVE
@@ -449,7 +448,8 @@ class OrbeonBuilder(models.Model):
                 record.current_builder_id = record.browse(builder_id[0])
             else:
                 record.current_builder_id = False
-                raise UserError("Er is geen huidige versie van het formulier ontwerp, neem contact op met de systeembeheerder!")
+                raise UserError(
+                    "Er is geen huidige versie van het formulier ontwerp, neem contact op met de systeembeheerder!")
 
     @api.model
     def orbeon_search_read_data(self, domain=None, fields=None):
@@ -462,10 +462,8 @@ class OrbeonBuilder(models.Model):
 
         return res
 
-    
     def get_xml_form_node(self):
         parser = etree.XMLParser(ns_clean=True, encoding='utf-8')
-
 
         # Cast to string, to prevent Unicode error!
         root = etree.XML(self.xml.encode('utf-8'), parser)
