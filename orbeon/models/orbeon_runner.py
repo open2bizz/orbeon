@@ -210,7 +210,7 @@ class OrbeonRunner(models.Model):
     def copy(self, default=None):
         for record in self:
             runner = super(OrbeonRunner, record).copy(default)
-            ctx = record._context.copy({'origin_form_id': record.id})
+            ctx = record._context.copy()
             runner.with_context(ctx).merge_current_builder()
         return runner
 
