@@ -213,7 +213,7 @@ class OrbeonRunner(models.Model):
 
         if current_version:
             _logger.debug("current_version for builder %s: %s", self.builder_id.id, current_version.id)
-
+            diff = {}
             if current_version.id != self.builder_id.id:
                 # Compare XML for logging purposes
                 diff = self._compare_builder_xml(old_builder.xml, current_version.xml, with_details=True)
