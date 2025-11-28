@@ -16,42 +16,24 @@
 #
 ##############################################################################
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError, UserError
+from odoo.exceptions import ValidationError,UserError
 
 from lxml import etree
 
 import re
 
 import logging
-
 _logger = logging.getLogger(__name__)
 
 STATE_CURRENT = 'current'
 STATE_NEW = 'new'
 STATE_OBSOLETE = 'obsolete'
 
-
-class OrbeonBuilder(models.Model):
-    _name = 'orbeon.master'
-    _description = 'Orbeon Master Version'
-
-    master_builder_id = fields.Many2one('orbeon.builder', string="Master Builder")
-    slave_ids = fields.One2many('orbeon.builder', 'master_id', string="Slave Builders")
-    display_name = fields.Char("Name", compute="_set_name")
-
-    def _set_name(self):
-        for master in self:
-            b_name = master.master_builder_id.complete_name or "Unknown"
-            master.display_name = "Master " + "(" + b_name + ")"
-
-
 class OrbeonBuilder(models.Model):
     _name = 'orbeon.builder'
     _inherit = ['mail.thread']
     _description = 'Orbeon Builder'
-
     _order = 'res_model_id DESC, name ASC, version ASC'
-    _rec_name = 'complete_name'
 
     name = fields.Char(
         "Name",
@@ -59,6 +41,12 @@ class OrbeonBuilder(models.Model):
         help="""
         Identifies this specific form (e.g. "health-record" or "claim").
         This name can be used in APIs, so we recommend you use only lowercases characters.""",
+    )
+
+    display_name = fields.Char(
+        "Full Name",
+        compute='_compute_display_name',
+        store=True
     )
 
     title = fields.Char(
@@ -70,12 +58,6 @@ class OrbeonBuilder(models.Model):
     description = fields.Text(
         "Description",
         help="Form description in the current language")
-
-    complete_name = fields.Char(
-        "Full Name",
-        compute='_compute_complete_name',
-        store=True
-    )
 
     parent_id = fields.Many2one(
         'orbeon.builder',
@@ -175,9 +157,9 @@ class OrbeonBuilder(models.Model):
                 master_record.slave_ids = [(6, 0, slave_ids.ids)]
 
     @api.depends('title', 'name', 'version')
-    def _compute_complete_name(self):
+    def _compute_display_name(self):
         for record in self:
-            record.complete_name = "%s (%s @ %s @ %s)" % (record.title, record.name, record.state, record.version)
+            record.display_name = " ".join([record.title or "", record.name or "", "(", str(record.version or ""), ")"])
 
     @api.constrains('name')
     def constaint_check_name(self):

@@ -77,10 +77,33 @@
             </field>
         </record>
 
+        <record id="orbeon_builder_form_search" model="ir.ui.view">
+            <field name="name">orbeon_builder_form_search</field>
+            <field name="model">orbeon.builder</field>
+            <field name="arch" type="xml">
+                <search string="Search Orbeon Builder">
+                    <field name="name"/>
+                    <field name="master_id"/>
+                    <field name="title"/>
+                    <field name="res_model_id"/>
+                    <separator/>
+                    <filter string="New" name="new" domain="[('state', '=', 'new')]"/>
+                    <filter string="Current" name="current" domain="[('state', '=', 'current')]"/>
+                    <filter string="Obsolete" name="obsolete" domain="[('state', '=', 'obsolete')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Model" name="model" context="{'group_by': 'res_model_id'}"/>
+                        <filter string="Status" name="status" context="{'group_by': 'state'}"/>
+                        <filter string="Master" name="master_id" context="{'group_by': 'master_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
         <record id="orbeon_builder_form_action" model="ir.actions.act_window">
             <field name="name">Orbeon Builder Forms</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">orbeon.builder</field>
+            <field name="context">{'search_default_current': 1}</field>
             <field name="view_mode">list,form</field>
         </record>
 
