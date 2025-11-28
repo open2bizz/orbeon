@@ -136,8 +136,9 @@ class OrbeonBuilder(models.Model):
         help="Shows debug info (by field) in Orbeon Runner Form.\r\nAdds debug-info as messages (by field) on the Runner record."
     )
 
-    master_id = fields.Many2one("orbeon.master", string="Master Builder",
-                                help='This field links the first ever version of this builder will all the newly created builders.')
+    master_id = fields.Many2one(
+        "orbeon.master", string="Master Builder",
+        help='This field links the first ever version of this builder and all the newly created builders.')
 
     @api.onchange('builder_template_id')
     def onchange_builder_template_id(self):

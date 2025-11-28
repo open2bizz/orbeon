@@ -204,22 +204,18 @@ class OrbeonRunner(models.Model):
             * Merge runner XML to match current builder instance structure
         """
         self.ensure_one()
-
         if not self.builder_id or not self.builder_id.xml:
             raise UserError(_("No builder XML linked to this runner."))
 
         old_builder = self.builder_id
+        # Use the computed field to reliably find the current version
+        current_version = self.builder_id.current_builder_id
 
-        all_versions = self.env['orbeon.builder'].search([
-            ('parent_id', 'child_of', self.builder_id.id)
-        ])
-        _logger.debug("all_versions for builder %s: %s", self.builder_id.id, all_versions.ids)
-
-        current_version = all_versions.filtered(lambda x: x.state == 'current')[:1]
         if current_version:
-            _logger.debug("current_version for builder %s: %s", self.builder_id.id, current_version.ids)
+            _logger.debug("current_version for builder %s: %s", self.builder_id.id, current_version.id)
 
             if current_version.id != self.builder_id.id:
+                # Compare XML for logging purposes
                 diff = self._compare_builder_xml(old_builder.xml, current_version.xml, with_details=True)
                 _logger.info(
                     "Builder diff for runner %s (old builder %s -> current builder %s): "
@@ -227,19 +223,23 @@ class OrbeonRunner(models.Model):
                     self.id, old_builder.id, current_version.id,
                     diff["added"], diff["removed"], diff["changed"],
                 )
-            
-            for key, text_diff in (diff.get("details") or {}).items():
-                _logger.info("XML diff for control '%s':\n%s", key, text_diff)
+
+                for key, text_diff in (diff.get("details") or {}).items():
+                    _logger.info("XML diff for control '%s':\n%s", key, text_diff)
+
+                # Perform the merge
                 merged_runner_xml = self._merge_runner_with_builder(
-                    self.xml or "",
-                    current_version.xml or "",
-                    instance_id="fr-form-instance",
+                    self.xml, current_version.xml
                 )
 
+                # Save the result
                 self.write({
-                    "xml": merged_runner_xml,
-                    "builder_id": current_version.id,
-                    "is_merged": True,
+                    'xml': merged_runner_xml,
+                    'builder_id': current_version.id,
+                    'is_merged': True,
                 })
+                _logger.info("Runner %s merged successfully to builder version %s", self.id, current_version.version)
+            else:
+                _logger.info("Runner %s is already on the current builder version.", self.id)
 
         return True

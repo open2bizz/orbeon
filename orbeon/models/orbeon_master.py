@@ -14,5 +14,5 @@ class OrbeonMaster(models.Model):
     @api.depends('master_builder_id')
     def _set_name(self):
         for master in self:
-            b_name = master.master_builder_id.complete_name or "Unknown"
+            b_name = master.master_builder_id.display_name or "Unknown"
             master.display_name = "Master " + "(" + b_name + ")"
