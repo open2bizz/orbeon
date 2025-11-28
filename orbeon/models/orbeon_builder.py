@@ -259,7 +259,7 @@ class OrbeonBuilder(models.Model):
             "view_mode": "form, list",
             "views": [
                 [form_view.id, "form"],
-                [list_view.id, "list"],
+                [tree_view.id, "list"],
             ],
             "target": "current",
             "res_id": res.id,

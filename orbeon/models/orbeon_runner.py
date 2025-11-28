@@ -208,9 +208,10 @@ class OrbeonRunner(models.Model):
             rec.message_post(body=body)
    
     def copy(self, default=None):
-        runner = super(OrbeonRunner, self).copy(default)
-        ctx = self._context.copy()
-        runner.with_context(ctx).merge_current_builder()
+        for record in self:
+            runner = super(OrbeonRunner, record).copy(default)
+            ctx = record._context.copy()
+            runner.with_context(ctx).merge_current_builder()
         return runner
 
     
