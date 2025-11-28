@@ -237,7 +237,7 @@ class OrbeonRunner(models.Model):
                 )
 
                 # Save the result
-                self.write({
+                self.with_context(tracking_disable=True).sudo().write({
                     'xml': merged_runner_xml,
                     'builder_id': current_version.id,
                     'is_merged': True,
