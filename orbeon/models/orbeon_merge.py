@@ -12,6 +12,10 @@ class OrbeonRunner(models.Model):
     _description = "Orbeon Runner"
 
     is_merged = fields.Boolean(default=False)
+    origin_form_id = fields.Many2one(
+        'orbeon.runner', 'Origin Form',
+        help='When set, this id the form where it was originally copied from'
+    )
 
     @api.model
     def _build_runner_index(self, root: Tag):
@@ -242,4 +246,34 @@ class OrbeonRunner(models.Model):
             else:
                 _logger.info("Runner %s is already on the current builder version.", self.id)
 
+            self.merge_current_builder_not_copy()
+        else:
+            _logger.warning("No current builder version found for builder %s.", self.builder_id.id)
+            raise UserError(_("No current builder version found for builder %s.") % self.builder_id.id)
         return True
+
+    @api.model
+    def _is_nc_element(self, el: Tag):
+        """Check if element name starts with NC or nc."""
+        if not getattr(el, "name", None):
+            return False
+        return el.name.lower().startswith('nc')
+
+    @api.model
+    def _empty_element(self, el: Tag):
+        """Empty element content and children."""
+        el.string = ''
+        for child in el.find_all():
+            child.decompose()
+
+    def merge_current_builder_not_copy(self):
+        self.ensure_one()
+        if not self.origin_form_id:
+            return True
+        else:
+            soup = BeautifulSoup(self.xml or "", "xml")
+            for el in soup.find_all():
+                if self._is_nc_element(el):
+                    self._empty_element(el)
+            self.write({'xml': str(soup)})
+            return True
