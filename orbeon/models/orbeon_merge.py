@@ -242,14 +242,17 @@ class OrbeonRunner(models.Model):
                     'builder_id': current_version.id,
                     'is_merged': True,
                 })
-                _logger.info("Runner %s merged successfully to builder version %s", self.id, current_version.version)
+                message = (_("Merged successfully from version (%s) to latest builder version %s.")
+                         % (old_builder.version,current_version.version))
+                self.message_post(body=message)
+                _logger.info(message)
             else:
                 _logger.info("Runner %s is already on the current builder version.", self.id)
-
-            self.merge_current_builder_not_copy()
         else:
             _logger.warning("No current builder version found for builder %s.", self.builder_id.id)
             raise UserError(_("No current builder version found for builder %s.") % self.builder_id.id)
+        if self.origin_form_id:
+            self.merge_current_builder_not_copy()
         return True
 
     @api.model
