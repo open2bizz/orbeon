@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="orbeon_builder_template_erp_idm" model="orbeon.builder.template">
+            <field name="module_id" ref="base.module_orbeon"/>
+	        <field name="form_name">empty_form</field>
+            <field name="xml" type="xml">
+                <xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:exf="http://www.exforms.org/exf/1-0" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:saxon="http://saxon.sf.net/" xmlns:sql="http://orbeon.org/oxf/xml/sql" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fb="http://orbeon.org/oxf/xml/form-builder" xmlns:math="http://www.w3.org/2005/xpath-functions/math">
+                  <xh:head>
+                    <xh:title>Nieuw Sjabloon</xh:title>
+                    <xf:model id="fr-form-model" xxf:expose-xpath-types="true">
+                      <!-- Main instance -->
+                      <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all" xxf:index="id">
+                        <form>
+                          <section-1>
+                            <grid-1>
+                              <ERP.partner_id.display_name />
+                              <ERP.partner_id.city />
+                              <ERP.partner_id.dob />
+                              <ERP.project_id.name />
+                              <ERP.user_id.partner_id.display_name />
+                              <ERP.stage_id.name />
+                              <ERP.project_id.description />
+                            </grid-1>
+                          </section-1>
+                        </form>
+                      </xf:instance>
+                      <!-- Bindings -->
+                      <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+                        <xf:bind id="section-1-bind" name="section-1" ref="section-1">
+                          <xf:bind id="grid-1-bind" ref="grid-1" name="grid-1">
+                            <xf:bind id="ERP.partner_id.display_name-bind" name="ERP.partner_id.display_name" ref="ERP.partner_id.display_name" xxf:whitespace="trim" readonly="true()" />
+                            <xf:bind id="ERP.partner_id.city-bind" name="ERP.partner_id.city" ref="ERP.partner_id.city" xxf:whitespace="trim" readonly="true()" />
+                            <xf:bind id="ERP.partner_id.dob-bind" ref="ERP.partner_id.dob" name="ERP.partner_id.dob" type="xf:date" readonly="true()" />
+                            <xf:bind id="ERP.project_id.name-bind" ref="ERP.project_id.name" name="ERP.project_id.name" xxf:whitespace="trim" readonly="true()" />
+                            <xf:bind id="ERP.user_id.partner_id.display_name-bind" ref="ERP.user_id.partner_id.display_name" name="ERP.user_id.partner_id.display_name" xxf:whitespace="trim" readonly="true()" />
+                            <xf:bind id="ERP.stage_id.name-bind" ref="ERP.stage_id.name" name="ERP.stage_id.name" xxf:whitespace="trim" readonly="true()" />
+                            <xf:bind id="ERP.project_id.description-bind" ref="ERP.project_id.description" name="ERP.project_id.description" readonly="true()" />
+                          </xf:bind>
+                        </xf:bind>
+                      </xf:bind>
+                      <!-- Metadata -->
+                      <xf:instance xxf:readonly="true" id="fr-form-metadata" xxf:exclude-result-prefixes="#all">
+                        <metadata>
+                          <application-name>orbeon</application-name>
+                          <updated-with-version>2024.1.202501010102 CE</updated-with-version>
+                          <form-name>orbeon</form-name>
+                          <title xml:lang="en">Nieuw Sjabloon</title>
+                          <description xml:lang="nl" />
+                          <library-versions>
+                            <_>1</_>
+                          </library-versions>
+                          <email>
+                            <templates>
+                              <template name="default">
+                                <headers />
+                                <exclude-from-all-control-values />
+                              </template>
+                            </templates>
+                            <parameters />
+                          </email>
+                        </metadata>
+                      </xf:instance>
+                      <!-- Attachments -->
+                      <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+                        <attachments>
+                          <css mediatype="text/css" filename="" size="" />
+                          <pdf mediatype="application/pdf" filename="" size="" />
+                        </attachments>
+                      </xf:instance>
+                      <!-- All form resources -->
+                      <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
+                        <resources>
+                          <resource xml:lang="nl">
+                            <section-1>
+                              <label>ERP Velden</label>
+                            </section-1>
+                            <ERP.partner_id.display_name>
+                              <label>Client Naam</label>
+                              <hint />
+                            </ERP.partner_id.display_name>
+                            <ERP.partner_id.city>
+                              <label>Client Woonplaats</label>
+                              <hint />
+                            </ERP.partner_id.city>
+                            <ERP.partner_id.dob>
+                              <label>Client Geb Datum</label>
+                              <hint />
+                            </ERP.partner_id.dob>
+                            <ERP.project_id.name>
+                              <label>Order</label>
+                              <hint />
+                            </ERP.project_id.name>
+                            <ERP.user_id.partner_id.display_name>
+                              <label>Behandelaar</label>
+                              <hint />
+                            </ERP.user_id.partner_id.display_name>
+                            <ERP.stage_id.name>
+                              <label>Locatie</label>
+                              <hint />
+                            </ERP.stage_id.name>
+                            <ERP.project_id.description>
+                              <label>Contact data</label>
+                              <hint />
+                            </ERP.project_id.description>
+                          </resource>
+                        </resources>
+                      </xf:instance>
+                    </xf:model>
+                  </xh:head>
+                  <xh:body>
+                    <fr:view>
+                      <fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:oxf="http://www.orbeon.com/oxf/processors">
+                        <fr:section id="section-1-control" bind="section-1-bind">
+                          <xf:label ref="$form-resources/section-1/label" />
+                          <fr:grid id="grid-1-grid" bind="grid-1-bind">
+                            <fr:c y="1" x="1" w="6">
+                              <xf:input id="ERP.partner_id.display_name-control" bind="ERP.partner_id.display_name-bind">
+                                <xf:label ref="$form-resources/ERP.partner_id.display_name/label" />
+                                <xf:hint ref="$form-resources/ERP.partner_id.display_name/hint" />
+                                <xf:alert ref="$fr-resources/detail/labels/alert" />
+                              </xf:input>
+                            </fr:c>
+                            <fr:c y="1" x="7" w="6">
+                              <xf:input id="ERP.partner_id.city-control" bind="ERP.partner_id.city-bind">
+                                <xf:label ref="$form-resources/ERP.partner_id.city/label" />
+                                <xf:hint ref="$form-resources/ERP.partner_id.city/hint" />
+                                <xf:alert ref="$fr-resources/detail/labels/alert" />
+                              </xf:input>
+                            </fr:c>
+                            <fr:c x="1" y="2" w="6">
+                              <fr:date xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava" id="ERP.partner_id.dob-control" bind="ERP.partner_id.dob-bind">
+                                <xf:label ref="$form-resources/ERP.partner_id.dob/label" />
+                                <xf:hint ref="$form-resources/ERP.partner_id.dob/hint" />
+                                <xf:alert ref="$fr-resources/detail/labels/alert" />
+                              </fr:date>
+                            </fr:c>
+                            <fr:c x="7" y="2" w="6">
+                              <xf:input xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.project_id.name-control" bind="ERP.project_id.name-bind">
+                                <xf:label ref="$form-resources/ERP.project_id.name/label" />
+                                <xf:hint ref="$form-resources/ERP.project_id.name/hint" />
+                                <xf:alert ref="$fr-resources/detail/labels/alert" />
+                              </xf:input>
+                            </fr:c>
+                            <fr:c x="1" y="3" w="6">
+                              <xf:input xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.user_id.partner_id.display_name-control" bind="ERP.user_id.partner_id.display_name-bind">
+                                <xf:label ref="$form-resources/ERP.user_id.partner_id.display_name/label" />
+                                <xf:hint ref="$form-resources/ERP.user_id.partner_id.display_name/hint" />
+                                <xf:alert ref="$fr-resources/detail/labels/alert" />
+                              </xf:input>
+                            </fr:c>
+                            <fr:c x="7" y="3" w="6">
+                              <xf:input xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.stage_id.name-control" bind="ERP.stage_id.name-bind">
+                                <xf:label ref="$form-resources/ERP.stage_id.name/label" />
+                                <xf:hint ref="$form-resources/ERP.stage_id.name/hint" />
+                                <xf:alert ref="$fr-resources/detail/labels/alert" />
+                              </xf:input>
+                            </fr:c>
+                            <fr:c x="1" y="4" w="12">
+                              <xf:textarea xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.project_id.description-control" bind="ERP.project_id.description-bind">
+                                <xf:label ref="$form-resources/ERP.project_id.description/label" />
+                                <xf:hint ref="$form-resources/ERP.project_id.description/hint" />
+                                <xf:alert ref="$fr-resources/detail/labels/alert" />
+                              </xf:textarea>
+                            </fr:c>
+                          </fr:grid>
+                        </fr:section>
+                      </fr:body>
+                    </fr:view>
+                  </xh:body>
+                </xh:html>
+
+            </field>
+        </record>
+    </data>
+</odoo>
