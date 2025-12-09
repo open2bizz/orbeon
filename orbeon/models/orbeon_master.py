@@ -16,3 +16,12 @@ class OrbeonMaster(models.Model):
         for master in self:
             b_name = master.master_builder_id.display_name or "Unknown"
             master.display_name = "Master " + "(" + b_name + ")"
+
+    def get_current_builder(self):
+        self.ensure_one()
+        builder = self.env['orbeon.builder'].search(
+            [('master_id', '=', self.id), ('state', '=', 'current')], limit=1, order='version DESC')
+        if builder:
+            return builder_id
+        else:
+            return False
