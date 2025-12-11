@@ -22,6 +22,6 @@ class OrbeonMaster(models.Model):
         builder = self.env['orbeon.builder'].search(
             [('master_id', '=', self.id), ('state', '=', 'current')], limit=1, order='version DESC')
         if builder:
-            return builder_id
+            return builder
         else:
             return False
