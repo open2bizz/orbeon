@@ -275,34 +275,10 @@ class OrbeonBuilder(models.Model):
 
     def _current_builder(self):
         for record in self:
-            query = """WITH RECURSIVE
-                builder_children AS (
-                SELECT
-                    id, parent_id, name, state
-                FROM
-                    orbeon_builder
-                WHERE id = {builder_id}
-                    UNION ALL
-                SELECT
-                    ob.id, ob.parent_id, ob.name, ob.state
-                FROM
-                    builder_children AS bc
-                    INNER JOIN orbeon_builder AS ob ON ob.parent_id = bc.id
-                )
-                SELECT id AS builder_id
-                FROM builder_children
-                WHERE state = '{state}' LIMIT 1
-            """.format(builder_id=record.id, state=STATE_CURRENT)
-
-            record.env.cr.execute(query)
-
-            builder_id = record.env.cr.fetchone()
-            if builder_id:
-                record.current_builder_id = record.browse(builder_id[0])
-            else:
-                record.current_builder_id = False
-                raise UserError(
-                    "Er is geen huidige versie van het formulier ontwerp, neem contact op met de systeembeheerder!")
+            current_builder = False
+            if record.master_id:
+                current_builder = record.master_id.get_current_builder()
+            record.current_builder_id = current_builder.id
 
     @api.model
     def orbeon_search_read_data(self, domain=None, fields=None):
