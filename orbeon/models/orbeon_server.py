@@ -129,15 +129,17 @@ class OrbeonServer(models.Model):
         help="Whether Builder Form Templates had been created. Unset to delete and re-create Builder Template Forms."
     )
 
-    def _register_hook(self):
-        """
-        Odoo 18 hook called after the registry is loaded.
-        Ensures persistence servers start automatically.
-        """
-        super()._register_hook()
-        # Use a new cursor to avoid polluting the main transaction
-        # and run the autostart logic
-        self._autostart_persistence_servers(self.env)
+    # Todo: Fix me! This works, but then again not when updating reporting fields. Then this gives errors!
+    # Maybe stop persistence server on reporting fields change?
+    # def _register_hook(self):
+    #     """
+    #     Odoo 18 hook called after the registry is loaded.
+    #     Ensures persistence servers start automatically.
+    #     """
+    #     super()._register_hook()
+    #     # Use a new cursor to avoid polluting the main transaction
+    #     # and run the autostart logic
+    #     self._autostart_persistence_servers(self.env)
 
     @api.constrains("name")
     def constraint_unique_name(self):
