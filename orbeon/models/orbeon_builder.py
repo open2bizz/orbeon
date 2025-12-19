@@ -275,10 +275,11 @@ class OrbeonBuilder(models.Model):
 
     def _current_builder(self):
         for record in self:
-            current_builder = False
             if record.master_id:
-                current_builder = record.master_id.get_current_builder()
-            record.current_builder_id = current_builder.id
+                builder = self.env['orbeon.builder'].search(
+                    [('master_id','=', record.master_id.id),('state', '=', 'current')],
+                    order='id desc', limit=1) or False
+            record.current_builder_id = builder.id if builder else False
 
     @api.model
     def orbeon_search_read_data(self, domain=None, fields=None):
