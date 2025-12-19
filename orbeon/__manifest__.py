@@ -47,5 +47,4 @@
     ],
     "application": True,
     "installable": True,
-    'post_load': 'post_load',
 }

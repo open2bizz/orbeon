@@ -20,18 +20,3 @@
 from . import models
 from . import services
 from . import controllers
-
-def post_load():
-    """
-    Hook to start the persistence servers when Odoo starts.
-    """
-    from odoo import api, SUPERUSER_ID
-    import odoo
-
-    # We need a cursor to create an environment
-    db_name = odoo.tools.config.get('db_name')
-    if db_name:
-        with odoo.registry(db_name).cursor() as cr:
-            env = api.Environment(cr, SUPERUSER_ID, {})
-            # Call the autostart method from your model
-            env['orbeon.server']._autostart_persistence_servers(env)

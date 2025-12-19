@@ -129,6 +129,16 @@ class OrbeonServer(models.Model):
         help="Whether Builder Form Templates had been created. Unset to delete and re-create Builder Template Forms."
     )
 
+    def _register_hook(self):
+        """
+        Odoo 18 hook called after the registry is loaded.
+        Ensures persistence servers start automatically.
+        """
+        super()._register_hook()
+        # Use a new cursor to avoid polluting the main transaction
+        # and run the autostart logic
+        self._autostart_persistence_servers(self.env)
+
     @api.constrains("name")
     def constraint_unique_name(self):
         cur_record = self.search([("name", "=", self.name)])
