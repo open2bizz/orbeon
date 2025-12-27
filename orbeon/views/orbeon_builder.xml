@@ -37,7 +37,7 @@
                                     <field name="version"/>
                                     <field name="version_comment"/>
                                     <field name="parent_id"/>
-                                    <field name="builder_template_id"/>
+                                    <field name="builder_template_id" readonly="id &gt; 0"/>
                                 </group>
                             </page>
                             <page name="settings" string="Settings">
@@ -47,8 +47,8 @@
                                     <field name="debug_mode"/>
                                 </group>
                             </page>
-                            <page name="xml" string="XML">
-                                <field name="xml"/>
+                            <page name="xml" string="XML" groups="orbeon.orbeon_admin">
+                                <field name="xml" widget="code" options="{'mode': 'xml'}" readonly="state != 'new'"/>
                             </page>
                             <page name="master_slave" string="Master Builder" groups="base.group_no_one" invisible="not parent_id">
                                 <group>
