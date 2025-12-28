@@ -48,6 +48,7 @@
                                 </group>
                             </page>
                             <page name="xml" string="XML" groups="orbeon.orbeon_admin">
+                                <button name="action_pretty_print_xml" type="object" string="Pretty Format"/>
                                 <field name="xml" widget="code" options="{'mode': 'xml'}" readonly="state != 'new'"/>
                             </page>
                             <page name="master_slave" string="Master Builder" groups="base.group_no_one" invisible="not parent_id">

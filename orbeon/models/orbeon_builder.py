@@ -306,6 +306,19 @@ class OrbeonBuilder(models.Model):
 
         return etree.tostring(form, encoding='unicode')
 
+    def action_pretty_print_xml(self):
+        """ Pretty prints the XML field using lxml """
+        for record in self:
+            if not record.xml:
+                continue
+            try:
+                parser = etree.XMLParser(remove_blank_text=True)
+                node = etree.fromstring(record.xml.encode('utf-8'), parser)
+                record.xml = etree.tostring(node, pretty_print=True, encoding='unicode')
+            except Exception as e:
+                _logger.error("Failed to pretty print XML: %s", str(e))
+                raise UserError(_("Invalid XML format: %s") % str(e))
+
     def view_runner_forms(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id("orbeon.orbeon_runner_form_action")
