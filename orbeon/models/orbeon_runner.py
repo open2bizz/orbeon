@@ -25,6 +25,9 @@ from lxml import etree
 import xmltodict
 import pprint
 import json
+import random
+import string
+from datetime import datetime, timedelta
 from ..services.runner_xml_parser import runner_xml_parser
 
 import logging
@@ -278,6 +281,101 @@ class OrbeonRunner(models.Model):
 
     def write_rec_model_name(self):
         model = self.env['ir.model'].browse(self.builder_id.res_model_id.id)
-        for obj in model:
-            rec = self.env[obj.model].browse(self.res_id)
-            self.write({'model_record_name':rec.name})
+
+    def action_generate_test_xml(self):
+        """ Generates random test data based on the builder definition """
+        self.ensure_one()
+        if not self.builder_id.xml:
+            raise UserError(_("The linked builder has no XML definition."))
+
+        parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
+        root = etree.fromstring(self.builder_id.xml.encode('utf-8'), parser)
+        namespaces = {
+            'xf': 'http://www.w3.org/2002/xforms',
+            'fr': 'http://orbeon.org/oxf/xml/form-builder',
+            'xh': 'http://www.w3.org/1999/xhtml'
+        }
+
+        # 1. Map Binds to types
+        binds = root.xpath("//xf:bind[@id]", namespaces=namespaces)
+        type_mapping = {}
+        for bind in binds:
+            ref = bind.get('ref')
+            field_name = ref.split('/')[-1] if ref else None
+            if field_name:
+                type_mapping[field_name] = bind.get('type') or 'xf:string'
+
+        # 2. Extract selection options from fr-form-resources
+        selection_options = {}
+        resource_nodes = root.xpath("//xf:instance[@id='fr-form-resources']//resource/*[item]", namespaces=namespaces)
+        for res in resource_nodes:
+            field_name = etree.QName(res).localname
+            values = res.xpath("./item/value/text()")
+            if values:
+                selection_options[field_name] = {
+                    'values': values,
+                    'multiple': False  # Default to single select
+                }
+
+        # 3. Refine 'multiple' selection based on UI components
+        # Find xf:select (multiple) vs xf:select1 / fr:dropdown-select1 (single)
+        multi_selects = root.xpath("//xf:select", namespaces=namespaces)
+        for ctrl in multi_selects:
+            # Try to find the field name from bind or ref
+            ref = ctrl.get('bind') or ctrl.get('ref')
+            if ref:
+                # remove -bind suffix if present and get last part
+                fname = ref.replace('-bind', '').split('/')[-1]
+                if fname in selection_options:
+                    selection_options[fname]['multiple'] = True
+
+        # 4. Get the form structure template
+        form_template_node = root.xpath("//xf:instance[@id='fr-form-instance']/form", namespaces=namespaces)[0]
+        
+        def generate_random_value(field_name, data_type):
+            # Check if it's a selection field (Dropdown, Radio, Checkboxes)
+            if field_name in selection_options:
+                opts = selection_options[field_name]
+                if opts['multiple']:
+                    # Pick 1 to N random values, space-separated for Orbeon checkboxes
+                    count = random.randint(1, len(opts['values']))
+                    return ' '.join(random.sample(opts['values'], count))
+                else:
+                    return random.choice(opts['values'])
+
+            # Fallback to type-based generation
+            if data_type == 'xf:date':
+                return (datetime.now() - timedelta(days=random.randint(0, 3650))).strftime('%Y-%m-%d')
+            elif data_type == 'xf:dateTime':
+                return (datetime.now() - timedelta(days=random.randint(0, 3650))).strftime('%Y-%m-%dT%H:%M:%S')
+            elif data_type in ['xf:integer', 'xf:decimal', 'xf:number']:
+                return str(random.randint(1, 1000))
+            elif data_type == 'xf:boolean':
+                return random.choice(['true', 'false'])
+            elif data_type == 'xf:anyURI':
+                return "http://example.com/test.png"
+            else:
+                return ''.join(random.choices(string.ascii_letters, k=10))
+
+        def fill_node(node):
+            for child in node:
+                tag = etree.QName(child).localname
+                # Rule 1: Skip ERP fields
+                if tag.startswith('ERP'):
+                    child.text = ''
+                    continue
+                
+                if len(child) > 0:
+                    fill_node(child)
+                else:
+                    data_type = type_mapping.get(tag, 'xf:string')
+                    child.text = generate_random_value(tag, data_type)
+
+        # Generate result
+        test_form = etree.fromstring(etree.tostring(form_template_node))
+        fill_node(test_form)
+
+        xml_result = etree.tostring(test_form, encoding='unicode', pretty_print=True)
+        self.xml = f'<?xml version="1.0" encoding="UTF-8"?>\n{xml_result}'
+
+        return True

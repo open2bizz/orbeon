@@ -1,0 +1,344 @@
+<xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:exf="http://www.exforms.org/exf/1-0" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:saxon="http://saxon.sf.net/" xmlns:sql="http://orbeon.org/oxf/xml/sql" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fb="http://orbeon.org/oxf/xml/form-builder" xmlns:math="http://www.w3.org/2005/xpath-functions/math">
+  <xh:head>
+    <xh:title>Nieuw Sjabloon</xh:title>
+    <xf:model id="fr-form-model" xxf:expose-xpath-types="true">
+      <!-- Main instance -->
+      <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all" xxf:index="id">
+        <form>
+          <section-1>
+            <grid-1>
+              <ERP.patient_id.display_name/>
+              <ERP.patient_id.city/>
+              <ERP.patient_id.dob/>
+              <ERP.order.name/>
+              <ERP.physician.display_name/>
+              <ERP.health_center.name/>
+              <ERP.evaluation_id.notes/>
+            </grid-1>
+          </section-1>
+          <section-zorgvraag>
+            <grid-2>
+              <control-1/>
+              <control-2/>
+              <control-3/>
+              <control-4/>
+              <control-7/>
+              <control-5/>
+              <control-6/>
+              <control-8 filename="" mediatype=""/>
+            </grid-2>
+          </section-zorgvraag>
+        </form>
+      </xf:instance>
+      <!-- Bindings -->
+      <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+        <xf:bind id="section-1-bind" name="section-1" ref="section-1">
+          <xf:bind id="grid-1-bind" ref="grid-1" name="grid-1">
+            <xf:bind id="ERP.patient_id.display_name-bind" name="ERP.patient_id.display_name" ref="ERP.patient_id.display_name" xxf:whitespace="trim" readonly="true()"/>
+            <xf:bind id="ERP.patient_id.city-bind" name="ERP.patient_id.city" ref="ERP.patient_id.city" xxf:whitespace="trim" readonly="true()"/>
+            <xf:bind id="ERP.patient_id.dob-bind" ref="ERP.patient_id.dob" name="ERP.patient_id.dob" type="xf:date" readonly="true()"/>
+            <xf:bind id="ERP.order.name-bind" ref="ERP.order.name" name="ERP.order.name" xxf:whitespace="trim" readonly="true()"/>
+            <xf:bind id="ERP.physician.display_name-bind" ref="ERP.physician.display_name" name="ERP.physician.display_name" xxf:whitespace="trim" readonly="true()"/>
+            <xf:bind id="ERP.health_center.name-bind" ref="ERP.health_center.name" name="ERP.health_center.name" xxf:whitespace="trim" readonly="true()"/>
+            <xf:bind id="ERP.evaluation_id.notes-bind" ref="ERP.evaluation_id.notes" name="ERP.evaluation_id.notes" readonly="true()"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="section-zorgvraag-bind" ref="section-zorgvraag" name="section-zorgvraag">
+          <xf:bind id="grid-2-bind" ref="grid-2" name="grid-2">
+            <xf:bind id="control-1-bind" ref="control-1" name="control-1" xxf:whitespace="trim" type="xf:integer"/>
+            <xf:bind id="control-2-bind" ref="control-2" name="control-2" type="xf:decimal"/>
+            <xf:bind id="control-3-bind" ref="control-3" name="control-3" type="xf:date"/>
+            <xf:bind id="control-4-bind" ref="control-4" name="control-4"/>
+            <xf:bind id="control-7-bind" ref="control-7" name="control-7"/>
+            <xf:bind id="control-6-bind" ref="control-6" name="control-6" type="xf:decimal"/>
+            <xf:bind id="control-5-bind" ref="control-5" name="control-5"/>
+            <xf:bind id="control-8-bind" ref="control-8" name="control-8" type="xf:anyURI"/>
+          </xf:bind>
+        </xf:bind>
+      </xf:bind>
+      <!-- Metadata -->
+      <xf:instance xxf:readonly="true" id="fr-form-metadata" xxf:exclude-result-prefixes="#all">
+        <metadata>
+          <application-name>orbeon</application-name>
+          <updated-with-version>2024.1.202501010102 CE</updated-with-version>
+          <form-name>orbeon</form-name>
+          <title xml:lang="en">Nieuw Sjabloon</title>
+          <description xml:lang="nl"/>
+          <library-versions>
+            <_>1</_>
+          </library-versions>
+          <email>
+            <templates>
+              <template name="default">
+                <headers/>
+                <exclude-from-all-control-values/>
+              </template>
+            </templates>
+            <parameters/>
+          </email>
+        </metadata>
+      </xf:instance>
+      <!-- Attachments -->
+      <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+        <attachments>
+          <css mediatype="text/css" filename="" size=""/>
+          <pdf mediatype="application/pdf" filename="" size=""/>
+        </attachments>
+      </xf:instance>
+      <!-- All form resources -->
+      <xf:instance xxf:readonly="true" id="fr-form-resources" xxf:exclude-result-prefixes="#all">
+        <resources>
+          <resource xml:lang="nl">
+            <control-1>
+              <label>Vraag1 (NU een INTEGER)</label>
+              <hint/>
+            </control-1>
+            <control-2>
+              <label>Getal 1</label>
+              <hint/>
+            </control-2>
+            <control-3>
+              <label>Datum1</label>
+              <hint/>
+            </control-3>
+            <control-4>
+              <label>Select1 Dropdown1</label>
+              <hint/>
+              <item>
+                <label>Eerste keuze</label>
+                <value>1</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Tweede keuze</label>
+                <value>2</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Derde keuze</label>
+                <value>3</value>
+                <hint/>
+              </item>
+            </control-4>
+            <control-7>
+              <label>Select 1 Radio</label>
+              <hint/>
+              <item>
+                <label>Eerste keuze</label>
+                <value>1</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Tweede keuze</label>
+                <value>2</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Derde keuze</label>
+                <value>3</value>
+                <hint/>
+              </item>
+            </control-7>
+            <control-5>
+              <label>Select Multi 1</label>
+              <hint/>
+              <item>
+                <label>Eerste keuze</label>
+                <value>1</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Tweede keuze</label>
+                <value>2</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Derde keuze</label>
+                <value>3</value>
+                <hint/>
+              </item>
+            </control-5>
+            <control-6>
+              <label>CONTROL 6BBB</label>
+              <hint/>
+            </control-6>
+            <control-8>
+              <label>Image</label>
+              <hint/>
+            </control-8>
+            <section-1>
+              <label>ERP Velden</label>
+            </section-1>
+            <section-zorgvraag>
+              <label>Zorgvragen</label>
+            </section-zorgvraag>
+            <ERP.patient_id.display_name>
+              <label>Client Naam</label>
+              <hint/>
+            </ERP.patient_id.display_name>
+            <ERP.patient_id.city>
+              <label>Client Woonplaats</label>
+              <hint/>
+            </ERP.patient_id.city>
+            <ERP.patient_id.dob>
+              <label>Client Geb Datum</label>
+              <hint/>
+            </ERP.patient_id.dob>
+            <ERP.order.name>
+              <label>Order</label>
+              <hint/>
+            </ERP.order.name>
+            <ERP.physician.display_name>
+              <label>Behandelaar</label>
+              <hint/>
+            </ERP.physician.display_name>
+            <ERP.health_center.name>
+              <label>Locatie</label>
+              <hint/>
+            </ERP.health_center.name>
+            <ERP.evaluation_id.notes>
+              <label>Notes</label>
+              <hint/>
+            </ERP.evaluation_id.notes>
+          </resource>
+        </resources>
+      </xf:instance>
+    </xf:model>
+  </xh:head>
+  <xh:body>
+    <fr:view>
+      <fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:oxf="http://www.orbeon.com/oxf/processors">
+        <fr:section id="section-1-control" bind="section-1-bind">
+          <xf:label ref="$form-resources/section-1/label"/>
+          <fr:grid id="grid-1-grid" bind="grid-1-bind">
+            <fr:c y="1" x="1" w="6">
+              <xf:input id="ERP.patient_id.display_name-control" bind="ERP.patient_id.display_name-bind">
+                <xf:label ref="$form-resources/ERP.patient_id.display_name/label"/>
+                <xf:hint ref="$form-resources/ERP.patient_id.display_name/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </xf:input>
+            </fr:c>
+            <fr:c y="1" x="7" w="6">
+              <xf:input id="ERP.patient_id.city-control" bind="ERP.patient_id.city-bind">
+                <xf:label ref="$form-resources/ERP.patient_id.city/label"/>
+                <xf:hint ref="$form-resources/ERP.patient_id.city/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </xf:input>
+            </fr:c>
+            <fr:c x="1" y="2" w="6">
+              <fr:date xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava" id="ERP.patient_id.dob-control" bind="ERP.patient_id.dob-bind">
+                <xf:label ref="$form-resources/ERP.patient_id.dob/label"/>
+                <xf:hint ref="$form-resources/ERP.patient_id.dob/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </fr:date>
+            </fr:c>
+            <fr:c x="7" y="2" w="6">
+              <xf:input xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.order.name-control" bind="ERP.order.name-bind">
+                <xf:label ref="$form-resources/ERP.order.name/label"/>
+                <xf:hint ref="$form-resources/ERP.order.name/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </xf:input>
+            </fr:c>
+            <fr:c x="1" y="3" w="6">
+              <xf:input xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.physician.display_name-control" bind="ERP.physician.display_name-bind">
+                <xf:label ref="$form-resources/ERP.physician.display_name/label"/>
+                <xf:hint ref="$form-resources/ERP.physician.display_name/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </xf:input>
+            </fr:c>
+            <fr:c x="7" y="3" w="6">
+              <xf:input xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.health_center.name-control" bind="ERP.health_center.name-bind">
+                <xf:label ref="$form-resources/ERP.health_center.name/label"/>
+                <xf:hint ref="$form-resources/ERP.health_center.name/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </xf:input>
+            </fr:c>
+            <fr:c x="1" y="4" w="12">
+              <xf:textarea xmlns="http://orbeon.org/oxf/xml/form-builder" id="ERP.evaluation_id.notes-control" bind="ERP.evaluation_id.notes-bind">
+                <xf:label ref="$form-resources/ERP.evaluation_id.notes/label"/>
+                <xf:hint ref="$form-resources/ERP.evaluation_id.notes/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </xf:textarea>
+            </fr:c>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="section-zorgvraag-section" bind="section-zorgvraag-bind">
+          <xf:label ref="$form-resources/section-zorgvraag/label"/>
+          <fr:grid id="grid-2-grid" bind="grid-2-bind">
+            <fr:c x="1" y="1" w="6">
+              <fr:number id="control-1-control" bind="control-1-bind" autocomplete="name">
+                <xf:label ref="$form-resources/control-1/label"/>
+                <xf:hint ref="$form-resources/control-1/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </fr:number>
+            </fr:c>
+            <fr:c x="7" y="1" w="6">
+              <fr:number xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:NumberSupport="java:org.orbeon.xbl.NumberSupportJava" id="control-2-control" bind="control-2-bind">
+                <xf:label ref="$form-resources/control-2/label"/>
+                <xf:hint ref="$form-resources/control-2/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </fr:number>
+            </fr:c>
+            <fr:c x="1" y="2" w="6">
+              <fr:date xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:DateSupport="java:org.orbeon.xbl.DateSupportJava" id="control-3-control" bind="control-3-bind">
+                <xf:label ref="$form-resources/control-3/label"/>
+                <xf:hint ref="$form-resources/control-3/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </fr:date>
+            </fr:c>
+            <fr:c x="7" y="2" w="6">
+              <fr:dropdown-select1 xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="control-4-control" bind="control-4-bind">
+                <xf:label ref="$form-resources/control-4/label"/>
+                <xf:hint ref="$form-resources/control-4/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                <xf:itemset ref="$form-resources/control-4/item">
+                  <xf:label ref="label"/>
+                  <xf:value ref="value"/>
+                  <xf:hint ref="hint"/>
+                </xf:itemset>
+              </fr:dropdown-select1>
+            </fr:c>
+            <fr:c x="1" y="3" w="6">
+              <xf:select1 xmlns="http://orbeon.org/oxf/xml/form-builder" id="control-7-control" appearance="full" bind="control-7-bind">
+                <xf:label ref="$form-resources/control-7/label"/>
+                <xf:hint ref="$form-resources/control-7/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                <xf:itemset ref="$form-resources/control-7/item">
+                  <xf:label ref="label"/>
+                  <xf:value ref="value"/>
+                  <xf:hint ref="hint"/>
+                </xf:itemset>
+              </xf:select1>
+            </fr:c>
+            <fr:c x="7" y="3" w="6">
+              <xf:select xmlns="http://orbeon.org/oxf/xml/form-builder" id="control-5-control" appearance="full" bind="control-5-bind">
+                <xf:label ref="$form-resources/control-5/label"/>
+                <xf:hint ref="$form-resources/control-5/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                <xf:itemset ref="$form-resources/control-5/item">
+                  <xf:label ref="label"/>
+                  <xf:value ref="value"/>
+                  <xf:hint ref="hint"/>
+                </xf:itemset>
+              </xf:select>
+            </fr:c>
+            <fr:c x="1" y="4" w="6">
+              <fr:number xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:NumberSupport="java:org.orbeon.xbl.NumberSupportJava" id="control-6-control" bind="control-6-bind">
+                <xf:label ref="$form-resources/control-6/label"/>
+                <xf:hint ref="$form-resources/control-6/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </fr:number>
+            </fr:c>
+            <fr:c x="7" y="4" w="6">
+              <fr:image xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="control-8-control" class="fr-static-attachment" bind="control-8-bind">
+                <xf:label ref="$form-resources/control-8/label"/>
+                <xf:hint ref="$form-resources/control-8/hint"/>
+                <xf:alert ref="$fr-resources/detail/labels/alert"/>
+              </fr:image>
+            </fr:c>
+          </fr:grid>
+        </fr:section>
+      </fr:body>
+    </fr:view>
+  </xh:body>
+</xh:html>
