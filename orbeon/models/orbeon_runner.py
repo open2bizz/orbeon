@@ -134,7 +134,6 @@ class OrbeonRunner(models.Model):
         for record in self:
             record.builder_version = record.builder_id.version
 
-    
     def _get_builder_title(self, id=None):
         for record in self:
             record.builder_title = record.builder_id.title
@@ -143,7 +142,6 @@ class OrbeonRunner(models.Model):
     def _get_res_model(self):
         self.res_model = self.builder_id.res_model_id.model
 
-    
     @api.onchange('builder_id')
     def _get_url(self):
         for rec in self:
@@ -162,7 +160,6 @@ class OrbeonRunner(models.Model):
 
             rec.url = url
 
-    
     def _any_new_current_builder(self):
         for record in self:
             record.any_new_current_builder = False
@@ -171,7 +168,6 @@ class OrbeonRunner(models.Model):
             else:
                 record.any_new_current_builder = (record.builder_id.id != record.builder_id.current_builder_id.id)
 
-    
     def action_open_orbeon_runner(self):
         self.ensure_one()
         for rec in self:
@@ -217,7 +213,6 @@ class OrbeonRunner(models.Model):
             runner.with_context(ctx).merge_current_builder()
         return runner
 
-    
     def can_merge(self):
         """Can this Runner (xml) be merged with a new current Builder? """
         self.ensure_one()
@@ -227,7 +222,6 @@ class OrbeonRunner(models.Model):
         else:
             return True
 
-    
     # @api.returns('self')
     # def merge_current_builder(self):
     #     """ Merge (and replace) this Runner XML with XML from the current/published Builder """
@@ -281,6 +275,19 @@ class OrbeonRunner(models.Model):
 
     def write_rec_model_name(self):
         model = self.env['ir.model'].browse(self.builder_id.res_model_id.id)
+
+    def action_pretty_print_xml(self):
+        """ Pretty prints the XML field using lxml """
+        for record in self:
+            if not record.xml:
+                continue
+            try:
+                parser = etree.XMLParser(remove_blank_text=True)
+                node = etree.fromstring(record.xml.encode('utf-8'), parser)
+                record.xml = etree.tostring(node, pretty_print=True, encoding='unicode')
+            except Exception as e:
+                _logger.error("Failed to pretty print XML: %s", str(e))
+                raise UserError(_("Invalid XML format: %s") % str(e))
 
     def action_generate_test_xml(self):
         """ Generates random test data based on the builder definition """

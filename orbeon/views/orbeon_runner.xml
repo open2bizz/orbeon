@@ -28,6 +28,7 @@
                 </group>
               </page>
               <page groups="base.group_system" name="xml" string="XML">
+                <button name="action_pretty_print_xml" type="object" string="Pretty Format"/>
                 <field name="xml"/>
               </page>
               <page groups="base.group_system" name="technical" string="TECH">
