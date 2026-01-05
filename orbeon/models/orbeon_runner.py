@@ -119,6 +119,9 @@ class OrbeonRunner(models.Model):
         compute="_any_new_current_builder",
         readonly=True)
 
+    #This is a field that is set when form is openend, passwords are nog longer accessible via HTML Headers (are encrypted) and we need to identify certain actions with this user.
+    current_orbeon_user = fields.Many2one('res.users')
+
     def _get_builder_name(self, id=None):
         for record in self:
             try:
@@ -171,6 +174,7 @@ class OrbeonRunner(models.Model):
     def action_open_orbeon_runner(self):
         self.ensure_one()
         for rec in self:
+            rec.current_orbeon_user = self.env.uid
             #2FA Orbeon
             user = self.env['res.users'].browse(self.env.uid)
             if not user.api_key and user.totp_enabled:
