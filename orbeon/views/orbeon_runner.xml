@@ -29,7 +29,7 @@
               </page>
               <page groups="base.group_system" name="xml" string="XML">
                 <button name="action_pretty_print_xml" type="object" string="Pretty Format"/>
-                <field name="xml"/>
+                <field name="xml" widget="code" options="{'mode': 'xml'}" readonly="state not in ('new', 'progress')"/>
               </page>
               <page groups="base.group_system" name="technical" string="TECH">
                 <group>
