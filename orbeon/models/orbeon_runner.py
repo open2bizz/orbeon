@@ -180,15 +180,16 @@ class OrbeonRunner(models.Model):
 
     def action_open_orbeon_runner_view(self):
         self.ensure_one()
-        self._open_orbeon_runner(edit_mode=False)
+        return self.open_orbeon_runner(edit_mode=False)
 
     def action_open_orbeon_runner_edit(self):
         self.ensure_one()
-        self._open_orbeon_runner(edit_mode=True)
+        return self.open_orbeon_runner(edit_mode=True)
 
-    def _open_orbeon_runner(self, edit_mode=True):
+    def open_orbeon_runner(self, edit_mode=True):
         self.ensure_one()
-        self.current_orbeon_user = self.env.uid
+        if edit_mode:
+            self.current_orbeon_user = self.env.uid
         #2FA Orbeon
         user = self.env['res.users'].browse(self.env.uid)
         if not user.api_key and user.totp_enabled:
