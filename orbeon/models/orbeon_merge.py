@@ -211,14 +211,19 @@ class OrbeonRunner(models.Model):
         if not self.builder_id or not self.builder_id.xml:
             raise UserError(_("No builder XML linked to this runner."))
 
-        old_builder = self.builder_id
+        # old_builder = self.builder_id
+        if self.origin_form_id:
+            old_builder = self.origin_form_id.builder_id
+        else:
+            old_builder = self.builder_id
+
         # Use the computed field to reliably find the current version
         current_version = self.builder_id.current_builder_id
 
         if current_version:
             _logger.debug("current_version for builder %s: %s", self.builder_id.id, current_version.id)
             diff = {}
-            if current_version.id != self.builder_id.id:
+            if current_version.id != old_builder.id and not self.is_merged:
                 # Compare XML for logging purposes
                 diff = self._compare_builder_xml(old_builder.xml, current_version.xml, with_details=True)
                 _logger.info(

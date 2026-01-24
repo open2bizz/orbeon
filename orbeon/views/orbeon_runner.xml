@@ -6,6 +6,9 @@
       <field name="model">orbeon.runner</field>
       <field name="arch" type="xml">
         <form>
+          <header>
+            <field options="{'clickable': '1'}" name="state" widget="statusbar"/>
+          </header>
           <sheet>
             <div class="oe_button_box" name="button_box">
               <button class="oe_stat_button" name="action_open_orbeon_runner_edit"
@@ -45,7 +48,6 @@
                   <field name="res_model"/>
                   <field name="res_id" readonly="1"/>
                   <field groups="orbeon.orbeon_admin" name="is_merged"/>
-                  <field name="state"/>
                 </group>
               </page>
             </notebook>

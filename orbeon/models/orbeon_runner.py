@@ -145,6 +145,13 @@ class OrbeonRunner(models.Model):
     def _get_res_model(self):
         self.res_model = self.builder_id.res_model_id.model
 
+    def _compute_can_edit(self):
+        for record in self:
+            if record.state == STATE_PROGRESS:
+                return True
+            else:
+                return False
+
     @api.onchange('builder_id')
     def _get_url(self):
         for rec in self:
