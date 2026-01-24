@@ -171,31 +171,39 @@ class OrbeonRunner(models.Model):
             else:
                 record.any_new_current_builder = (record.builder_id.id != record.builder_id.current_builder_id.id)
 
-    def action_open_orbeon_runner(self):
+    def action_open_orbeon_runner_view(self):
         self.ensure_one()
-        for rec in self:
-            rec.current_orbeon_user = self.env.uid
-            #2FA Orbeon
-            user = self.env['res.users'].browse(self.env.uid)
-            if not user.api_key and user.totp_enabled:
-                raise UserError(
-                    "Two-Factor authentication is configured, but the API key is missing in the user profile. \n"
-                    "For more information, please refer to the documentation: \n"
-                    "https://www.odoo.com/documentation/16.0/developer/reference/external_api.html?highlight=api%20key#api-keys",
-                )
-            if rec.xml == False and (self.builder_id.id != self.builder_id.current_builder_id.id):
-                # zet de nieuwe builder versie 
+        self._open_orbeon_runner(edit_mode=False)
+
+    def action_open_orbeon_runner_edit(self):
+        self.ensure_one()
+        self._open_orbeon_runner(edit_mode=True)
+
+    def _open_orbeon_runner(self, edit_mode=True):
+        self.ensure_one()
+        self.current_orbeon_user = self.env.uid
+        #2FA Orbeon
+        user = self.env['res.users'].browse(self.env.uid)
+        if not user.api_key and user.totp_enabled:
+            raise UserError(
+                "Two-Factor authentication is configured, but the API key is missing in the user profile. \n"
+                "For more information, please refer to the documentation: \n"
+                "https://www.odoo.com/documentation/16.0/developer/reference/external_api.html?highlight=api%20key#api-keys",
+            )
+        if edit_mode:
+            if self.xml == False and (self.builder_id.id != self.builder_id.current_builder_id.id):
+                # zet de nieuwe builder versie
                 old_builder_id = self.builder_id.display_name
                 new_builder_id = self.builder_id.current_builder_id.display_name
                 new_builder_id_id = self.builder_id.current_builder_id.id
                 self.write({'builder_id': new_builder_id_id})
                 self.action_send_versionupdate(old_builder_id, new_builder_id)
-            return {
-                'name': 'Orbeon',
-                'type': 'ir.actions.act_url',
-                'target': 'new',
-                'url': self.url
-            }
+        return {
+            'name': 'Orbeon',
+            'type': 'ir.actions.act_url',
+            'target': 'new',
+            'url': self.url
+        }
   
     def write(self, vals):
         #if 'is_merged' not in vals:
