@@ -188,7 +188,8 @@ class OrbeonRunner(models.Model):
 
     def open_orbeon_runner(self, edit_mode=True):
         self.ensure_one()
-        self.sudo().with_context({'tracking_disable': True}).write({'current_orbeon_user': self.env.uid})
+        if edit_mode:
+            self.sudo().with_context({'tracking_disable': True}).write({'current_orbeon_user': self.env.uid})
         #2FA Orbeon
         user = self.env['res.users'].browse(self.env.uid)
         if not user.api_key and user.totp_enabled:
