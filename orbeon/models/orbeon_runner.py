@@ -196,16 +196,19 @@ class OrbeonRunner(models.Model):
             raise UserError(
                 "Two-Factor authentication is configured, but the API key is missing in the user profile. \n"
                 "For more information, please refer to the documentation: \n"
-                "https://www.odoo.com/documentation/16.0/developer/reference/external_api.html?highlight=api%20key#api-keys",
+                "https://www.odoo.com/documentation/18.0/developer/reference/external_api.html?highlight=api%20key#api-keys",
             )
         if edit_mode:
-            if self.xml == False and (self.builder_id.id != self.builder_id.current_builder_id.id):
+            if self.xml == False and self.builder_id.state == 'obsolete':
                 # zet de nieuwe builder versie
-                old_builder_id = self.builder_id.display_name
-                new_builder_id = self.builder_id.current_builder_id.display_name
-                new_builder_id_id = self.builder_id.current_builder_id.id
-                self.write({'builder_id': new_builder_id_id})
-                self.action_send_versionupdate(old_builder_id, new_builder_id)
+                old_builder_name = self.builder_id.display_name
+                try:
+                    current_builder_id = self.builder_id.master_id.get_current_builder()
+                except Exception as e:
+                    raise UserError(_("Failed to get current builder: %s. Please contact the administrator.", str(e)))
+                new_builder_name = current_builder_id.display_name
+                self.write({'builder_id': current_builder_id.id})
+                self.action_send_versionupdate(old_builder_name, new_builder_name)
         return {
             'name': 'Orbeon',
             'type': 'ir.actions.act_url',

@@ -127,6 +127,7 @@ class OrbeonBuilder(models.Model):
         "orbeon.builder",
         "Current Builder",
         compute="_current_builder",
+        store=True,
         help="The current (published) Builder"
     )
 
@@ -273,6 +274,7 @@ class OrbeonBuilder(models.Model):
 
         self.url = url
 
+    @api.depends('master_id', 'state', 'master_id.slave_ids')
     def _current_builder(self):
         for record in self:
             if record.master_id:
