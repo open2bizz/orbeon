@@ -4,17 +4,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-04 17:42+0000\n"
-"PO-Revision-Date: 2023-04-04 19:48+0200\n"
-"Last-Translator: Thomas Pot <thomas@open2bizz.nl>\n"
+"POT-Creation-Date: 2026-08-19 10:39+0000\n"
+"PO-Revision-Date: 2026-08-19 10:39+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.1.1\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_builder__name
@@ -34,9 +33,14 @@ msgid ""
 "        - Current: Published i.e. live\n"
 "        - Obsolete: Was published but obsolete"
 msgstr ""
-"        - Nieuw: In concept en nog iet gepubliceerd (Huidig)\n"
+"        - Concept: In concept en nog iet gepubliceerd (Huidig)\n"
 "        - Huidig: Gepubliceerd i.e. live\n"
-"        - Verouderd: oudere versie dus niet beschikbaar"
+"        - Vervallen: oudere versie dus niet beschikbaar"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf1a
+msgid "(Wisselend) oedeem in voeten, enkels en of onderbenen"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCvoldoendegegevens
@@ -136,6 +140,101 @@ msgid "90?"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf0a
+msgid "<b>Aandoeningen</b>"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co70a
+msgid "<b>Dienst</b>component: anders"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co10a
+msgid "<b>Dienst</b>component: intensief verstrekkingsproces"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co9a
+msgid "<b>Dienst</b>component: intensieve nazorg"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf00a
+msgid "<b>Indicatiegebied</b>"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca10a
+msgid "<b>OSA</b> met complexe orthopedische voorzieningen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca9a
+msgid "<b>OSA</b> met reguliere orthopedische voorzieningen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca11a
+msgid "<b>OSA</b> met zeer complexe orthopedische voorzieningen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca7a
+msgid "<b>OSB</b> - complex"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca6a
+msgid "<b>OSB</b> - regulier"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca4a
+msgid "<b>OVAC1</b> - orthopedische steunzolen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca5a
+msgid "<b>OVAC2</b> - afwikkeling, hak- en/of zoolaanpassingen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca24a
+msgid "<b>OVAC3</b> - zoolverstijvingen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca25a
+msgid "<b>OVAC4</b> - schachtaanpassingen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co69a
+msgid "<b>Proces</b>component: anders"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co66a
+msgid "<b>Proces</b>component: korte levertijd"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca12a
+msgid "<b>VLOS</b> met reguliere en of complexe orthopedische voorzieningen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca26a
+msgid "<b>VLOS</b> met zeer complexe orthopedische voorzieningen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_zp1a
+msgid "<b>Zorgprofiel</b>"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_afwerkingsteunzoollinks
 msgid "AFWERKING LI"
 msgstr ""
@@ -153,6 +252,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_afwerkingsteunzoolrechts
 msgid "AFWERKING RE"
+msgstr ""
+
+#. module: orbeon
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_api_key
+msgid "API-orbeon"
 msgstr ""
 
 #. module: orbeon
@@ -211,6 +315,11 @@ msgid "Aantal te passen paren"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf42a
+msgid "Aantrekken schoeisel, beperking in"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCaanvraagmachtigingprocedure
 msgid "Aanvraag - Machtiging - Procedure"
 msgstr ""
@@ -243,6 +352,36 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCaanvullendemotivatiehbt
 msgid "Aanvullende motivatie Herhaling Binnen Termijn"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control68
+msgid "Aanvullende motivatie pasvorm maatwerk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control67
+msgid "Aanvullende motivatie pasvorm seriestuk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe16a
+msgid "Accepteren abnormaal volume"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe17a
+msgid "Accepteren abnormale stand en of vorm"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe8a
+msgid "Accepteren gewrichtsstand tenen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf58a
+msgid "Achillespees tendinitis"
 msgstr ""
 
 #. module: orbeon
@@ -292,6 +431,26 @@ msgid "Active"
 msgstr "Actief"
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCafleveropstuurafhaaldatum
 msgid "Aflever-/ opstuur-/ afhaaldatum ##"
 msgstr ""
@@ -304,6 +463,16 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_afwijkendbeeldbijgaanenofstaan
 msgid "Afwijkend beeld bij gaan en/of staan"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf97a
+msgid "Afwijkende lichaamshouding bij staan"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co46a
+msgid "Afwikkeling"
 msgstr ""
 
 #. module: orbeon
@@ -322,8 +491,23 @@ msgid "Algemeen"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf15a
+msgid "Amputaties alle tenen of meer"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf13a
+msgid "Amputaties enkele tenen en of stralen"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderbeeldbijgaanenofstaan
 msgid "Ander beeld bij gaan en/of staan"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe47a
+msgid "Ander behandeldoel"
 msgstr ""
 
 #. module: orbeon
@@ -395,8 +579,18 @@ msgid "Andere afwikkeling RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf76a
+msgid "Andere anatomische stoornissen"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderebeperkingen
 msgid "Andere beperkingen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf78a
+msgid "Andere beperkingen en participatieproblemen"
 msgstr ""
 
 #. module: orbeon
@@ -420,6 +614,16 @@ msgid "Andere contreforts, cambreurs of neuzen"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf79a
+msgid "Andere externe factoren"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe41a
+msgid "Andere functie eis"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderegewenstefunctionaliteit
 msgid "Andere functie eis(-en)"
 msgstr ""
@@ -432,6 +636,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderefunctiestoornisrechts
 msgid "Andere functiestoornis RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf77a
+msgid "Andere fysiologische stoornissen"
 msgstr ""
 
 #. module: orbeon
@@ -469,6 +678,11 @@ msgid "Andere medische diagnose"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe43a
+msgid "Andere nazorg eis"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control489
 msgid "Andere neuzen"
 msgstr ""
@@ -499,6 +713,11 @@ msgid "Andere participatieproblemen"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf80a
+msgid "Andere persoonlijke factoren"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderepijnlinks
 msgid "Andere pijn LI"
 msgstr ""
@@ -518,6 +737,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderepolsteringsupplementrechts
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderepolsteringvoeringvsrechts
 msgid "Andere polstering RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe42a
+msgid "Andere proces eis"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co68a
+msgid "Andere productcomponent"
 msgstr ""
 
 #. module: orbeon
@@ -603,8 +832,23 @@ msgid "Any New Current Builder"
 msgstr "Elk nieuw huidig formulier"
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_res_users__api_key
+msgid "Api Key"
+msgstr ""
+
+#. module: orbeon
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_runner_form_form
+msgid "Archived"
+msgstr "Gearchiveerd"
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCosbartikel
 msgid "Artikel"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf81a
+msgid "Artrose / artritis"
 msgstr ""
 
 #. module: orbeon
@@ -652,6 +896,11 @@ msgid "Basisvoorwaarden wisselvoorziening"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf62a
+msgid "Beenlengteverschil"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_beenverkortinglinks
 msgid "Beenverkorting LI in cm"
 msgstr ""
@@ -673,12 +922,23 @@ msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_behandeldoelenevaluatiesectie
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_section1
 msgid "Behandeldoel en evaluatie"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ERPorderphysicianidname
 msgid "Behandelend arts Orthomatic"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf53a
+msgid "Belang van cosmetiek"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf84a
+msgid "Belemmerend medicijngebruik voor gebruik hulpmiddel"
 msgstr ""
 
 #. module: orbeon
@@ -697,8 +957,23 @@ msgid "Beoogd gebruik"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf90a
+msgid "Beoordeling huidig schoeisel"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_beperkingen
 msgid "Beperkingen IN"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf16a
+msgid "Beperkingen in communiceren en begrip"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe46a
+msgid "Beschermen weefsel t.b.v. herstel of preventie van ulcera"
 msgstr ""
 
 #. module: orbeon
@@ -712,13 +987,33 @@ msgid "Bewaarnummer gipsen"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf22a
+msgid "Beweeglijkheid BSG verminderd"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_beweeglijkheidlinks
 msgid "Beweeglijkheid LI"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf23a
+msgid "Beweeglijkheid OSG en/of voetgewelf verminderd"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_beweeglijkheidrechts
 msgid "Beweeglijkheid RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf25a
+msgid "Beweeglijkheid tenen verminderd"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCopstellingaangepast
+msgid "Bij passen opstelling-specs aangepast ##"
 msgstr ""
 
 #. module: orbeon
@@ -799,6 +1094,11 @@ msgid "Bijzonderheden gipsen"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe36a
+msgid "Bijzonderheden nazorgafspraken"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bijzonderhedenonderwerklinks
 msgid "Bijzonderheden onderwerk LI"
 msgstr ""
@@ -816,6 +1116,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bsbijzonderhedenopbouwrechts
 msgid "Bijzonderheden opbouw RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe33a
+msgid "Bijzonderheden pasafspraken"
 msgstr ""
 
 #. module: orbeon
@@ -924,11 +1229,6 @@ msgid "Builder Forms"
 msgstr "Formulier ontwerpen"
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__builder_name
-msgid "Builder Name"
-msgstr "Naam formulier"
-
-#. module: orbeon
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_server_form
 msgid "Builder Template Forms"
 msgstr "Builder-sjabloonformulieren"
@@ -970,7 +1270,8 @@ msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_builder__builder_template_id
-msgid "By default some Builder Form Templates are shipped by the Orbeon Server."
+msgid ""
+"By default some Builder Form Templates are shipped by the Orbeon Server."
 msgstr "Standaard worden er formulier ontwerpen meegeleverd."
 
 #. module: orbeon
@@ -982,7 +1283,17 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_runner__state__canceled
 msgid "Canceled"
-msgstr "Geannuleerd"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_categorieensectie
+msgid "Categorieen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf12a
+msgid "Charcot deformatie"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__color
@@ -990,9 +1301,34 @@ msgid "Color Index"
 msgstr "Kleur index"
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe31a
+msgid "Compenseren beenlengteverschil"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe24a
+msgid "Compenseren ontbrekende voetdelen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe20a
+msgid "Compenseren verstoorde afwikkelfunctie"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe21a
+msgid "Compenseren verstoorde voetheffersfunctie"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_runner__state__complete
 msgid "Complete"
-msgstr "Compleet"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_componentensectie
+msgid "Componenten"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_concretiseringanderbehandeldoel
@@ -1035,8 +1371,24 @@ msgid "Controle tijdens productie ##"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe12a
+msgid "Corrigeren tenen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe15a
+msgid "Corrigeren/stabiliseren BSG in sagittaal vlak"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe14a
+msgid "Corrigeren/stabiliseren OSG en of voetgewelf"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__create_uid
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__create_uid
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__create_uid
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__create_uid
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__create_uid
 msgid "Created by"
@@ -1045,6 +1397,7 @@ msgstr "Aangemaakt door"
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__create_date
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__create_date
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__create_date
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__create_date
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__create_date
 msgid "Created on"
@@ -1052,6 +1405,7 @@ msgstr "Invoerdatum"
 
 #. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_builder__state__current
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
 msgid "Current"
 msgstr "Huidig"
 
@@ -1061,9 +1415,20 @@ msgid "Current Builder"
 msgstr "Huidig Formulier ontwerp"
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__current_orbeon_user
+msgid "Current Orbeon User"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_runner__res_id
 msgid "Database ID of the record in res_model to which this applies"
-msgstr "Database ID van het record binnen het model waar res_model naar verwijst"
+msgstr ""
+"Database ID van het record binnen het model waar res_model naar verwijst"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control2
+msgid "Datum1"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NClaatstevoorlaatsteverstrekking
@@ -1097,6 +1462,11 @@ msgid "Description"
 msgstr "Omschrijving"
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_diabetes
+msgid "Diabetes"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bsdiktebinnenzoolmhlinks
 msgid "Dikte binnenzool MH LI"
 msgstr ""
@@ -1122,12 +1492,21 @@ msgid "Dikte tongpolstering"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__display_name
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__display_name
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__display_name
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__display_name
 msgid "Display Name"
 msgstr "Schermnaam"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe3a
+msgid "Druk verdelen dorsaal"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe1a
+msgid "Druk verdelen plantair"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCaanvullendevoorwaardenwisselvoorziening
@@ -1152,6 +1531,16 @@ msgid "Edit"
 msgstr "Bewerken"
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca14a
+msgid "Enkel-Voet-Orthese"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co62a
+msgid "Enkel-hoge schacht"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_enkelomsluitinglinks
 msgid "Enkelomsluiting LI"
 msgstr ""
@@ -1164,7 +1553,14 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__persistence_server_autostart
 msgid "Ensures the persistence-server will be started right after Odoo starts"
-msgstr "Zorgt ervoor dat de persistence-server wordt gestart direct nadat Odoo is gestart"
+msgstr ""
+"Zorgt ervoor dat de persistence-server wordt gestart direct nadat Odoo is "
+"gestart"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe27a
+msgid "Esthetiek acceptabel"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_evaluatieanderbehandeldoel
@@ -1188,7 +1584,12 @@ msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCexternelocatievervolgafspraak
-msgid "Externe locatie vervolgafspraak ##"
+msgid "Externe locatie vervolgafspraak ## (OUD VERVALLEN!)"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe29a
+msgid "Extra tijd noodzakelijk voor communicatie"
 msgstr ""
 
 #. module: orbeon
@@ -1207,6 +1608,12 @@ msgid "Fabrikant"
 msgstr ""
 
 #. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_runner.py:0
+msgid "Failed to get current builder: %s. Please contact the administrator."
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__fetched_from_orbeon
 msgid "Fetched from Orbeon"
 msgstr "Opgehaald van Orbeon"
@@ -1214,6 +1621,11 @@ msgstr "Opgehaald van Orbeon"
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control494
 msgid "Flexibel"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe32a
+msgid "Flexibiliteit in pasvorm ivm wisselend volume noodzakelijk"
 msgstr ""
 
 #. module: orbeon
@@ -1230,20 +1642,17 @@ msgid "Followers"
 msgstr "Volgers"
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__message_channel_ids
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__message_channel_ids
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__message_channel_ids
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_server__message_channel_ids
-msgid "Followers (Channels)"
-msgstr "Volgers (Kanalen)"
-
-#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__message_partner_ids
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__message_partner_ids
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__message_partner_ids
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "Volgers (Partners)"
+
+#. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_orbeon_runner__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_server__persistence_server_processtype__forking
@@ -1294,9 +1703,14 @@ msgid "Foto"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__complete_name
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__display_name
 msgid "Full Name"
-msgstr "Volledige naam"
+msgstr "Schermnaam"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_eisensectie
+msgid "Functie / Proces / Nazorg - eisen"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_functieeisen
@@ -1316,153 +1730,207 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_functioneringsprognose
 msgid ""
-"FunctioneringsPROGNOSE, indachtig dat wij GEEN interventie plegen middels het leveren van een "
-"hulpmiddel"
+"FunctioneringsPROGNOSE, indachtig dat wij GEEN interventie plegen middels "
+"het leveren van een hulpmiddel"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg1
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g1
 msgid "G1"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg10
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g10
 msgid "G10"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg11
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g11
 msgid "G11"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg12
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g12
 msgid "G12"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg13
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g13
 msgid "G13"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg14
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g14
 msgid "G14"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg15
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g15
 msgid "G15"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg16
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g16
 msgid "G16"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg17
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g17
 msgid "G17"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg18
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g18
 msgid "G18"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg19
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g19
 msgid "G19"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg2
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g2
 msgid "G2"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg20
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g20
 msgid "G20"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg21
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g21
 msgid "G21"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg22
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g22
 msgid "G22"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg23
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g23
 msgid "G23"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg24
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g24
 msgid "G24"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg25
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g25
 msgid "G25"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg26
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g26
 msgid "G26"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg27
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g27
 msgid "G27"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg28
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g28
 msgid "G28"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg29
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g29
 msgid "G29"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg3
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g3
 msgid "G3"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg4
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g4
 msgid "G4"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg5
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g5
 msgid "G5"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg6
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g6
 msgid "G6"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg7
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g7
 msgid "G7"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg8
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g8
 msgid "G8"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCg9
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_g9
 msgid "G9"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf37a
+msgid "Gaan / lopen, beperking in afstand"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf94a
+msgid "Gangpatroon stoornis algemeen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf98a
+msgid "Gangpatroon stoornis knie in standfase midstance"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf95a
+msgid "Gangpatroon stoornis voetafwikkeling"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf96a
+msgid "Gangpatroon stoornis zwaaifase"
 msgstr ""
 
 #. module: orbeon
@@ -1534,18 +2002,21 @@ msgid "Gipsen voor productie"
 msgstr ""
 
 #. module: orbeon
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
+msgid "Group By"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control504
 msgid "Hak en zool opties"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control508
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_hakenzooloptieslinks
 msgid "Hak en zool opties LI"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control505
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_hakenzooloptiesrechts
 msgid "Hak en zool opties RE"
 msgstr ""
@@ -1553,6 +2024,16 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_hakenzoolopties
 msgid "Hak, zool en Neskrid opties"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co50a
+msgid "Hak-zool verhoging / generale wig"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co49a
+msgid "Hakaanpassing en of verhoogde hielheffing onder voetbed"
 msgstr ""
 
 #. module: orbeon
@@ -1610,6 +2091,24 @@ msgstr ""
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_hakken
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_vloshakken
 msgid "Hakken"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf6a
+msgid "Hallux valgus"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf4a
+msgid "Hamer-, klauwtenen of dig superductus"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__has_message
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__has_message
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__has_message
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_server__has_message
+msgid "Has Message"
 msgstr ""
 
 #. module: orbeon
@@ -1708,6 +2207,21 @@ msgid "Hoogte wig PF RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf82a
+msgid "Huidafwijking / alergie"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf32a
+msgid "Huiddefect / kwetsbare huid"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf92a
+msgid "Huishouden, beperkingen in"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NChulpvelddatum1
 msgid "Hulpveld datum1"
 msgstr ""
@@ -1730,11 +2244,6 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NChulpveldreportkop3
 msgid "Hulpveld reportkop3"
-msgstr ""
-
-#. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NChulpveldreportkop4
-msgid "Hulpveld reportkop4"
 msgstr ""
 
 #. module: orbeon
@@ -1768,6 +2277,7 @@ msgid "Hulpvelden"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control5
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_hulpvraagsectie
 msgid "Hulpvraag"
 msgstr ""
@@ -1783,22 +2293,34 @@ msgid "Hyperextensie"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf93a
+msgid "Hypermobiliteit van gewrichten"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__id
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__id
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__id
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__id
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__id
 msgid "ID"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_orbeon_runner__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_builder__message_needaction
-#: model:ir.model.fields,help:orbeon.field_orbeon_builder__message_unread
 #: model:ir.model.fields,help:orbeon.field_orbeon_builder_template__message_needaction
-#: model:ir.model.fields,help:orbeon.field_orbeon_builder_template__message_unread
 #: model:ir.model.fields,help:orbeon.field_orbeon_runner__message_needaction
-#: model:ir.model.fields,help:orbeon.field_orbeon_runner__message_unread
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__message_needaction
-#: model:ir.model.fields,help:orbeon.field_orbeon_server__message_unread
 msgid "If checked, new messages require your attention."
 msgstr "Indien aangevinkt vragen nieuwe berichten uw aandacht."
 
@@ -1813,11 +2335,17 @@ msgstr "Indien aangevinkt hebben sommige leveringen een fout."
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__persistence_server_configfile_path
 msgid ""
-"If specified, the Odoo connection is setup with its config, from file in given path. If blank, the "
-"Orbeon HTTP-Headers will be used."
+"If specified, the Odoo connection is setup with its config, from file in "
+"given path. If blank, the Orbeon HTTP-Headers will be used."
 msgstr ""
-"Indien gespecificeerd, wordt de Odoo-verbinding opgezet met zijn configuratie, van bestand in "
-"opgegeven pad. Indien leeg, worden de Orbeon HTTP-headers gebruikt."
+"Indien gespecificeerd, wordt de Odoo-verbinding opgezet met zijn "
+"configuratie, van bestand in opgegeven pad. Indien leeg, worden de Orbeon "
+"HTTP-headers gebruikt."
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe7a
+msgid "Immobiliseren BSG, OSG en voetgewelf"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_runner__state__progress
@@ -1835,6 +2363,11 @@ msgid "In gips RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe44a
+msgid "In-shoe drukmeet afspraken noodzakelijk"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_indicatiegebied
 msgid "Indicatiegebied"
 msgstr ""
@@ -1842,6 +2375,28 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ingepakt
 msgid "Ingepakt"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf26a
+msgid "Instabiliteit en/of dislocatie BSG"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf27a
+msgid "Instabiliteit en/of dislocatie OSG en of voetgewelven"
+msgstr ""
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_merge.py:0
+msgid "Instance '%s' has no element root in builder XML"
+msgstr ""
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_merge.py:0
+msgid "Instance with id='%s' not found in builder XML"
 msgstr ""
 
 #. module: orbeon
@@ -1862,6 +2417,13 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_integriteitscontrolerechts
 msgid "Integriteitscontrole RE"
+msgstr ""
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_builder.py:0
+#: code:addons/orbeon/models/orbeon_runner.py:0
+msgid "Invalid XML format: %s"
 msgstr ""
 
 #. module: orbeon
@@ -1969,6 +2531,16 @@ msgid "Koolstof schachtverstijving in de pas"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe28a
+msgid "Korte levertijd noodzakelijk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co41a
+msgid "Kraagpolstering"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_linksincmmet1decimaal
 msgid "LI, in cm's met 1 decimaal"
 msgstr ""
@@ -1979,16 +2551,9 @@ msgid "LINKS"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder____last_update
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template____last_update
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner____last_update
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_server____last_update
-msgid "Last Modified on"
-msgstr "Laatst gewijzigd op"
-
-#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__write_uid
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__write_uid
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__write_uid
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__write_uid
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__write_uid
 msgid "Last Updated by"
@@ -1997,6 +2562,7 @@ msgstr "Laatst bijgewerkt door"
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__write_date
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__write_date
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__write_date
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__write_date
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__write_date
 msgid "Last Updated on"
@@ -2005,6 +2571,11 @@ msgstr "Laatst bijgewerkt op"
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_leeftijd
 msgid "Leeftijd"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_leersoort
+msgid "Leersoort"
 msgstr ""
 
 #. module: orbeon
@@ -2049,313 +2620,386 @@ msgid "Logistiek"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe37a
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe39a
+msgid "Loopafstand vergroten bij correct gebruik hulpmiddel"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd1
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd1
 msgid "MB D1"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd11
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd11
 msgid "MB D11"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd12
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd12
 msgid "MB D12"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd15
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd15
 msgid "MB D15"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd16
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd16
 msgid "MB D16"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd17
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd17
 msgid "MB D17"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd19
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd19
 msgid "MB D19"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd21
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd21
 msgid "MB D21"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd22
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd22
 msgid "MB D22"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd23
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd23
 msgid "MB D23"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd24
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd24
 msgid "MB D24"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd25
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd25
 msgid "MB D25"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd26
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd26
 msgid "MB D26"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd4
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd4
 msgid "MB D4"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd5
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd5
 msgid "MB D5"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd6
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd6
 msgid "MB D6"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbd7
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbd7
 msgid "MB D7"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh1
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh1
 msgid "MB H1"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh10
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh10
 msgid "MB H10"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh11
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh11
 msgid "MB H11"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh12
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh12
 msgid "MB H12"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh13
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh13
 msgid "MB H13"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh14
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh14
 msgid "MB H14"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh15
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh15
 msgid "MB H15"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh16
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh16
 msgid "MB H16"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh17
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh17
 msgid "MB H17"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh18
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh18
 msgid "MB H18"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh21
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh21
 msgid "MB H21"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh22
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh22
 msgid "MB H22"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh3
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh3
 msgid "MB H3"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh4
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh4
 msgid "MB H4"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh5
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh5
 msgid "MB H5"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh6
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh6
 msgid "MB H6"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh7
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh7
 msgid "MB H7"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh8
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh8
 msgid "MB H8"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbh9
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbh9
 msgid "MB H9"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk1
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk1
 msgid "MB K1"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk10
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk10
 msgid "MB K10"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk11
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk11
 msgid "MB K11"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk12
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk12
 msgid "MB K12"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk13
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk13
 msgid "MB K13"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk14
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk14
 msgid "MB K14"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk15
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk15
 msgid "MB K15"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk16
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk16
 msgid "MB K16"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk2
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk2
 msgid "MB K2"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk3
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk3
 msgid "MB K3"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk4
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk4
 msgid "MB K4"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk5
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk5
 msgid "MB K5"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk6
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk6
 msgid "MB K6"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk7
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk7
 msgid "MB K7"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk8
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk8
 msgid "MB K8"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbk9
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbk9
 msgid "MB K9"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbs1
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbs1
 msgid "MB S1"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbs2
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbs2
 msgid "MB S2"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbs3
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbs3
 msgid "MB S3"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbs4
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbs4
 msgid "MB S4"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbs5
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbs5
 msgid "MB S5"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbw1
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbw1
 msgid "MB W1"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbw2
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbw2
 msgid "MB W2"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbw3
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbw3
 msgid "MB W3"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbw4
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbw4
 msgid "MB W4"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmbw5
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_mbw5
 msgid "MB W5"
+msgstr ""
+
+#. module: orbeon
+#: model_terms:ir.actions.act_window,help:orbeon.orbeon_runner_form_action
+msgid "Maak een nieuw document"
 msgstr ""
 
 #. module: orbeon
@@ -2386,17 +3030,21 @@ msgid "Maat aanmodellering RE"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__message_main_attachment_id
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__message_main_attachment_id
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__message_main_attachment_id
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_server__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "Hoofd bijlage"
-
-#. module: orbeon
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_server_form
 msgid "Maintenance"
 msgstr "Onderhoud"
+
+#. module: orbeon
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
+msgid "Master"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__master_id
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__master_builder_id
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_form
+msgid "Master Builder"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_matenenleestensectie
@@ -2494,7 +3142,15 @@ msgstr "Voeg de huidige Builder form samen"
 #. module: orbeon
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_runner_form_form
 msgid "Merge the Form Design (structure additions) into this Runner Form."
-msgstr "Voeg het formulierontwerp (structuurtoevoegingen) samen in dit Runner-formulier."
+msgstr ""
+"Voeg het formulierontwerp (structuurtoevoegingen) samen in dit Runner-"
+"formulier."
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_merge.py:0
+msgid "Merged successfully from version (%s) to latest builder version %s."
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmerkkleurmaatcschoenen
@@ -2585,7 +3241,18 @@ msgid "Middenhiel: extra mm's door Neskrid RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_afb_mig
+msgid "Migration (img)"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe4a
+msgid "Mobiliteit beperken tenen"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control534
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
 msgid "Model"
 msgstr ""
 
@@ -2625,6 +3292,21 @@ msgid "Motivatie extra voorziening tussendoor"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf54a
+msgid "Motivatie om orthop. schoenvoorzieningen te dragen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_motivatiemaatwerk
+msgid "Motivatie pasvorm maatwerk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_motivatieseriestuk
+msgid "Motivatie pasvorm seriestuk"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCmotivatievervanging
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_motivatievervangingsectie
 msgid "Motivatie vervanging"
@@ -2641,6 +3323,16 @@ msgid "Multi threaded"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe45a
+msgid "Multidisciplinaire intake noodzakelijk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCnawbijzonderheden
 msgid "NAW bijzonderheden en / of afspraakverzoek"
 msgstr ""
@@ -2654,6 +3346,7 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__name
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__name
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__display_name
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__name
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_template_form
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_server_form
@@ -2684,13 +3377,34 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_builder__state__new
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_runner__state__new
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
 msgid "New"
-msgstr "Nieuw"
+msgstr "Concept"
 
 #. module: orbeon
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_form
 msgid "New Version"
 msgstr "Nieuwe versie"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCnieuwebijlagentbvdeproductie
@@ -2700,6 +3414,28 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCnieuwebijlagen
 msgid "Nieuwe bijlage(-n) toegevoegd ##"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control1
+msgid "Nieuwe naam control1"
+msgstr ""
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_merge.py:0
+msgid "No builder XML linked to this runner."
+msgstr ""
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_merge.py:0
+msgid "No current builder version found for builder %s."
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf57a
+msgid "Noduli: vaste, harde subcutane knobbels"
 msgstr ""
 
 #. module: orbeon
@@ -2723,7 +3459,7 @@ msgstr "Aantal fouten"
 #: model:ir.model.fields,help:orbeon.field_orbeon_builder_template__message_needaction_counter
 #: model:ir.model.fields,help:orbeon.field_orbeon_runner__message_needaction_counter
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__message_needaction_counter
-msgid "Number of messages which requires an action"
+msgid "Number of messages requiring action"
 msgstr "Aantal berichten die actie vereisen"
 
 #. module: orbeon
@@ -2733,14 +3469,6 @@ msgstr "Aantal berichten die actie vereisen"
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "Aantal berichten met leveringsfout"
-
-#. module: orbeon
-#: model:ir.model.fields,help:orbeon.field_orbeon_builder__message_unread_counter
-#: model:ir.model.fields,help:orbeon.field_orbeon_builder_template__message_unread_counter
-#: model:ir.model.fields,help:orbeon.field_orbeon_runner__message_unread_counter
-#: model:ir.model.fields,help:orbeon.field_orbeon_server__message_unread_counter
-msgid "Number of unread messages"
-msgstr "Aantal ongelezen berichten"
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCburgerservicenummer
@@ -2824,6 +3552,7 @@ msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_builder__state__obsolete
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
 msgid "Obsolete"
 msgstr "Vervallen"
 
@@ -2886,7 +3615,7 @@ msgid "Opties in bronformulier"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.module.category,name:orbeon.orbeon model:ir.ui.menu,name:orbeon.orbeon_base_menu
+#: model:ir.module.category,name:orbeon.orbeon
 msgid "Orbeon"
 msgstr ""
 
@@ -2916,6 +3645,17 @@ msgid "Orbeon Builder Template"
 msgstr "Formulier ontwerper sjablonen"
 
 #. module: orbeon
+#: model:ir.actions.act_window,name:orbeon.orbeon_master_action
+#: model:ir.ui.menu,name:orbeon.orbeon_master_menu
+msgid "Orbeon Master"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model,name:orbeon.model_orbeon_master
+msgid "Orbeon Master Version"
+msgstr ""
+
+#. module: orbeon
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_server_form
 msgid "Orbeon Persistence Server"
 msgstr ""
@@ -2938,8 +3678,18 @@ msgid "Order"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_order_mig
+msgid "Order Mig"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ERPorderorganization
 msgid "Order instantie"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__origin_form_id
+msgid "Origin Form"
 msgstr ""
 
 #. module: orbeon
@@ -2958,6 +3708,11 @@ msgid "Orthopedische Voorzieningen aan B- of C-schoeisel"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca13a
+msgid "Orthopedische binnenschoen"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_orthopedischebinnenschoenenobvksectie
 msgid "Orthopedische binnenschoenen / OBVK"
 msgstr ""
@@ -2970,6 +3725,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_overigeaanpassingenrechts
 msgid "Overige aanpassingen RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf19a
+msgid "PNP, < waarneming, protect. en/of gnostische sensibiliteit"
 msgstr ""
 
 #. module: orbeon
@@ -2998,6 +3758,51 @@ msgid "Passend maken in C-schoenen"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co64a
+msgid "Pasvorm maatwerk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co72a
+msgid "Pasvorm seriestuk complex"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co65a
+msgid "Pasvorm seriestuk regulier"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf9a
+msgid "Pes cavus (holvoet)"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf7a
+msgid "Pes equinus (spitsvoet)"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf10a
+msgid "Pes planotransversus (spreidvoet)"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf11a
+msgid "Pes planus (platvoet)"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf56a
+msgid "Pes valgus (valgiserende achtervoet)"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf8a
+msgid "Pes varus (variserende voet)"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_pijn
 msgid "Pijn"
 msgstr ""
@@ -3010,6 +3815,16 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_pijnrechts
 msgid "Pijn RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf20a
+msgid "Pijn of overgevoeligheid"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe38a
+msgid "Pijn verminderen bij correct gebruik hulpmiddel"
 msgstr ""
 
 #. module: orbeon
@@ -3050,6 +3865,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_plaatswigpfrechts
 msgid "Plaats wig PF RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf60a
+msgid "Plantaire fasciitis / fibromatosis"
 msgstr ""
 
 #. module: orbeon
@@ -3148,6 +3968,12 @@ msgid "Postcode **"
 msgstr ""
 
 #. module: orbeon
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_form
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_runner_form_form
+msgid "Pretty Format"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_server__persistence_server_processtype
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_server_form
 msgid "Process-type"
@@ -3184,13 +4010,24 @@ msgid "Programma van eisen"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf3a
+msgid "Prominerende MTP gewrichten"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_voetstandpronatie
 msgid "Pronatie"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__persistence_server_active
-msgid "Provisioning the persistence-server is enabled if active is checked (True)."
+msgid ""
+"Provisioning the persistence-server is enabled if active is checked (True)."
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_res_users__api_key
+msgid "Put your API key here to use orbeon for 2FA auth"
 msgstr ""
 
 #. module: orbeon
@@ -3219,11 +4056,6 @@ msgid "Randvoorwaarde vervanging"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__res_id
-msgid "Record ID"
-msgstr "Record-id"
-
-#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCredenopnieuwlinks
 msgid "Reden / details opnieuw LI ##"
 msgstr ""
@@ -3236,6 +4068,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_relevanteervaringen
 msgid "Relevante ervaringen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf86a
+msgid "Relevante hulpmiddelen naast orthop.schoenvoorzieningen"
 msgstr ""
 
 #. module: orbeon
@@ -3254,10 +4091,25 @@ msgid "Relevante operaties RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf85a
+msgid "Relevante zorgverlening naast orthop.schoent."
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__res_id
+msgid "Resource ID"
+msgstr "Record-id"
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__res_model_id
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__res_model
 msgid "Resource Model"
-msgstr "Resource model"
+msgstr "Bron model"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__activity_user_id
+msgid "Responsible User"
+msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control303
@@ -3296,6 +4148,12 @@ msgid "Runner Forms"
 msgstr "Formulieren"
 
 #. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_merge.py:0
+msgid "Runner XML has no root element"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCstzlogistiek
 msgid "STZ of ander type voorziening ##"
 msgstr ""
@@ -3308,6 +4166,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCosbschachtrechts
 msgid "Schacht RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co54a
+msgid "Schacht verruiming"
 msgstr ""
 
 #. module: orbeon
@@ -3331,6 +4194,16 @@ msgid "Schachthoogte RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co39a
+msgid "Schachtversteviging, aangrijpingspunt been ***"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co36a
+msgid "Schachtversteviging, aangrijpingspunt enkel"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCosbschoenmaatlinks
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_schoenmaatlinks
 msgid "Schoenmaat LI"
@@ -3340,6 +4213,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCosbschoenmaatrechts
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_schoenmaatrechts
 msgid "Schoenmaat RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co44a
+msgid "Schoring"
 msgstr ""
 
 #. module: orbeon
@@ -3379,8 +4257,23 @@ msgid "Schoring breedte hiel RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe2a
+msgid "Schuifkrachten beperken"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control790
 msgid "Schuimkraag"
+msgstr ""
+
+#. module: orbeon
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
+msgid "Search Orbeon Builder"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_section2
+msgid "Sectie B (2)"
 msgstr ""
 
 #. module: orbeon
@@ -3429,14 +4322,34 @@ msgid "Single threaded"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_master__slave_ids
+msgid "Slave Builders"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCosbsluiting
 msgid "Sluiting"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co60a
+msgid "Sluiting met groot verstelbereik"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co53a
+msgid "Sluiting van de schoen, anders dan veters"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control792
 msgid "Sluitingopmerking"
 msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__builder_name
+msgid "Soort formulier"
+msgstr "Naam formulier"
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control300
@@ -3446,6 +4359,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control297
 msgid "Soort sluiting"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf63a
+msgid "Spasticiteit uitgedrukt in Modified Ashworth Scale"
 msgstr ""
 
 #. module: orbeon
@@ -3461,6 +4379,16 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_spierstoornisrechts
 msgid "Spierstoornis RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf30a
+msgid "Spierzwakte in voet- en onderbeenspieren"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf46a
+msgid "Sport en spel, participatieproblemen in"
 msgstr ""
 
 #. module: orbeon
@@ -3480,18 +4408,22 @@ msgid "State"
 msgstr "Status"
 
 #. module: orbeon
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_search
+msgid "Status"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_orbeon_runner__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_steunzolensectie
 msgid "Steunzolen"
-msgstr ""
-
-#. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_steunzoollinks
-msgid "Steunzool LI"
-msgstr ""
-
-#. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_steunzoolrechts
-msgid "Steunzool RE"
 msgstr ""
 
 #. module: orbeon
@@ -3507,6 +4439,11 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control619
 msgid "Stikselkleur"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf17a
+msgid "Stoornissen in gezichtsvermogen"
 msgstr ""
 
 #. module: orbeon
@@ -3533,6 +4470,11 @@ msgstr ""
 #. module: orbeon
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_runner_form_form
 msgid "TECH"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_zz_temp_check_wijz_dat
+msgid "TIJDELIJK WIJZ GECORR"
 msgstr ""
 
 #. module: orbeon
@@ -3610,7 +4552,7 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_runner__state__template
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_builder_template__fetched_from_orbeon
@@ -3623,13 +4565,148 @@ msgid "The current (published) Builder"
 msgstr "Het huidige (gepubliceerde) formulierontwerp"
 
 #. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_runner.py:0
+msgid "The linked builder has no XML definition."
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_orbeon_builder__master_id
+msgid ""
+"This field links the first ever version of this builder and all the newly "
+"created builders."
+msgstr ""
+"This field links the first ever version of this builder will all the newly "
+"created builders."
+
+#. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_orbeon_runner__x_zz_temp_check_wijz_dat
+msgid "Tijdelijk veld. Na migratie V14 mag deze verwijderd worden"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__title
 msgid "Title"
 msgstr "Titel"
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_aanvullendemotivatiemaatwerk
+msgid "Toel. andere / aanvullende motivatie pasvorm maatwerk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_aanvullendemotivatieseriestuk
+msgid "Toel. andere / aanvullende motivatie pasvorm seriestuk"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf114t
+msgid "Toelichting CVA"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf115t
+msgid "Toelichting Ehlers-danloss"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf100t
+msgid "Toelichting HMSN"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_afwijkendelengtebreedte
+msgid "Toelichting afwijkende lengte / breedte verhouding"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf110t
+msgid "Toelichting anders"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf101t
+msgid "Toelichting cerebrale parese"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf99t
+msgid "Toelichting diabetes"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf111t
+msgid "Toelichting dystrofie"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf109t
+msgid "Toelichting letsel door trauma"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCtoelichtingmotivatie
 msgid "Toelichting motivatie"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf116t
+msgid "Toelichting motorische retardatie"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf103t
+msgid "Toelichting neuromusculaire aandoening"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf104t
+msgid "Toelichting perifere angiopathie / vaatlijden"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf113t
+msgid "Toelichting polio"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf105t
+msgid "Toelichting reumatoide artritis"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf112t
+msgid "Toelichting spina bifida"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_standsafwijking
+msgid "Toelichting stand te afwijkend van OSB/MCO-leesten"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_teveelruimte
+msgid "Toelichting te veel ruimte"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_teweinigruimte2
+msgid "Toelichting te weinig ruimte in OSB/MCO"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_teweinigruimte1
+msgid "Toelichting te weinig ruimte in confectieschoen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf102t
+msgid "Toelichting verlammingen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_verschillinksrechts
+msgid "Toelichting verschil(-len) tussen links en rechts"
 msgstr ""
 
 #. module: orbeon
@@ -3670,6 +4747,11 @@ msgid "Tongpolstering RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co71a
+msgid "Tongpolstering en of -versteviging"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bstongversteviginglinks
 msgid "Tongversteviging LI"
 msgstr ""
@@ -3700,22 +4782,31 @@ msgid "Toplaag RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe30a
+msgid "Trekkracht op achillespees verminderen"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCtypea
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_typea
 msgid "Type A"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCtypeb
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_typeb
 msgid "Type B"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCtypec
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_typec
 msgid "Type C"
 msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCtyped
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_typed
 msgid "Type D"
 msgstr ""
 
@@ -3759,6 +4850,11 @@ msgid "Type levering"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_orbeon_runner__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ERPFORMULAonderwerk
 msgid "Type onderwerk"
 msgstr ""
@@ -3771,11 +4867,6 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCtypepasschoenrechts
 msgid "Type passchoen RE - (opnieuw) TE MAKEN ##"
-msgstr ""
-
-#. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_typevoorziening
-msgid "Type voorziening"
 msgstr ""
 
 #. module: orbeon
@@ -3808,7 +4899,9 @@ msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__url
-msgid "URL relative to Odoo server, the Odoo server will open the URL and proxy the response"
+msgid ""
+"URL relative to Odoo server, the Odoo server will open the URL and proxy the"
+" response"
 msgstr ""
 
 #. module: orbeon
@@ -3828,20 +4921,9 @@ msgid "Uitvul materiaal RE"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__message_unread
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__message_unread
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__message_unread
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_server__message_unread
-msgid "Unread Messages"
-msgstr "Ongelezen berichten"
-
-#. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__message_unread_counter
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_builder_template__message_unread_counter
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__message_unread_counter
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_server__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr "Aantal ongelezen berichten"
+#: model:ir.model,name:orbeon.model_res_users
+msgid "User"
+msgstr "Gebruikers"
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCvlosleestenbewaren
@@ -3859,13 +4941,33 @@ msgid "VOETSTAND"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf83a
+msgid "Vaatlijden"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_kniestandvalgus
 msgid "Valgus"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe49a
+msgid "Valrisico verminderen"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_kniestandvarus
 msgid "Varus"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe26a
+msgid "Veilig te gebruiken in combinatie met auto, fiets, etc."
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe40a
+msgid "Veilig te gebruiken tijdens werk"
 msgstr ""
 
 #. module: orbeon
@@ -3884,8 +4986,18 @@ msgid "Verhoging onder VS LI"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co43a
+msgid "Verhoging(>6cm) en of modelaanp. tussen voering-overl.***"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_verhoogdrisicosituaties
 msgid "Verhoogd risico situaties"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co67a
+msgid "Verhoogde/verbrede/elastische schoenneus"
 msgstr ""
 
 #. module: orbeon
@@ -3921,11 +5033,12 @@ msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCbehandelendarts
-msgid "Verwijzer / verwijzend medium"
+msgid "Verwijzer of triggerende relatie/medium"
 msgstr ""
 
 #. module: orbeon
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_form
+#: model_terms:ir.ui.view,arch_db:orbeon.orbeon_runner_form_form
 msgid "View"
 msgstr "Weergave"
 
@@ -3942,6 +5055,26 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_soortvoeringvsrechts
 msgid "Voering van VS of enkelomsl a/h suppl RE"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co28a
+msgid "Voetbed met aangrijping enkel en of amputatie-aanvulling"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co19a
+msgid "Voetbed met alleen plantaire werking"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co30a
+msgid "Voetbed met tongvoorziening / amputatievoorziening ***"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf2a
+msgid "Voetlengteverschil"
 msgstr ""
 
 #. module: orbeon
@@ -4015,12 +5148,23 @@ msgid "Welke tenen RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf45a
+msgid "Werk, participatieproblemen in"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,help:orbeon.field_orbeon_runner__origin_form_id
+msgid "When set, this id the form where it was originally copied from"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_orbeon_server__builder_templates_created
 msgid ""
-"Whether Builder Form Templates had been created. Unset to delete and re-create Builder Template Forms."
+"Whether Builder Form Templates had been created. Unset to delete and re-"
+"create Builder Template Forms."
 msgstr ""
-"Of er Builder-formuliersjablonen zijn gemaakt. Niet ingesteld om Builder-sjabloonformulieren te "
-"verwijderen en opnieuw te maken."
+"Of er Builder-formuliersjablonen zijn gemaakt. Niet ingesteld om Builder-"
+"sjabloonformulieren te verwijderen en opnieuw te maken."
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_wondvrijleggenlinks
@@ -4059,6 +5203,16 @@ msgid "Zelf besteld"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe25a
+msgid "Zelfstandig aantrekken"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf91a
+msgid "Zelfverzorging, beperkingen in"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCosbzoolloserbijlinks
 msgid "Zool los erbij LI"
 msgstr ""
@@ -4093,6 +5247,16 @@ msgid "Zoolversteviging RE"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co45a
+msgid "Zoolverstijving"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCzorgplan
+msgid "Zorgplan nummer in IP"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCzorgverzekeraarlabelassuradeur
 msgid "Zorgverzekeraar - label - assuradeur"
 msgstr ""
@@ -4104,10 +5268,23 @@ msgstr ""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bsopbouwmeervoudiglinks
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bsopbouwmeervoudiglinks2
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bsopbouwmeervoudigrechts
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_bsopbouwmeervoudigrechts2
 msgid "plus"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf372
+msgid "ter info: beperking in gaan / lopen conform Zorgvraag"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf202
+msgid "ter info: pijn conform Zorgvraag"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ERPFORMULAafbeelding
+msgid "x_ERPFORMULAafbeelding"
 msgstr ""
 
 #. module: orbeon
@@ -4226,6 +5403,11 @@ msgid "x_NCgeslacht"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NChulpveldreportkop4
+msgid "x_NChulpveldreportkop4"
+msgstr "Hulpveld reportkop4"
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_NCplaatjebinnenschoenlinks
 msgid "x_NCplaatjebinnenschoenlinks"
 msgstr ""
@@ -4246,8 +5428,18 @@ msgid "x_NCpositieosb"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anatomischestoornissen
+msgid "x_anatomischestoornissen"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_anderbehandeldoel
 msgid "x_anderbehandeldoel"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_beperkingenparticipatie
+msgid "x_beperkingenparticipatie"
 msgstr ""
 
 #. module: orbeon
@@ -4276,6 +5468,646 @@ msgid "x_bsopbouwenkelvoudigrechts"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca10
+msgid "x_ca10"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca10t
+msgid "x_ca10t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca11
+msgid "x_ca11"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca11i
+msgid "x_ca11i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca11t
+msgid "x_ca11t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca12
+msgid "x_ca12"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca12i
+msgid "x_ca12i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca12t
+msgid "x_ca12t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca13
+msgid "x_ca13"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca13i
+msgid "x_ca13i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca13t
+msgid "x_ca13t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca14
+msgid "x_ca14"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca14i
+msgid "x_ca14i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca14t
+msgid "x_ca14t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca16
+msgid "x_ca16"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca16t
+msgid "x_ca16t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca24
+msgid "x_ca24"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca24i
+msgid "x_ca24i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca24t
+msgid "x_ca24t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca25
+msgid "x_ca25"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca25i
+msgid "x_ca25i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca25t
+msgid "x_ca25t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca26
+msgid "x_ca26"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca26i
+msgid "x_ca26i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca26t
+msgid "x_ca26t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca28
+msgid "x_ca28"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca28t
+msgid "x_ca28t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca29
+msgid "x_ca29"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca29t
+msgid "x_ca29t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca4
+msgid "x_ca4"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca4i
+msgid "x_ca4i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca4t
+msgid "x_ca4t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca5
+msgid "x_ca5"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca5i
+msgid "x_ca5i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca5t
+msgid "x_ca5t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca6
+msgid "x_ca6"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca6t
+msgid "x_ca6t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca7
+msgid "x_ca7"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca7t
+msgid "x_ca7t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca9
+msgid "x_ca9"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_ca9t
+msgid "x_ca9t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co10
+msgid "x_co10"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co10t
+msgid "x_co10t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co19
+msgid "x_co19"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co19t
+msgid "x_co19t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co28
+msgid "x_co28"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co28t
+msgid "x_co28t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co30
+msgid "x_co30"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co30i
+msgid "x_co30i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co30t
+msgid "x_co30t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co36
+msgid "x_co36"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co36t
+msgid "x_co36t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co39
+msgid "x_co39"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co39i
+msgid "x_co39i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co39t
+msgid "x_co39t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co41
+msgid "x_co41"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co41t
+msgid "x_co41t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co42
+msgid "x_co42"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co42t
+msgid "x_co42t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co43
+msgid "x_co43"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co43i
+msgid "x_co43i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co43t
+msgid "x_co43t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co44
+msgid "x_co44"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co44i
+msgid "x_co44i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co44t
+msgid "x_co44t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co45
+msgid "x_co45"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co45t
+msgid "x_co45t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co46
+msgid "x_co46"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co46t
+msgid "x_co46t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co49
+msgid "x_co49"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co49i
+msgid "x_co49i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co49t
+msgid "x_co49t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co50
+msgid "x_co50"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co50t
+msgid "x_co50t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co53
+msgid "x_co53"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co53t
+msgid "x_co53t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co54
+msgid "x_co54"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co54t
+msgid "x_co54t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co60
+msgid "x_co60"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co60t
+msgid "x_co60t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co62
+msgid "x_co62"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co62t
+msgid "x_co62t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co64
+msgid "x_co64"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co65
+msgid "x_co65"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co66
+msgid "x_co66"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co66t
+msgid "x_co66t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co67
+msgid "x_co67"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co67t
+msgid "x_co67t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co68
+msgid "x_co68"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co68t
+msgid "x_co68t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co69
+msgid "x_co69"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co69t
+msgid "x_co69t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co70
+msgid "x_co70"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co70t
+msgid "x_co70t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co71
+msgid "x_co71"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co71t
+msgid "x_co71t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co72
+msgid "x_co72"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co9
+msgid "x_co9"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_co9t
+msgid "x_co9t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control107
+msgid "x_control107"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control108
+msgid "x_control108"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control109
+msgid "x_control109"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control11
+msgid "x_control11"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control110
+msgid "x_control110"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control111
+msgid "x_control111"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control112
+msgid "x_control112"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control113
+msgid "x_control113"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control117
+msgid "x_control117"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control119
+msgid "x_control119"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control120
+msgid "x_control120"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control121
+msgid "x_control121"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control122
+msgid "x_control122"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control13
+msgid "x_control13"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control19
+msgid "x_control19"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control28
+msgid "x_control28"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control29
+msgid "x_control29"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control3
+msgid "x_control3"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control31
+msgid "x_control31"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control32
+msgid "x_control32"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control4
+msgid "x_control4"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control44
+msgid "x_control44"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control46
+msgid "x_control46"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control47
+msgid "x_control47"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control48
+msgid "x_control48"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control49
+msgid "x_control49"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control50
+msgid "x_control50"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control51
+msgid "x_control51"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_control7
+msgid "x_control7"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_controlehoogtevsschacht
 msgid "x_controlehoogtevsschacht"
 msgstr ""
@@ -4286,8 +6118,393 @@ msgid "x_controleosavariantenschachthoogtes"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_externefactoren
+msgid "x_externefactoren"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe1
+msgid "x_fe1"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe12
+msgid "x_fe12"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe12t
+msgid "x_fe12t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe14
+msgid "x_fe14"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe14t
+msgid "x_fe14t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe15
+msgid "x_fe15"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe15i
+msgid "x_fe15i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe15t
+msgid "x_fe15t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe16
+msgid "x_fe16"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe16i
+msgid "x_fe16i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe16t
+msgid "x_fe16t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe17
+msgid "x_fe17"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe17t
+msgid "x_fe17t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe1t
+msgid "x_fe1t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe2
+msgid "x_fe2"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe20
+msgid "x_fe20"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe20t
+msgid "x_fe20t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe21
+msgid "x_fe21"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe21i
+msgid "x_fe21i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe21t
+msgid "x_fe21t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe24
+msgid "x_fe24"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe24t
+msgid "x_fe24t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe25
+msgid "x_fe25"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe25t
+msgid "x_fe25t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe26
+msgid "x_fe26"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe26t
+msgid "x_fe26t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe27
+msgid "x_fe27"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe27t
+msgid "x_fe27t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe28
+msgid "x_fe28"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe28t
+msgid "x_fe28t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe29
+msgid "x_fe29"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe29t
+msgid "x_fe29t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe2t
+msgid "x_fe2t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe3
+msgid "x_fe3"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe30
+msgid "x_fe30"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe30t
+msgid "x_fe30t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe31
+msgid "x_fe31"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe31t
+msgid "x_fe31t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe32
+msgid "x_fe32"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe32t
+msgid "x_fe32t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe33
+msgid "x_fe33"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe33t
+msgid "x_fe33t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe36
+msgid "x_fe36"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe36t
+msgid "x_fe36t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe38
+msgid "x_fe38"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe38t
+msgid "x_fe38t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe39
+msgid "x_fe39"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe39t
+msgid "x_fe39t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe3t
+msgid "x_fe3t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe4
+msgid "x_fe4"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe40
+msgid "x_fe40"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe40t
+msgid "x_fe40t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe41
+msgid "x_fe41"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe41t
+msgid "x_fe41t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe42
+msgid "x_fe42"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe42t
+msgid "x_fe42t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe43
+msgid "x_fe43"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe43t
+msgid "x_fe43t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe44
+msgid "x_fe44"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe44t
+msgid "x_fe44t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe45
+msgid "x_fe45"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe45t
+msgid "x_fe45t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe46
+msgid "x_fe46"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe46t
+msgid "x_fe46t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe47
+msgid "x_fe47"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe47t
+msgid "x_fe47t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe49
+msgid "x_fe49"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe49t
+msgid "x_fe49t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe4t
+msgid "x_fe4t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe7
+msgid "x_fe7"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe7i
+msgid "x_fe7i"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe7t
+msgid "x_fe7t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe8
+msgid "x_fe8"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fe8t
+msgid "x_fe8t"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_figuur
 msgid "x_figuur"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_functieeisenzp
+msgid "x_functieeisenzp"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_fysiologischestoornissen
+msgid "x_fysiologischestoornissen"
 msgstr ""
 
 #. module: orbeon
@@ -4303,6 +6520,661 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_hoofdkleur
 msgid "x_hoofdkleur"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf0
+msgid "x_icf0"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf00
+msgid "x_icf00"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf0t
+msgid "x_icf0t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf1
+msgid "x_icf1"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf10
+msgid "x_icf10"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf100
+msgid "x_icf100"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf101
+msgid "x_icf101"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf102
+msgid "x_icf102"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf103
+msgid "x_icf103"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf104
+msgid "x_icf104"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf105
+msgid "x_icf105"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf109
+msgid "x_icf109"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf10t
+msgid "x_icf10t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf11
+msgid "x_icf11"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf110
+msgid "x_icf110"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf111
+msgid "x_icf111"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf112
+msgid "x_icf112"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf113
+msgid "x_icf113"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf114
+msgid "x_icf114"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf115
+msgid "x_icf115"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf116
+msgid "x_icf116"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf11t
+msgid "x_icf11t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf12
+msgid "x_icf12"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf12t
+msgid "x_icf12t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf13
+msgid "x_icf13"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf13t
+msgid "x_icf13t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf15
+msgid "x_icf15"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf15t
+msgid "x_icf15t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf16
+msgid "x_icf16"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf16t
+msgid "x_icf16t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf17
+msgid "x_icf17"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf17t
+msgid "x_icf17t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf19
+msgid "x_icf19"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf19t
+msgid "x_icf19t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf1t
+msgid "x_icf1t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf2
+msgid "x_icf2"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf20
+msgid "x_icf20"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf20t
+msgid "x_icf20t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf22
+msgid "x_icf22"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf22t
+msgid "x_icf22t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf23
+msgid "x_icf23"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf23t
+msgid "x_icf23t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf25
+msgid "x_icf25"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf25t
+msgid "x_icf25t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf26
+msgid "x_icf26"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf26t
+msgid "x_icf26t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf27
+msgid "x_icf27"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf27t
+msgid "x_icf27t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf2t
+msgid "x_icf2t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf3
+msgid "x_icf3"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf30
+msgid "x_icf30"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf30t
+msgid "x_icf30t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf32
+msgid "x_icf32"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf32t
+msgid "x_icf32t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf37
+msgid "x_icf37"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf37t
+msgid "x_icf37t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf3t
+msgid "x_icf3t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf4
+msgid "x_icf4"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf42
+msgid "x_icf42"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf42t
+msgid "x_icf42t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf45
+msgid "x_icf45"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf45t
+msgid "x_icf45t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf46
+msgid "x_icf46"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf46t
+msgid "x_icf46t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf4t
+msgid "x_icf4t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf53
+msgid "x_icf53"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf53t
+msgid "x_icf53t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf54
+msgid "x_icf54"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf54t
+msgid "x_icf54t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf56
+msgid "x_icf56"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf56t
+msgid "x_icf56t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf57
+msgid "x_icf57"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf57t
+msgid "x_icf57t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf58
+msgid "x_icf58"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf58t
+msgid "x_icf58t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf6
+msgid "x_icf6"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf60
+msgid "x_icf60"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf60t
+msgid "x_icf60t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf62
+msgid "x_icf62"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf62e
+msgid "x_icf62e"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf62t
+msgid "x_icf62t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf63
+msgid "x_icf63"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf63t
+msgid "x_icf63t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf6t
+msgid "x_icf6t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf7
+msgid "x_icf7"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf76
+msgid "x_icf76"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf76t
+msgid "x_icf76t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf77
+msgid "x_icf77"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf77t
+msgid "x_icf77t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf78
+msgid "x_icf78"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf78t
+msgid "x_icf78t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf79
+msgid "x_icf79"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf79t
+msgid "x_icf79t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf7t
+msgid "x_icf7t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf8
+msgid "x_icf8"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf80
+msgid "x_icf80"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf80t
+msgid "x_icf80t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf81
+msgid "x_icf81"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf81t
+msgid "x_icf81t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf82
+msgid "x_icf82"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf82t
+msgid "x_icf82t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf83
+msgid "x_icf83"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf83t
+msgid "x_icf83t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf84
+msgid "x_icf84"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf84t
+msgid "x_icf84t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf85
+msgid "x_icf85"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf85t
+msgid "x_icf85t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf86
+msgid "x_icf86"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf86t
+msgid "x_icf86t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf8t
+msgid "x_icf8t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf9
+msgid "x_icf9"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf90
+msgid "x_icf90"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf90t
+msgid "x_icf90t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf91
+msgid "x_icf91"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf91t
+msgid "x_icf91t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf92
+msgid "x_icf92"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf92t
+msgid "x_icf92t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf93
+msgid "x_icf93"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf93t
+msgid "x_icf93t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf94
+msgid "x_icf94"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf94t
+msgid "x_icf94t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf95
+msgid "x_icf95"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf95t
+msgid "x_icf95t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf96
+msgid "x_icf96"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf96t
+msgid "x_icf96t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf97
+msgid "x_icf97"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf97t
+msgid "x_icf97t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf98
+msgid "x_icf98"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf98t
+msgid "x_icf98t"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf99
+msgid "x_icf99"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf9t
+msgid "x_icf9t"
 msgstr ""
 
 #. module: orbeon
@@ -4436,13 +7308,13 @@ msgid "x_maat8rechts"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_neus
-msgid "x_neus"
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_nazorgeisen
+msgid "x_nazorgeisen"
 msgstr ""
 
 #. module: orbeon
-#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_oe7_createdate
-msgid "x_oe7_createdate"
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_neus
+msgid "x_neus"
 msgstr ""
 
 #. module: orbeon
@@ -4536,6 +7408,11 @@ msgid "x_opxcm8"
 msgstr ""
 
 #. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_persoonlijkefactoren
+msgid "x_persoonlijkefactoren"
+msgstr ""
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_positiebinnenschoen
 msgid "x_positiebinnenschoen"
 msgstr ""
@@ -4543,6 +7420,16 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_positievlos
 msgid "x_positievlos"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_proceseisen
+msgid "x_proceseisen"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_productcategoriegeselecteerd
+msgid "x_productcategoriegeselecteerd"
 msgstr ""
 
 #. module: orbeon
@@ -4579,6 +7466,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_sluitingringen
 msgid "x_sluitingringen"
 msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_steunzoollinks
+msgid "x_steunzoollinks"
+msgstr "Steunzool LI"
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_steunzoolrechts
+msgid "x_steunzoolrechts"
+msgstr "Steunzool RE"
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_stikseldikte
@@ -4644,6 +7541,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_tongpolstering
 msgid "x_tongpolstering"
 msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_typevoorziening
+msgid "x_typevoorziening"
+msgstr "Type voorziening"
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_urlef2
@@ -4723,4 +7625,9 @@ msgstr ""
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_voorpand
 msgid "x_voorpand"
+msgstr ""
+
+#. module: orbeon
+#: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_zp1
+msgid "x_zp1"
 msgstr ""
