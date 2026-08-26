@@ -127,7 +127,7 @@ class OrbeonBuilder(models.Model):
         "orbeon.builder",
         "Current Builder",
         compute="_current_builder",
-        store=True,
+        #store=True,
         help="The current (published) Builder"
     )
 
