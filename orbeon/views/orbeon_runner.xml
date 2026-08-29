@@ -1,155 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-    <record id="orbeon_runner_form_form" model="ir.ui.view">
-      <field name="name">orbeon.runner_form.form</field>
-      <field name="model">orbeon.runner</field>
-      <field name="arch" type="xml">
-        <form>
-          <header>
-            <field options="{'clickable': '1'}" name="state" widget="statusbar"/>
-          </header>
-          <sheet>
-            <div class="oe_button_box" name="button_box">
-              <button class="oe_stat_button" name="action_open_orbeon_runner_edit"
-                      icon="fa-edit" string="Edit" type="object"
-                      invisible="id == False or state in ['complete', 'canceled']"
-              />
-              <button class="oe_stat_button" name="action_open_orbeon_runner_view"
-                      icon="fa-eye" string="View" type="object"
-                      invisible="id == False or state not in ['complete', 'canceled']"
-              />
-              <button class="oe_stat_button" help="Merge the Form Design (structure additions) into this Runner Form." icon="fa-random" invisible="xml == False and (any_new_current_builder == False or state in ['complete', 'canceled'])" name="merge_current_builder" string="Merge Current Builder" type="object"/>
-            </div>
-            <field invisible="1" name="active"/>
-            <widget bg_color="bg-danger" invisible="active == True" name="web_ribbon" title="Archived"/>
-            <div class="oe_title">
-              <h1>
-                <strong>
-                  <field name="builder_title" readonly="1"/>
-                </strong>
-              </h1>
-            </div>
-            <notebook>
-              <page name="general" string="General">
-                <group>
-                  <field domain='[("state", "=", "current")]' name="builder_id" readonly="id != False"/>
-                  <field name="url" widget="url"/>
-                </group>
-              </page>
-              <page groups="base.group_system" name="xml" string="XML">
-                <button name="action_pretty_print_xml" type="object" string="Pretty Format"/>
-                <field name="xml" widget="code" options="{'mode': 'xml'}" readonly="state not in ('new', 'progress')"/>
-              </page>
-              <page groups="base.group_system" name="technical" string="TECH">
-                <group>
-                  <field invisible="1" name="id"/>
-                  <field invisible="1" name="any_new_current_builder"/>
-                  <field name="res_model"/>
-                  <field name="res_id" readonly="1"/>
-                  <field groups="orbeon.orbeon_admin" name="is_merged"/>
-                </group>
-              </page>
-            </notebook>
-          </sheet>
-          <chatter/>
-        </form>
-      </field>
-    </record>
-    <record id="orbeon_runner_form_tree" model="ir.ui.view">
-      <field name="name">orbeon.runner_form.tree</field>
-      <field name="model">orbeon.runner</field>
-      <field name="arch" type="xml">
-        <list>
-          <field name="builder_id"/>
-          <field name="url"/>
-          <field name="res_model"/>
-          <field name="res_id"/>
-          <field groups="orbeon.orbeon_admin" name="is_merged"/>
-        </list>
-      </field>
-    </record>
-    <record id="orbeon_runner_form_kanban" model="ir.ui.view">
-      <field name="name">orbeon.runner_form.kanban</field>
-      <field name="model">orbeon.runner</field>
-      <field name="arch" type="xml">
-        <kanban class="oe_background_grey o_kanban_dashboard">
-          <field name="builder_id"/>
-          <field name="builder_name"/>
-          <field name="url"/>
-          <templates>
-            <t t-name="kanban-box">
-              <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
-                <div class="o_kanban_card_header">
-                  <div class="o_kanban_card_header_title">
-                    <div class="o_primary">
-                      <field name="builder_title"/>
-                    </div>
-                  </div>
-                </div>
-                <div class="container o_kanban_card_content o_visible">
-                  <div class="row">
-                    <div class="col-xs-10 o_kanban_primary_left"/>
-                    <div class="col-xs-2 o_kanban_primary_right">
-                      <div class="o_dropdown_kanban dropdown" groups="base.group_user">
-                        <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
-                          <span class="fa fa-bars fa-lg"/>
-                        </a>
-                        <ul aria-labelledby="dLabel" class="dropdown-menu" role="menu">
-                          <li>
-              Set Color
-                            <ul class="oe_kanban_colorpicker" data-field="color"/>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="o_primary" name="buttons">
-                  <div style="padding-bottom: 8px;">
-                    <small class="text-muted">
-           Builder:
-                      <field name="builder_name"/>
-                    </small>
-                  </div>
-                  <center>
-                    <button class="btn btn-primary" name="action_open_orbeon_runner_edit" type="object">
-           Edit
-                    </button>
-                  </center>
-                </div>
-              </div>
-            </t>
-          </templates>
-        </kanban>
-      </field>
-    </record>
-    <record id="orbeon_runner_search-view" model="ir.ui.view">
-      <field name="name">orbeon.runne.search.view</field>
-      <field name="model">orbeon.runner</field>
-      <field name="arch" type="xml">
-        <search>
-          <field name="builder_id"/>
-        </search>
-      </field>
-    </record>
-    <record id="orbeon_runner_form_action" model="ir.actions.act_window">
-      <field name="name">Orbeon Runner Forms</field>
-      <field name="type">ir.actions.act_window</field>
-      <field name="res_model">orbeon.runner</field>
-      <field name="view_mode">list,form,activity</field>
-    </record>
-    <record id="orbeon_runner_form_action_tree" model="ir.actions.act_window.view">
-      <field name="act_window_id" ref="orbeon_runner_form_action"/>
-      <field eval="1" name="sequence"/>
-      <field name="view_mode">list</field>
-      <field name="view_id" ref="orbeon_runner_form_tree"/>
-    </record>
-    <record id="orbeon_runner_form_action_form" model="ir.actions.act_window.view">
-      <field name="act_window_id" ref="orbeon_runner_form_action"/>
-      <field eval="2" name="sequence"/>
-      <field name="view_mode">form</field>
-      <field name="view_id" ref="orbeon_runner_form_form"/>
-    </record>
-  </data>
+    <data>
+
+        <record id="orbeon_runner_form_form" model="ir.ui.view">
+            <field name="name">orbeon.runner_form.form</field>
+            <field name="model">orbeon.runner</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field options="{'clickable': '1'}" name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_open_orbeon_runner_edit"
+                                    icon="fa-edit" string="Edit" type="object"
+                                    invisible="id == False or state in ['complete', 'canceled']"
+                            />
+                            <button class="oe_stat_button" name="action_open_orbeon_runner_view"
+                                    icon="fa-eye" string="View" type="object"
+                                    invisible="id == False or state not in ['complete', 'canceled']"
+                            />
+                            <button class="oe_stat_button"
+                                    help="Merge the Form Design (structure additions) into this Runner Form."
+                                    icon="fa-random"
+                                    invisible="xml == False and (any_new_current_builder == False or state in ['complete', 'canceled'])"
+                                    name="merge_current_builder" string="Merge Current Builder" type="object"/>
+                        </div>
+                        <field invisible="1" name="active"/>
+                        <widget bg_color="bg-danger" invisible="active == True" name="web_ribbon" title="Archived"/>
+                        <div class="oe_title">
+                            <h1>
+                                <strong>
+                                    <field name="builder_title" readonly="1"/>
+                                </strong>
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page name="general" string="General">
+                                <group>
+                                    <field domain='[("state", "=", "current")]' name="builder_id"
+                                           readonly="id != False"/>
+                                    <field name="url" widget="url"/>
+                                </group>
+                            </page>
+                            <page groups="base.group_system" name="xml" string="XML">
+                                <button name="action_pretty_print_xml" type="object" string="Pretty Format"/>
+                                <field name="xml" widget="code" options="{'mode': 'xml'}"
+                                       readonly="state not in ('new', 'progress')"/>
+                            </page>
+                            <page groups="base.group_system" name="technical" string="TECH">
+                                <group>
+                                    <field invisible="1" name="id"/>
+                                    <field invisible="1" name="any_new_current_builder"/>
+                                    <field name="res_model"/>
+                                    <field name="res_id" readonly="1"/>
+                                    <field groups="orbeon.orbeon_admin" name="is_merged"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <record id="orbeon_runner_form_tree" model="ir.ui.view">
+            <field name="name">orbeon.runner_form.tree</field>
+            <field name="model">orbeon.runner</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="builder_id"/>
+                    <field name="url"/>
+                    <field name="res_model"/>
+                    <field name="res_id"/>
+                    <field groups="orbeon.orbeon_admin" name="is_merged"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="orbeon_runner_form_kanban" model="ir.ui.view">
+            <field name="name">orbeon.runner_form.kanban</field>
+            <field name="model">orbeon.runner</field>
+            <field name="arch" type="xml">
+                <kanban class="oe_background_grey o_kanban_dashboard">
+                    <field name="builder_id"/>
+                    <field name="builder_name"/>
+                    <field name="url"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                                <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary">
+                                            <field name="builder_title"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container o_kanban_card_content o_visible">
+                                    <div class="row">
+                                        <div class="col-xs-10 o_kanban_primary_left"/>
+                                        <div class="col-xs-2 o_kanban_primary_right">
+                                            <div class="o_dropdown_kanban dropdown" groups="base.group_user">
+                                                <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                                                    <span class="fa fa-bars fa-lg"/>
+                                                </a>
+                                                <ul aria-labelledby="dLabel" class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        Set Color
+                                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="o_primary" name="buttons">
+                                    <div style="padding-bottom: 8px;">
+                                        <small class="text-muted">
+                                            Builder:
+                                            <field name="builder_name"/>
+                                        </small>
+                                    </div>
+                                    <center>
+                                        <button class="btn btn-primary" name="action_open_orbeon_runner_edit"
+                                                type="object">
+                                            Edit
+                                        </button>
+                                    </center>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="orbeon_runner_search-view" model="ir.ui.view">
+            <field name="name">orbeon.runne.search.view</field>
+            <field name="model">orbeon.runner</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="builder_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="orbeon_runner_form_action" model="ir.actions.act_window">
+            <field name="name">Orbeon Runner Forms</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">orbeon.runner</field>
+            <field name="view_mode">list,form,activity</field>
+            <field name="path">runner-forms</field>
+        </record>
+
+        <record id="orbeon_runner_form_action_tree" model="ir.actions.act_window.view">
+            <field name="act_window_id" ref="orbeon_runner_form_action"/>
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="orbeon_runner_form_tree"/>
+        </record>
+
+        <record id="orbeon_runner_form_action_form" model="ir.actions.act_window.view">
+            <field name="act_window_id" ref="orbeon_runner_form_action"/>
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="orbeon_runner_form_form"/>
+        </record>
+
+    </data>
 </odoo>
