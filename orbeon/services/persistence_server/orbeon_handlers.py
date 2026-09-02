@@ -331,7 +331,7 @@ class FormMetadataHandler:
         self.args = args or {}
         self.data = data
         self.config = None
-        _logger.error("FormMetadataHandler.__init__: app=%s form=%s args=%s", self.app, self.form, dict(self.args))
+        _logger.debug("FormMetadataHandler.__init__: app=%s form=%s args=%s", self.app, self.form, dict(self.args))
 
     def set_config_by_file_path(self, _configfile_path):
         pass
@@ -387,7 +387,7 @@ class FormMetadataHandler:
             version = "1"
 
         xml_text = self._render_forms_xml(version, all_versions=all_versions, all_forms=all_forms)
-        _logger.error(f"xml_text: {xml_text}")
+        _logger.debug(f"xml_text: {xml_text}")
 
         # Return an explicit XML response so Werkzeug doesn’t default to text/plain
         return Response(

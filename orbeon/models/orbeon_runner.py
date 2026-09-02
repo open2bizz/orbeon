@@ -309,7 +309,7 @@ class OrbeonRunner(models.Model):
                 node = etree.fromstring(record.xml.encode('utf-8'), parser)
                 record.xml = etree.tostring(node, pretty_print=True, encoding='unicode')
             except Exception as e:
-                _logger.error("Failed to pretty print XML: %s", str(e))
+                _logger.debug("Failed to pretty print XML: %s", str(e))
                 raise UserError(_("Invalid XML format: %s") % str(e))
 
     def action_generate_test_xml(self):

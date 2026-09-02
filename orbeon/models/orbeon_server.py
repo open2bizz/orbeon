@@ -75,7 +75,7 @@ def _try_acquire_persistence_port_lock(port):
 
         _PERSISTENCE_PORT_LOCKS[port] = handle
 
-        _logger.info(
+        _logger.debug(
             'Odoo process %s acquired Orbeon persistence port lock for %s',
             os.getpid(),
             port,
@@ -96,7 +96,7 @@ def _release_persistence_port_lock(port):
         finally:
             handle.close()
 
-        _logger.info(
+        _logger.debug(
             'Odoo process %s released Orbeon persistence port lock for %s',
             os.getpid(),
             port,
@@ -286,7 +286,7 @@ class OrbeonServer(models.Model):
             )
 
         if self._is_persistence_server_running():
-            _logger.info(
+            _logger.debug(
                 "Orbeon persistence server '%s' is already running locally "
                 "on port %s (thread: %s)",
                 self.name,
@@ -303,7 +303,7 @@ class OrbeonServer(models.Model):
             ) from e
 
         if not _try_acquire_persistence_port_lock(port):
-            _logger.info(
+            _logger.debug(
                 "Orbeon persistence server '%s' on port %s is already owned "
                 "by another Odoo process; not starting a duplicate.",
                 self.name,
@@ -409,7 +409,7 @@ class OrbeonServer(models.Model):
 
         for server in servers:
             if server._is_persistence_server_running():
-                _logger.info(
+                _logger.debug(
                     "Orbeon persistence server '%s' already running locally "
                     "on port %s (thread: %s); skipping autostart.",
                     server.name,
@@ -421,7 +421,7 @@ class OrbeonServer(models.Model):
             try:
                 port = int(server.persistence_server_port)
             except (TypeError, ValueError):
-                _logger.error(
+                _logger.debug(
                     "Invalid persistence-server port '%s' for '%s'",
                     server.persistence_server_port,
                     server.name,
@@ -429,7 +429,7 @@ class OrbeonServer(models.Model):
                 continue
 
             if not _try_acquire_persistence_port_lock(port):
-                _logger.info(
+                _logger.debug(
                     "Orbeon persistence server '%s' on port %s is already "
                     "owned by another Odoo process; skipping autostart.",
                     server.name,
@@ -439,7 +439,7 @@ class OrbeonServer(models.Model):
 
             try:
                 if server.persistence_server_uuid:
-                    _logger.info(
+                    _logger.debug(
                         "Replacing stale persistence server UUID %s for '%s'",
                         server.persistence_server_uuid,
                         server.name,
@@ -457,7 +457,7 @@ class OrbeonServer(models.Model):
 
                 server.persistence_server_uuid = uuid
 
-                _logger.info(
+                _logger.debug(
                     "Autostarted Orbeon persistence server '%s' on port %s "
                     "(thread: %s, Odoo pid: %s)",
                     server.name,
@@ -508,7 +508,7 @@ class OrbeonServer(models.Model):
         )
         thread.persistence_port = port_number
 
-        _logger.info(
+        _logger.debug(
             'Starting HTTP (werkzeug) %s (thread: %s) on port %s',
             ORBEON_PERSISTENCE_SERVER_PREFIX,
             uuid,
@@ -528,7 +528,7 @@ class OrbeonServer(models.Model):
             if thread.name != uuid:
                 continue
 
-            _logger.info(
+            _logger.debug(
                 'Stopping HTTP (werkzeug) %s (thread: %s) on port %s',
                 ORBEON_PERSISTENCE_SERVER_PREFIX,
                 uuid,
@@ -551,7 +551,7 @@ class OrbeonServer(models.Model):
 
             return True
 
-        _logger.info(
+        _logger.debug(
             'No live Orbeon persistence server thread %s found on port %s',
             uuid,
             port,

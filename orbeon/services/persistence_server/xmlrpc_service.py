@@ -30,14 +30,14 @@ class XMLRPCService(object):
     def __init__(self, db, uid, pwd, url):
         odoo_username = str(odoo_config.get("orbeon_user") or "")
         odoo_password = str(odoo_config.get("orbeon_password") or "")
-        _logger.error(odoo_password)
+        _logger.debug(odoo_password)
         #user = base64.b64decode(uid).decode('utf-8')
         #passw = base64.b64decode(pwd).decode('utf-8')
         odoo_db = str(odoo_config.get("odoo_db") or "")
         
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
         odoo_uid = common.authenticate(odoo_db,odoo_username , odoo_password, {})
-        _logger.error(odoo_uid)
+        _logger.debug(odoo_uid)
         models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
         #odoo_user = models.execute_kw(odoo_db, odoo_uid, odoo_password, 'res.users', 'search_read', [[["login","=",odoo_username    ]]], {'fields': ['api_key','login']})
         #if odoo_user:
@@ -55,10 +55,10 @@ class XMLRPCService(object):
         #if odoo_user:
             #self.connect(key=odoo_user[0]['api_key'])
             #self.connect()
-            #_logger.error("!")
+            #_logger.debug("!")
         #else:
         self.connect()
-        _logger.error("!!")
+        _logger.debug("!!")
 
         
     def connect(self, key=False):
@@ -99,8 +99,8 @@ class XMLRPCService(object):
         @type fields: single dictionary in an array
         @return: array of dicts
         """
-        _logger.error(f"model: {model}")
-        _logger.error(f"fields: {fields}")
+        _logger.debug(f"model: {model}")
+        _logger.debug(f"fields: {fields}")
         return self.api.execute_kw(self.db,self.uid,self.pwd, model, "create", fields)
 
     def write(self, model, id, fields):

@@ -87,15 +87,15 @@ class OrbeonHandlerBase(object):
             ('description', '=', self.form_data_id)
         ]
         if self.form_data_id == 'e8843828ac3d0bfb99e474ab543dacd720862d14.bin':
-            _logger.error(self.form_doc_id)
-            _logger.error(self.model)
-            _logger.error(self.form_data_id)
+            _logger.debug(self.form_doc_id)
+            _logger.debug(self.model)
+            _logger.debug(self.form_data_id)
         res = self.xmlrpc.search_read(
             'ir.attachment',
             [domain],
             ['datas'],
         )
-        _logger.error(res)
+        _logger.debug(res)
         if len(res) > 0:
             return base64.b64decode(res[0]['datas'])
 
@@ -110,12 +110,12 @@ class OrbeonHandlerBase(object):
             'description': self.form_data_id,
             "datas": base64.b64encode(self.data)
         }
-        _logger.error("start")
+        _logger.debug("start")
         self.xmlrpc.create(
             'ir.attachment',
             [ira_data],
         )
-        _logger.error("eind")
+        _logger.debug("eind")
 
 
 class BuilderHandler(OrbeonHandlerBase):

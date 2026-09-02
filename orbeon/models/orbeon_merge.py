@@ -226,7 +226,7 @@ class OrbeonRunner(models.Model):
             if current_version.id != old_builder.id and not self.is_merged:
                 # Compare XML for logging purposes
                 diff = self._compare_builder_xml(old_builder.xml, current_version.xml, with_details=True)
-                _logger.info(
+                _logger.debug(
                     "Builder diff for runner %s (old builder %s -> current builder %s): "
                     "added=%s, removed=%s, changed=%s",
                     self.id, old_builder.id, current_version.id,
@@ -234,7 +234,7 @@ class OrbeonRunner(models.Model):
                 )
 
                 for key, text_diff in (diff.get("details") or {}).items():
-                    _logger.info("XML diff for control '%s':\n%s", key, text_diff)
+                    _logger.debug("XML diff for control '%s':\n%s", key, text_diff)
 
                 # Perform the merge
                 merged_runner_xml = self._merge_runner_with_builder(
@@ -250,9 +250,9 @@ class OrbeonRunner(models.Model):
                 message = (_("Merged successfully from version (%s) to latest builder version %s.")
                          % (old_builder.version,current_version.version))
                 self.message_post(body=message)
-                _logger.info(message)
+                _logger.debug(message)
             else:
-                _logger.info("Runner %s is already on the current builder version.", self.id)
+                _logger.debug("Runner %s is already on the current builder version.", self.id)
         else:
             _logger.warning("No current builder version found for builder %s.", self.builder_id.id)
             raise UserError(_("No current builder version found for builder %s.") % self.builder_id.id)
