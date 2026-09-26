@@ -15,7 +15,7 @@
 # https://www.gnu.org/licenses/lgpl.txt.
 #
 ##############################################################################
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError,UserError
 
 from lxml import etree
@@ -166,7 +166,7 @@ class OrbeonBuilder(models.Model):
     @api.constrains('name')
     def constaint_check_name(self):
         if re.search(r"[^a-zA-Z0-9_-]", self.name) is not None:
-            raise ValidationError('Name is invalid. Use ASCII letters, digits, "-" or "_"')
+            raise ValidationError(_('Name is invalid. Use ASCII letters, digits, "-" or "_"'))
 
     @api.constrains("name", "state")
     def constraint_one_current(self):
@@ -178,8 +178,8 @@ class OrbeonBuilder(models.Model):
             ("state", "=", STATE_CURRENT)
         ])
         if len(cur_record) > 1:
-            raise ValidationError("%s already has a record with status 'current'.\
-                    Only one builder form can be current at a time." % self.name)
+            raise ValidationError(_("%s already has a record with status 'current'.\
+                    Only one builder form can be current at a time.") % self.name)
 
     @api.constrains("name", "version")
     def constraint_one_version(self):
@@ -191,17 +191,17 @@ class OrbeonBuilder(models.Model):
         name_version_grouped = self.read_group(domain, ['version'], ['version'])
 
         if name_version_grouped[0]['version_count'] > 1:
-            raise ValidationError("%s already has a record with version: %d"
+            raise ValidationError(_("%s already has a record with version: %d")
                                   % (self.name, self.version))
 
     def validate_create_xml(self, vals):
         _logger.debug(vals)
         for rec in vals:
             if rec['builder_template_id'] and rec['xml']:
-                raise ValidationError("Provide either a \"Builder Form Template\" or XML. Both not allowed.")
+                raise ValidationError(_('Provide either a "Builder Form Template" or XML. Both not allowed.'))
 
             if not rec['builder_template_id'] and not rec['xml']:
-                raise ValidationError("Missing either a \"Builder Form Template\" or XML")
+                raise ValidationError(_('Missing either a "Builder Form Template" or XML'))
 
 
     @api.returns('self', lambda value: value)

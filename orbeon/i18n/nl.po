@@ -38,6 +38,22 @@ msgstr ""
 "        - Vervallen: oudere versie dus niet beschikbaar"
 
 #. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_builder.py:0
+msgid ""
+"%s already has a record with status 'current'.                    Only one "
+"builder form can be current at a time."
+msgstr ""
+"%s heeft al een record met status 'huidig'. Er kan slechts één "
+"formulierontwerp tegelijk de status huidig hebben."
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_builder.py:0
+msgid "%s already has a record with version: %d"
+msgstr "%s heeft al een record met versie: %d"
+
+#. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_icf1a
 msgid "(Wisselend) oedeem in voeten, enkels en of onderbenen"
 msgstr ""
@@ -2424,7 +2440,7 @@ msgstr ""
 #: code:addons/orbeon/models/orbeon_builder.py:0
 #: code:addons/orbeon/models/orbeon_runner.py:0
 msgid "Invalid XML format: %s"
-msgstr ""
+msgstr "Ongeldig XML-formaat: %s"
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_builder__message_is_follower
@@ -3318,6 +3334,12 @@ msgid "Motivatiedatum"
 msgstr ""
 
 #. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_builder.py:0
+msgid "Missing either a \"Builder Form Template\" or XML"
+msgstr "\"Formulier ontwerp sjabloon\" of XML ontbreekt"
+
+#. module: orbeon
 #: model:ir.model.fields.selection,name:orbeon.selection__orbeon_server__persistence_server_processtype__multi_threaded
 msgid "Multi threaded"
 msgstr ""
@@ -3357,6 +3379,12 @@ msgstr "Naam"
 #: model_terms:ir.ui.view,arch_db:orbeon.orbeon_builder_form_form
 msgid "Name..."
 msgstr "Naam..."
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_builder.py:0
+msgid "Name is invalid. Use ASCII letters, digits, \"-\" or \"_\""
+msgstr "Naam is ongeldig. Gebruik ASCII-letters, cijfers, \"-\" of \"_\""
 
 #. module: orbeon
 #: model:ir.model.fields,field_description:orbeon.field_orbeon_runner__x_neskridoptieslinks
@@ -4024,6 +4052,12 @@ msgstr ""
 msgid ""
 "Provisioning the persistence-server is enabled if active is checked (True)."
 msgstr ""
+
+#. module: orbeon
+#. odoo-python
+#: code:addons/orbeon/models/orbeon_builder.py:0
+msgid "Provide either a \"Builder Form Template\" or XML. Both not allowed."
+msgstr "Geef een \"Formulier ontwerp sjabloon\" of XML op. Beide is niet toegestaan."
 
 #. module: orbeon
 #: model:ir.model.fields,help:orbeon.field_res_users__api_key
