@@ -91,6 +91,7 @@ class OrbeonRunner(models.Model):
     """Lets us know if this filed is merged with latest builder fields."""
     is_merged = fields.Boolean(
         'Is Merged',
+        copy=False,
         default=False)
 
     xml = fields.Text(
