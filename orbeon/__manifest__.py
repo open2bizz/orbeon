@@ -35,11 +35,11 @@
     "data": [
         "security/res_groups.xml",
         "security/ir_model_access.xml",
+        "views/base.xml",
         "views/orbeon_builder_template.xml",
         "views/orbeon_builder.xml",
         "views/orbeon_runner.xml",
         "views/orbeon_server.xml",
-        "views/base.xml",
         "views/res_users.xml",
         "data/orbeon_builder_template_empty.xml"
     ],

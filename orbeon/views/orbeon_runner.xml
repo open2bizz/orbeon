@@ -143,5 +143,20 @@
       <field name="view_mode">form</field>
       <field name="view_id" ref="orbeon_runner_form_form" />
     </record>
+
+    <menuitem id="orbeon_runner_menu"
+        name="Runner"
+        parent="orbeon_base_menu"
+        groups="orbeon.orbeon_admin"
+        sequence="30"
+    />
+
+    <menuitem id="orbeon_runner_forms_menu"
+        name="Runner Forms"
+        parent="orbeon_runner_menu"
+        action="orbeon_runner_form_action"
+        groups="orbeon.orbeon_admin,orbeon.orbeon_user"
+        sequence="10"
+    />
   </data>
 </odoo>
